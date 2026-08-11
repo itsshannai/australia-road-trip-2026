@@ -228,6 +228,7 @@ const tabs = [...document.querySelectorAll('[role="tab"]')];
 const panels = [...document.querySelectorAll('[role="tabpanel"]')];
 const validTabs = new Set(tabs.map(tab => tab.dataset.tab));
 let routeMaps = [];
+let routeMapObservers = [];
 
 function activateTab(name, updateHash = true) {
   const target = validTabs.has(name) ? name : 'home';
@@ -248,7 +249,7 @@ function activateTab(name, updateHash = true) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (target === 'home') requestAnimationFrame(() => {
     if (!routeMaps.length) initRouteMaps();
-    else routeMaps.forEach(map => map.invalidateSize());
+    else routeMaps.forEach(map => map.invalidateSize({ animate: false, pan: false }));
   });
 }
 
@@ -287,11 +288,21 @@ function initRouteMaps() {
   if (!window.L || !document.getElementById('waRouteMap') || !document.getElementById('tasRouteMap')) return;
 
   const createMap = id => {
-    const map = L.map(id, { scrollWheelZoom: false, zoomControl: true });
+    const container = document.getElementById(id);
+    const map = L.map(container, { scrollWheelZoom: false, zoomControl: true });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(entries => {
+        const { width, height } = entries[0].contentRect;
+        if (!width || !height) return;
+        requestAnimationFrame(() => map.invalidateSize({ animate: false, pan: false }));
+      });
+      observer.observe(container);
+      routeMapObservers.push(observer);
+    }
     routeMaps.push(map);
     return map;
   };
