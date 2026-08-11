@@ -249,7 +249,7 @@ function activateTab(name, updateHash = true) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   if (target === 'home') requestAnimationFrame(() => {
     if (!routeMaps.length) initRouteMaps();
-    else routeMaps.forEach(map => map.invalidateSize({ animate: false, pan: false }));
+    else routeMaps.forEach(map => map.invalidateSize({ animate: false, pan: true }));
   });
 }
 
@@ -298,7 +298,7 @@ function initRouteMaps() {
       const observer = new ResizeObserver(entries => {
         const { width, height } = entries[0].contentRect;
         if (!width || !height) return;
-        requestAnimationFrame(() => map.invalidateSize({ animate: false, pan: false }));
+        requestAnimationFrame(() => map.invalidateSize({ animate: false, pan: true }));
       });
       observer.observe(container);
       routeMapObservers.push(observer);
