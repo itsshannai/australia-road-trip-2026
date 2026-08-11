@@ -1,27 +1,75 @@
-const commons = (filename, width = 1200) =>
+const commons = (filename, width = 1600) =>
   `https://commons.wikimedia.org/wiki/Special:Redirect/file/${encodeURIComponent(filename)}?width=${width}`;
 
-const photo = (filename, alt) => ({ src: commons(filename), alt });
+const photo = (filename, alt) => ({
+  src: commons(filename),
+  thumb: commons(filename, 420),
+  alt,
+  source: `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(filename).replace(/%20/g, '_')}`
+});
+
+const scene = (label, picture) => ({ label, picture });
 
 const images = {
   perthArrival: photo('Perth skyline 2024.jpg', '抵达珀斯：城市天际线'),
+  elizabethQuay: photo('Perth (AU), Elizabeth Quay -- 2019 -- 0331-3.jpg', 'Elizabeth Quay 滨水区'),
+  york: photo('York Town Hall, Western Australia.jpg', 'York 历史小镇与市政厅'),
   pinnacles: photo('Pinnacles Desert, Nambung National Park, Western Australia 08.jpg', '西澳南邦国家公园尖峰石阵'),
   wave: photo('Wave-Rock-Hyden-WA.jpg', '海登 Wave Rock 波浪岩'),
+  westBeach: photo('West Beach, Esperance, Western Australia, January 2024 02.jpg', 'Esperance West Beach'),
+  blueHaven: photo('Blue Haven beach, Esperance.jpg', 'Esperance Blue Haven 蓝色海湾'),
   twilight: photo('Twilight Beach, bay and rocks, Esperance, January 2024 01.jpg', 'Esperance Twilight Beach 海湾与礁石'),
+  pinkLakeEsperance: photo('Sunset over Pink Lake, Esperance, January 2024 09.jpg', 'Esperance Pink Lake Lookout 日落'),
+  capeLeGrand: photo('Cape Le Grand National Park, Western Australia 34.jpg', 'Cape Le Grand 国家公园海岸'),
   lucky: photo('White beach Lucky Bay in Esperance.jpg', 'Esperance Lucky Bay 白沙海岸'),
+  hellfire: photo('Hellfire Bay, Cape Le Grand National Park, January 2025 01.jpg', 'Hellfire Bay 湛蓝海湾'),
+  thistle: photo('Thistle Cove, Cape Le Grand National Park, January 2025 15.jpg', 'Thistle Cove 花岗岩海岸'),
   albany: photo('Port of Albany.jpg', 'Albany 港口与南海岸'),
+  middleton: photo('Middleton Beach seen from Apex Lookout, April 2022 02.jpg', 'Albany Middleton Beach 与 King George Sound'),
+  greensPool: photo('Greens pool - William Bay NP - WA.jpg', 'Denmark Greens Pool 天然泳池'),
+  elephantRocks: photo('Elephant Rocks, Denmark, Western Australia - panoramio (2).jpg', 'Denmark Elephant Rocks'),
   giants: photo('Valley of the Giants Tree Top Walk (2009).jpg', 'Valley of the Giants 树顶步道'),
+  pemberton: photo('Pemberton Forest, Pemberton,Western Australia.JPG', 'Pemberton 卡里树森林'),
   leeuwin: photo('Cape Leeuwin Lighthouse WA (3406973349).jpg', 'Cape Leeuwin 灯塔'),
+  hamelin: photo('Hamelin Bay sunset 01.jpg', 'Hamelin Bay 日落'),
+  boranup: photo('Karri trees - Boranup Forest 01.jpg', 'Boranup Karri Forest 卡里树林'),
+  margaretVineyard: photo('10 20161018 CLAIRAULT STREICKER - Clairault Vineyard.jpg', 'Margaret River 葡萄园'),
+  sugarloaf: photo('Sugarloaf Rock at sunset, Western Australia, October 2023 05.jpg', 'Sugarloaf Rock 日落'),
   busselton: photo('Busselton Jetty.jpg', 'Busselton Jetty 栈桥'),
+  rockingham: photo('Beach west of Palm Beach Jetty, Rockingham, January 2024.jpg', 'Rockingham 海滨'),
+  fremantleHarbour: photo('Victoria Quay and Fremantle Harbour.jpg', 'Fremantle Harbour 与 Victoria Quay'),
+  lancelin: photo('Dunes at Lancelin.jpg', 'Lancelin 白色沙丘'),
+  jurien: photo('Beach at Jurien Bay jetty, September 2023 01.jpg', 'Jurien Bay 码头海滩'),
+  geraldton: photo('Geraldton Foreshore October 2023 01.jpg', 'Geraldton Foreshore 滨海步道'),
+  fremantleSunset: photo('Australia fremantle sunset.jpg', 'Fremantle 印度洋日落'),
   quokka: photo('RottnestQuokka.jpg', '罗特尼斯岛的 Quokka'),
+  basin: photo('Golden Hour at the Basin - Rottnest Island.jpg', 'The Basin 金色时刻'),
+  wadjemup: photo('Wadjemup Lighthouse, April 2026 03.jpg', 'Wadjemup Lighthouse'),
   hutt: photo('Hutt Lagoon, Western Australia.jpg', '西澳 Hutt Lagoon 粉红湖'),
   hobart: photo('Viewing Platform Mount Wellington Hobart Tasmania.jpg', '惠灵顿山观景台俯瞰霍巴特'),
+  hobartWaterfront: photo('Hobart waterfront.jpg', 'Hobart Waterfront 港湾'),
+  batteryPoint: photo('Battery Point 2015.jpg', 'Hobart Battery Point 历史街区'),
+  queenstown: photo('Landscape near Queenstown, Tasmania.jpg', 'Queenstown 西部荒野'),
   cradle: photo('Cradle Mountain and Dove Lake, Tas.jpg', '摇篮山与 Dove Lake'),
-  stanley: photo('Stanley and the Nut.jpg', 'Stanley 小镇与 The Nut'),
+  stanleyArrival: photo('Stanley and The Nut (6280265492).jpg', 'Stanley 田野与 The Nut'),
+  stanley: photo('Highfield, Stanley, Tasmania (31351168474).jpg', 'Stanley Highfield 与 The Nut'),
+  devonport: photo('Devonport, TAS.JPG', 'Devonport 港口航拍'),
+  cataract: photo('Cataract Gorge, Launceston in spring.jpg', 'Launceston Cataract Gorge 春日峡谷'),
+  bayOfFires: photo('Bay of Fires-07.jpg', 'Bay of Fires 橙红巨石海岸'),
+  bicheno: photo('Bicheno coastline, Tasmania (46113230991).jpg', 'Bicheno 东海岸'),
+  capeTourville: photo('Cape Tourville Lighthouse.jpg', 'Cape Tourville 灯塔海岸'),
   wineglass: photo('Wineglass Bay from Lookout.jpg', 'Freycinet 国家公园 Wineglass Bay'),
+  honeymoon: photo('Honeymoon Bay Sunset.jpg', 'Freycinet Honeymoon Bay 日落'),
+  ross: photo('Ross Bridge.jpg', 'Ross 小镇石桥'),
   bruny: photo('The Neck Bruny Island.jpg', '布鲁尼岛 The Neck 地峡'),
+  adventureBay: photo('Adventure Bay, Bruny Island, Tasmania.jpg', 'Bruny Island Adventure Bay'),
+  capeBruny: photo('Cape Bruny Lighthouse (22796056806).jpg', 'Cape Bruny Lighthouse'),
+  tasmanIsland: photo('Tasman Island, Tasmania, Australia.jpg', 'Tasman Island 与南大洋海崖'),
+  eaglehawk: photo('A panorama on a cliff at Eaglehawk Neck.jpg', 'Eaglehawk Neck 海崖'),
+  tasmanArch: photo('Tasman Arch (34436340434).jpg', 'Tasman Arch 海蚀拱门'),
   portArthur: photo('Tasmania port arthur.jpg', '塔州 Port Arthur 历史遗址'),
   salamanca: photo('Salamanca Market, Hobart, Tasmania.jpg', '霍巴特 Salamanca Market'),
+  salamancaPlace: photo('Hobart Tasmania Salamanca Place.jpg', 'Salamanca Place 与惠灵顿山'),
   perthDeparture: photo('Perth Airport Terminal 1 exterior, Western Australia, October 2022 04.jpg', '珀斯机场国际航站楼')
 };
 
@@ -30,101 +78,120 @@ const itinerary = {
     {
       day: 1, date: '09.23 · 周三', title: '杭州 → 珀斯', stay: 'Perth Airport / Ascot', pace: '抵达日',
       summary: '抵达后只做取车、补给和入住。住宿选机场东侧，第二天可直接驶上 Great Eastern Highway。',
-      stops: ['杭州出发', '珀斯机场', '取车', '附近补给'], picture: images.perthArrival
+      stops: ['杭州出发', '珀斯机场', '取车', '附近补给'], picture: images.perthArrival,
+      gallery: [scene('珀斯天际线', images.perthArrival), scene('Elizabeth Quay', images.elizabethQuay)]
     },
     {
       day: 2, date: '09.24 · 周四', title: '珀斯 → Esperance', stay: 'Esperance · Town Centre', pace: '高强度长途',
       summary: '早出发，经 York 快速停留，在 Hyden 看 Wave Rock 后继续赶往 Esperance。景点控制节奏，每两小时轮换休息。',
-      stops: ['York', 'Wave Rock', 'Hyden 午餐', 'Esperance'], picture: images.wave
+      stops: ['York', 'Wave Rock', 'Hyden 午餐', 'Esperance'], picture: images.wave,
+      gallery: [scene('York', images.york), scene('Wave Rock', images.wave)]
     },
     {
       day: 3, date: '09.25 · 周五', title: 'Esperance 海岸环线', stay: 'Esperance · 原住宿续住', pace: '轻松',
       summary: '用一整天走 Great Ocean Drive，把 West Beach、Blue Haven、Twilight Beach 和观景点串起来，傍晚回镇上。',
-      stops: ['West Beach', 'Blue Haven', 'Twilight Beach', 'Pink Lake Lookout'], picture: images.twilight
+      stops: ['West Beach', 'Blue Haven', 'Twilight Beach', 'Pink Lake Lookout'], picture: images.twilight,
+      gallery: [scene('West Beach', images.westBeach), scene('Blue Haven', images.blueHaven), scene('Twilight Beach', images.twilight), scene('Pink Lake Lookout', images.pinkLakeEsperance)]
     },
     {
       day: 4, date: '09.26 · 周六', title: 'Cape Le Grand & Lucky Bay', stay: 'Esperance · 原住宿续住', pace: '海岸日',
       summary: '早上直达 Cape Le Grand。以 Lucky Bay 白沙滩为核心，不安排高强度徒步；天气好再补 Hellfire Bay。',
-      stops: ['Cape Le Grand', 'Lucky Bay', 'Hellfire Bay', 'Thistle Cove'], picture: images.lucky
+      stops: ['Cape Le Grand', 'Lucky Bay', 'Hellfire Bay', 'Thistle Cove'], picture: images.lucky,
+      gallery: [scene('Cape Le Grand', images.capeLeGrand), scene('Lucky Bay', images.lucky), scene('Hellfire Bay', images.hellfire), scene('Thistle Cove', images.thistle)]
     },
     {
       day: 5, date: '09.27 · 周日', title: 'Esperance → Albany', stay: 'Albany · Middleton Beach', pace: '转场日',
       summary: '沿 South Coast Highway 西行。途中以加油、午餐和短暂停车为主，下午抵达 Albany 后看海港或 Middleton Beach。',
-      stops: ['Ravensthorpe', 'Jerramungup', 'Albany', 'Middleton Beach'], picture: images.albany
+      stops: ['Ravensthorpe', 'Jerramungup', 'Albany', 'Middleton Beach'], picture: images.albany,
+      gallery: [scene('Albany', images.albany), scene('Middleton Beach', images.middleton)]
     },
     {
       day: 6, date: '09.28 · 周一', title: 'Albany → Pemberton', stay: 'Pemberton · Forest Chalet', pace: '景观公路',
       summary: '先到 Denmark 的 Greens Pool 与 Elephant Rocks，再进入巨树森林。务必在 Tree Top Walk 最晚入场前抵达。',
-      stops: ['Denmark', 'Greens Pool', 'Elephant Rocks', 'Valley of the Giants'], picture: images.giants
+      stops: ['Denmark', 'Greens Pool', 'Elephant Rocks', 'Valley of the Giants'], picture: images.giants,
+      gallery: [scene('Greens Pool', images.greensPool), scene('Elephant Rocks', images.elephantRocks), scene('Valley of the Giants', images.giants), scene('Pemberton Forest', images.pemberton)]
     },
     {
       day: 7, date: '09.29 · 周二', title: 'Pemberton → Yallingup', stay: 'Dunsborough / Yallingup', pace: '内容丰富',
       summary: '从森林到海角，串联 Cape Leeuwin、Hamelin Bay、Boranup 和 Margaret River。日落前赶到 Sugarloaf Rock。',
-      stops: ['Cape Leeuwin', 'Hamelin Bay', 'Boranup Forest', 'Margaret River', 'Sugarloaf Rock'], picture: images.leeuwin
+      stops: ['Cape Leeuwin', 'Hamelin Bay', 'Boranup Forest', 'Margaret River', 'Sugarloaf Rock'], picture: images.leeuwin,
+      gallery: [scene('Cape Leeuwin', images.leeuwin), scene('Hamelin Bay', images.hamelin), scene('Boranup Forest', images.boranup), scene('Margaret River', images.margaretVineyard), scene('Sugarloaf Rock', images.sugarloaf)]
     },
     {
       day: 8, date: '09.30 · 周三', title: 'Yallingup → 珀斯', stay: 'Perth Airport / Fremantle', pace: '弹性返程',
       summary: '上午经 Busselton Jetty，之后一路北返。Rockingham 只作天气好时的可选停留，优先保证还车与休息。',
-      stops: ['Busselton Jetty', 'Rockingham 可选', '珀斯补给', '还车 / 换车'], picture: images.busselton
+      stops: ['Busselton Jetty', 'Rockingham 可选', '珀斯补给', '还车 / 换车'], picture: images.busselton,
+      gallery: [scene('Busselton Jetty', images.busselton), scene('Rockingham', images.rockingham), scene('Fremantle Harbour', images.fremantleHarbour)]
     }
   ],
   north: [
     {
       day: 9, date: '10.01 · 周四', title: '珀斯 → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
       summary: '沿印度洋公路北上，在 Lancelin 沙丘短停，把下午重点留给 Pinnacles；经 Jurien Bay 后抵达 Geraldton。',
-      stops: ['Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles
+      stops: ['Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles,
+      gallery: [scene('Lancelin', images.lancelin), scene('Pinnacles', images.pinnacles), scene('Jurien Bay', images.jurien), scene('Geraldton', images.geraldton)]
     },
     {
       day: 10, date: '10.02 · 周五', title: '粉红湖 → Fremantle', stay: 'Fremantle · 港口周边', pace: '长途折返',
       summary: '上午从 Geraldton 前往 Hutt Lagoon，完成北线最北点后立即折返。下午一路南下，晚上住 Fremantle。',
-      stops: ['Hutt Lagoon', 'Port Gregory', '海岸公路', 'Fremantle'], picture: images.hutt
+      stops: ['Hutt Lagoon', 'Port Gregory', '海岸公路', 'Fremantle'], picture: images.hutt,
+      gallery: [scene('Hutt Lagoon', images.hutt), scene('Fremantle 日落', images.fremantleSunset)]
     },
     {
       day: 11, date: '10.03 · 周六', title: '罗特尼斯岛一日', stay: 'Perth Airport 周边', pace: '离岛日',
       summary: '从 Fremantle 乘早班船上岛，选择自行车或环岛巴士看海湾和 Quokka。傍晚返航后转往机场住宿。',
-      stops: ['Fremantle Ferry', 'The Basin', 'Wadjemup Lighthouse', 'Quokka'], picture: images.quokka
+      stops: ['Fremantle Ferry', 'The Basin', 'Wadjemup Lighthouse', 'Quokka'], picture: images.quokka,
+      gallery: [scene('The Basin', images.basin), scene('Wadjemup Lighthouse', images.wadjemup), scene('Quokka', images.quokka)]
     }
   ],
   tas: [
     {
       day: 12, date: '10.04 · 周日', title: '珀斯 → 霍巴特', stay: 'Hobart · CBD / Battery Point', pace: '飞行日',
       summary: '抵达霍巴特后取车。若天色、云量和道路条件合适，当天上 kunanyi / Mount Wellington；否则留到回城后机动补上。',
-      stops: ['PER → HBA', '霍巴特取车', 'Battery Point', 'Mount Wellington 可选'], picture: images.hobart
+      stops: ['PER → HBA', '霍巴特取车', 'Battery Point', 'Mount Wellington 可选'], picture: images.hobart,
+      gallery: [scene('Hobart Waterfront', images.hobartWaterfront), scene('Battery Point', images.batteryPoint), scene('Mount Wellington', images.hobart)]
     },
     {
       day: 13, date: '10.05 · 周一', title: '霍巴特 → 摇篮山 → Stanley', stay: 'Stanley · The Nut 附近', pace: '全程最紧张',
       summary: '清晨出发，经 Queenstown 进入西部荒野。摇篮山只坐接驳车到 Dove Lake 观景，不徒步，随后继续赶往 Stanley。',
-      stops: ['Queenstown', 'Cradle Mountain', 'Dove Lake', 'Stanley'], picture: images.cradle
+      stops: ['Queenstown', 'Cradle Mountain', 'Dove Lake', 'Stanley'], picture: images.cradle,
+      gallery: [scene('Queenstown', images.queenstown), scene('Cradle Mountain & Dove Lake', images.cradle), scene('Stanley', images.stanleyArrival)]
     },
     {
       day: 14, date: '10.06 · 周二', title: 'Stanley → St Helens', stay: 'St Helens · 镇中心', pace: '北海岸长途',
       summary: '上午逛 Stanley 与 The Nut，午后沿北海岸东行，经 Devonport、Launceston 后到 Bay of Fires，晚住 St Helens。',
-      stops: ['Stanley', 'Devonport', 'Launceston', 'Bay of Fires', 'St Helens'], picture: images.stanley
+      stops: ['Stanley', 'Devonport', 'Launceston', 'Bay of Fires', 'St Helens'], picture: images.stanley,
+      gallery: [scene('Stanley', images.stanley), scene('Devonport', images.devonport), scene('Launceston', images.cataract), scene('Bay of Fires', images.bayOfFires)]
     },
     {
       day: 15, date: '10.07 · 周三', title: '东海岸 → 霍巴特', stay: 'Hobart · 原住宿区域', pace: '海岸环线',
       summary: '从 St Helens 南下，经 Bicheno 到 Freycinet。以 Cape Tourville 等车行观景点为主；如愿意短走，再临时增加 Wineglass Bay Lookout，之后经 Ross 回霍巴特。',
-      stops: ['Bicheno', 'Cape Tourville', 'Honeymoon Bay', 'Ross', 'Hobart'], picture: images.wineglass
+      stops: ['Bicheno', 'Cape Tourville', 'Honeymoon Bay', 'Ross', 'Hobart'], picture: images.wineglass,
+      gallery: [scene('Bicheno', images.bicheno), scene('Cape Tourville', images.capeTourville), scene('Wineglass Bay', images.wineglass), scene('Honeymoon Bay', images.honeymoon), scene('Ross', images.ross)]
     },
     {
       day: 16, date: '10.08 · 周四', title: '布鲁尼岛一日', stay: 'Hobart · 原住宿续住', pace: '离岛日',
       summary: '自驾前往 Kettering 轮渡，岛上以 The Neck、海岸线和本地食物为主。早点过海，返程时给排队留余量。',
-      stops: ['Kettering Ferry', 'The Neck', 'Adventure Bay', 'Cape Bruny 可选'], picture: images.bruny
+      stops: ['Kettering Ferry', 'The Neck', 'Adventure Bay', 'Cape Bruny 可选'], picture: images.bruny,
+      gallery: [scene('The Neck', images.bruny), scene('Adventure Bay', images.adventureBay), scene('Cape Bruny Lighthouse', images.capeBruny)]
     },
     {
       day: 17, date: '10.09 · 周五', title: '塔斯曼巡游 & 亚瑟港', stay: 'Hobart · 原住宿续住', pace: '提前预订',
       summary: '早上前往 Tasman Peninsula 参加海上巡游，下午游览 Port Arthur Historic Site，傍晚返回霍巴特。',
-      stops: ['Tasman Island Cruise', 'Eaglehawk Neck', 'Port Arthur', 'Hobart'], picture: images.portArthur
+      stops: ['Tasman Island Cruise', 'Eaglehawk Neck', 'Port Arthur', 'Hobart'], picture: images.portArthur,
+      gallery: [scene('Tasman Island', images.tasmanIsland), scene('Eaglehawk Neck', images.eaglehawk), scene('Tasman Arch', images.tasmanArch), scene('Port Arthur', images.portArthur)]
     },
     {
       day: 18, date: '10.10 · 周六', title: '霍巴特 → 珀斯', stay: 'Perth Airport / 航班衔接区', pace: '返程航段',
       summary: '按航班时间还车并飞回珀斯。若起飞较晚，可上午短逛 Salamanca Market；不强行给珀斯市区留完整一天。',
-      stops: ['Salamanca 可选', 'Hobart 还车', 'HBA → PER', '珀斯机场'], picture: images.salamanca
+      stops: ['Salamanca 可选', 'Hobart 还车', 'HBA → PER', '珀斯机场'], picture: images.salamanca,
+      gallery: [scene('Salamanca Market', images.salamanca), scene('Salamanca Place', images.salamancaPlace)]
     },
     {
       day: 19, date: '10.11 · 周日', title: '珀斯 → 杭州', stay: '旅程结束', pace: '回家',
       summary: '从机场住宿直接衔接国际航班。预留足够的退税、行李托运和出境时间，结束西澳与塔州的完整旅程。',
-      stops: ['退房', '珀斯机场', '国际航班', '杭州'], picture: images.perthDeparture
+      stops: ['退房', '珀斯机场', '国际航班', '杭州'], picture: images.perthDeparture,
+      gallery: [scene('珀斯机场', images.perthDeparture)]
     }
   ]
 };
@@ -163,6 +230,8 @@ function renderJourney(containerId, days) {
 
   function showDay(index) {
     const day = days[index];
+    const dayScenes = day.gallery?.length ? day.gallery : [scene(day.picture.alt, day.picture)];
+    const leadScene = dayScenes[0];
     selectors.forEach((button, buttonIndex) => {
       const active = buttonIndex === index;
       button.classList.toggle('active', active);
@@ -172,8 +241,17 @@ function renderJourney(containerId, days) {
     story.innerHTML = `
       <article class="journey-stage">
         <figure class="journey-visual">
-          <img src="${day.picture.src}" alt="${day.picture.alt}">
-          <figcaption class="photo-caption">${day.picture.alt}</figcaption>
+          <div class="journey-photo-frame">
+            <img class="journey-main-image" src="${leadScene.picture.src}" alt="${leadScene.picture.alt}" decoding="async">
+            <a class="photo-caption" href="${leadScene.picture.source}" target="_blank" rel="noopener"><strong>${leadScene.picture.alt}</strong><span>Wikimedia Commons ↗</span></a>
+          </div>
+          <div class="scene-strip" role="group" aria-label="${day.title} 沿途景点照片">
+            ${dayScenes.map((item, sceneIndex) => `
+              <button class="scene-button${sceneIndex === 0 ? ' active' : ''}" type="button" data-scene-index="${sceneIndex}" aria-pressed="${sceneIndex === 0}">
+                <img src="${item.picture.thumb}" alt="" loading="lazy" decoding="async">
+                <span>${item.label}</span>
+              </button>`).join('')}
+          </div>
         </figure>
         <div class="journey-copy">
           <div class="journey-kicker"><span>DAY ${String(day.day).padStart(2, '0')} · ${day.date}</span><span>${day.pace}</span></div>
@@ -187,6 +265,22 @@ function renderJourney(containerId, days) {
           </div>
         </div>
       </article>`;
+
+    const mainImage = story.querySelector('.journey-main-image');
+    const caption = story.querySelector('.photo-caption');
+    const sceneButtons = [...story.querySelectorAll('.scene-button')];
+    sceneButtons.forEach((button, sceneIndex) => button.addEventListener('click', () => {
+      const selected = dayScenes[sceneIndex];
+      mainImage.src = selected.picture.src;
+      mainImage.alt = selected.picture.alt;
+      caption.href = selected.picture.source;
+      caption.querySelector('strong').textContent = selected.picture.alt;
+      sceneButtons.forEach((item, itemIndex) => {
+        const active = itemIndex === sceneIndex;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+    }));
 
     selectors[index]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     story.querySelector('[data-story-prev]')?.addEventListener('click', () => showDay(index - 1));
