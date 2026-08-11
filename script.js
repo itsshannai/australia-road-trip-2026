@@ -227,7 +227,7 @@ document.getElementById('stayRows').innerHTML = stays.map(row =>
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 const panels = [...document.querySelectorAll('[role="tabpanel"]')];
 const validTabs = new Set(tabs.map(tab => tab.dataset.tab));
-let routeMap;
+let routeMaps = [];
 
 function activateTab(name, updateHash = true) {
   const target = validTabs.has(name) ? name : 'home';
@@ -246,7 +246,10 @@ function activateTab(name, updateHash = true) {
   const activeTab = tabs.find(tab => tab.dataset.tab === target);
   activeTab?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  if (target === 'home' && routeMap) requestAnimationFrame(() => routeMap.invalidateSize());
+  if (target === 'home') requestAnimationFrame(() => {
+    if (!routeMaps.length) initRouteMaps();
+    else routeMaps.forEach(map => map.invalidateSize());
+  });
 }
 
 tabs.forEach((tab, index) => {
@@ -280,52 +283,72 @@ document.querySelectorAll('.checklist input').forEach((box, index) => {
   box.addEventListener('change', () => localStorage.setItem(key, box.checked));
 });
 
-function initRouteMap() {
-  if (!window.L || !document.getElementById('routeMap')) return;
+function initRouteMaps() {
+  if (!window.L || !document.getElementById('waRouteMap') || !document.getElementById('tasRouteMap')) return;
 
-  routeMap = L.map('routeMap', { scrollWheelZoom: false, zoomControl: true });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(routeMap);
+  const createMap = id => {
+    const map = L.map(id, { scrollWheelZoom: false, zoomControl: true });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    routeMaps.push(map);
+    return map;
+  };
+  const addPlaces = (map, places) => places.forEach(([label, coords, direction = 'top']) => {
+    const icon = L.divIcon({ className: 'route-pin', html: '', iconSize: [13, 13] });
+    const offsets = { top: [0, -8], bottom: [0, 8], left: [-8, 0], right: [8, 0] };
+    L.marker(coords, { icon }).addTo(map).bindTooltip(label, {
+      permanent: true,
+      direction,
+      offset: offsets[direction],
+      className: 'map-place-label'
+    });
+  });
 
   const perth = [-31.9523, 115.8613];
-  const hobart = [-42.8821, 147.3272];
-  const waRoute = [
+  const fremantle = [-32.0569, 115.7439];
+  const waSouthRoute = [
     perth, [-31.8896, 116.7680], [-32.443, 118.897], [-33.8608, 121.8896],
     [-33.991, 122.232], [-35.0275, 117.884], [-34.9607, 117.353], [-34.974, 116.897],
     [-34.444, 116.034], [-34.3749, 115.1365], [-33.9535, 115.073], [-33.646, 115.033],
-    [-32.2768, 115.729], perth, [-31.022, 115.333], [-30.604, 115.159], [-30.305, 115.038],
-    [-28.7774, 114.614], [-28.158, 114.242], [-32.0569, 115.7439], [-32.006, 115.512], perth
+    [-33.644, 115.344], [-32.2768, 115.729], perth
   ];
+  const waNorthRoute = [
+    perth, [-31.022, 115.333], [-30.604, 115.159], [-30.305, 115.038],
+    [-28.7774, 114.614], [-28.158, 114.242], [-28.7774, 114.614], [-30.305, 115.038],
+    perth, fremantle
+  ];
+  const waIslandRoute = [fremantle, [-32.006, 115.512], fremantle, perth];
+  const waMap = createMap('waRouteMap');
+  L.polyline(waSouthRoute, { color: '#d47745', weight: 4, opacity: .92 }).addTo(waMap);
+  L.polyline(waNorthRoute, { color: '#b58a32', weight: 4, opacity: .9 }).addTo(waMap);
+  L.polyline(waIslandRoute, { color: '#496c93', weight: 3, opacity: .9, dashArray: '6 7' }).addTo(waMap);
+  addPlaces(waMap, [
+    ['珀斯', perth, 'right'], ['粉红湖', [-28.158, 114.242], 'right'],
+    ['Esperance', [-33.8608, 121.8896], 'left'], ['Albany', [-35.0275, 117.884], 'bottom'],
+    ['Pemberton', [-34.444, 116.034], 'left'], ['罗特尼斯岛', [-32.006, 115.512], 'left']
+  ]);
+  waMap.fitBounds(L.latLngBounds([...waSouthRoute, ...waNorthRoute, ...waIslandRoute]), { padding: [30, 30] });
+
+  const hobart = [-42.8821, 147.3272];
   const tasRoute = [
     hobart, [-42.895, 147.236], [-42.0805, 145.556], [-41.684, 145.951], [-40.760, 145.295],
     [-41.178, 146.351], [-41.434, 147.144], [-41.251, 148.307], [-41.321, 148.249],
     [-42.124, 148.289], [-42.030, 147.492], hobart, [-43.273, 147.349], hobart,
     [-43.148, 147.850], hobart
   ];
-
-  L.polyline(waRoute, { color: '#d47745', weight: 4, opacity: .9 }).addTo(routeMap);
-  L.polyline(tasRoute, { color: '#247a78', weight: 4, opacity: .9 }).addTo(routeMap);
-  L.polyline([perth, hobart], { color: '#496c93', weight: 2, opacity: .7, dashArray: '8 10' }).addTo(routeMap);
-
-  const keyStops = [
-    ['珀斯', perth, 'WA'], ['Esperance', [-33.8608, 121.8896], 'WA'], ['Albany', [-35.0275, 117.884], 'WA'],
-    ['Pemberton', [-34.444, 116.034], 'WA'], ['Hutt Lagoon', [-28.158, 114.242], 'WA'],
-    ['罗特尼斯岛', [-32.006, 115.512], 'WA'], ['霍巴特', hobart, 'TAS'],
-    ['摇篮山', [-41.684, 145.951], 'TAS'], ['Stanley', [-40.760, 145.295], 'TAS'],
-    ['火焰湾', [-41.251, 148.307], 'TAS'], ['酒杯湾', [-42.124, 148.289], 'TAS'],
-    ['布鲁尼岛', [-43.273, 147.349], 'TAS'], ['亚瑟港', [-43.148, 147.850], 'TAS']
-  ];
-  keyStops.forEach(([label, coords, region], index) => {
-    const icon = L.divIcon({ className: 'route-pin', html: String(index + 1), iconSize: [25, 25] });
-    L.marker(coords, { icon }).addTo(routeMap).bindTooltip(`${label} · ${region}`, { direction: 'top', offset: [0, -8] });
-  });
-
-  routeMap.fitBounds(L.latLngBounds([...waRoute, ...tasRoute]), { padding: [32, 32] });
+  const tasMap = createMap('tasRouteMap');
+  L.polyline(tasRoute, { color: '#247a78', weight: 4, opacity: .92 }).addTo(tasMap);
+  addPlaces(tasMap, [
+    ['霍巴特', hobart, 'left'], ['摇篮山', [-41.684, 145.951], 'right'],
+    ['Stanley', [-40.760, 145.295], 'right'], ['St Helens', [-41.321, 148.249], 'left'],
+    ['Freycinet', [-42.124, 148.289], 'left'], ['布鲁尼岛', [-43.273, 147.349], 'left'],
+    ['亚瑟港', [-43.148, 147.850], 'right']
+  ]);
+  tasMap.fitBounds(L.latLngBounds(tasRoute), { padding: [30, 30] });
 }
 
 const initialTab = location.hash.slice(1);
 activateTab(validTabs.has(initialTab) ? initialTab : 'home', false);
 if (initialTab && !validTabs.has(initialTab)) history.replaceState(null, '', '#home');
-initRouteMap();

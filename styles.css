@@ -150,27 +150,34 @@ img { display: block; width: 100%; }
 .card-heading h2 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
 .card-heading .eyebrow { margin-bottom: 5px; }
 .card-heading > span, .map-note { color: var(--muted); font-size: 11px; text-align: right; }
-#routeMap { height: 410px; border-radius: 18px; background: #e7ece7; overflow: hidden; }
+.flight-bridge { display: grid; grid-template-columns: auto minmax(30px, 1fr) auto minmax(30px, 1fr) auto; gap: 10px; align-items: center; margin-bottom: 15px; color: var(--blue); }
+.flight-bridge strong { font-size: 13px; letter-spacing: .08em; }
+.flight-bridge span { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-align: center; }
+.flight-bridge i { height: 1px; background: repeating-linear-gradient(90deg, var(--blue) 0 6px, transparent 6px 11px); }
+.route-map-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(300px, .85fr); gap: 12px; }
+.route-map-region { min-width: 0; }
+.route-map-region > header { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; margin-bottom: 8px; }
+.route-map-region > header strong { font-size: 12px; }
+.route-map-region > header span { color: var(--muted); font-size: 8px; text-align: right; }
+.route-map { height: 410px; border: 1px solid #deddd6; border-radius: 18px; background: #e7ece7; overflow: hidden; }
 .leaflet-container { font-family: inherit; }
 .route-pin {
-  display: grid;
-  place-items: center;
-  width: 25px !important;
-  height: 25px !important;
-  margin: -12px 0 0 -12px !important;
+  width: 13px !important;
+  height: 13px !important;
+  margin: -6px 0 0 -6px !important;
   border: 2px solid #fff;
   border-radius: 50%;
-  color: #fff;
   background: var(--ink);
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
-  font-size: 9px;
-  font-weight: 900;
 }
+.map-place-label { padding: 3px 6px; border: 0; border-radius: 6px; color: #22302e; background: rgba(255,253,249,.9); box-shadow: 0 2px 8px rgba(0,0,0,.12); font-size: 9px; font-weight: 800; white-space: nowrap; }
+.map-place-label::before { display: none; }
 .map-legend { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 14px; color: var(--muted); font-size: 11px; }
 .map-legend span { display: flex; align-items: center; gap: 7px; }
 .legend-line { display: inline-block; width: 25px; height: 3px; border-radius: 3px; background: var(--orange); }
+.legend-line.north { background: #b58a32; }
+.legend-line.island { height: 2px; background: repeating-linear-gradient(90deg, var(--blue) 0 6px, transparent 6px 10px); }
 .legend-line.tas { background: var(--teal); }
-.legend-line.flight { height: 1px; background: repeating-linear-gradient(90deg, var(--blue) 0 5px, transparent 5px 9px); }
 
 .phase-list { display: grid; gap: 10px; }
 .phase-link {
@@ -327,7 +334,9 @@ img { display: block; width: 100%; }
   .home-hero-copy { padding: 30px 24px; }
   .home-hero h1 { font-size: 38px; }
   .hero-photo { min-height: 180px; background-image: linear-gradient(0deg, #203a37 0%, transparent 40%), url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Perth%20%28AU%29%2C%20Elizabeth%20Quay%20--%202019%20--%200331-3.jpg?width=900"); }
-  #routeMap { height: 360px; }
+  .route-map-grid { grid-template-columns: 1fr; gap: 18px; }
+  .route-map { height: 330px; }
+  .flight-bridge { grid-template-columns: auto 1fr auto 1fr auto; }
   .overview-grid { gap: 14px; margin-top: 14px; }
   .map-card, .stay-card, .checklist-card { padding: 16px; border-radius: 20px; }
   .map-note { display: none; }
