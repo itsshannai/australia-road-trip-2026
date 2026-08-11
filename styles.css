@@ -318,11 +318,18 @@ img { display: block; width: 100%; }
 .scene-button span { position: absolute; z-index: 1; right: 7px; bottom: 6px; left: 7px; overflow: hidden; font-size: 8px; font-weight: 800; line-height: 1.25; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
 .scene-button:hover, .scene-button:focus-visible { opacity: 1; }
 .scene-button.active { border-color: #efb97b; opacity: 1; transform: translateY(-1px); }
-.journey-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 4vw, 58px); background: var(--card); }
+.journey-copy { display: flex; flex-direction: column; justify-content: flex-start; max-height: 610px; padding: 34px clamp(28px, 4vw, 52px) 28px; overflow-y: auto; background: var(--card); }
 .journey-kicker { display: flex; justify-content: space-between; gap: 16px; color: var(--orange); font-size: 10px; font-weight: 900; letter-spacing: .08em; }
 .journey-kicker span:last-child { color: var(--muted); }
 .journey-copy h2 { margin: 14px 0 0; font-size: clamp(28px, 3vw, 46px); line-height: 1.08; letter-spacing: -.045em; }
-.journey-summary { margin: 20px 0 24px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+.day-mode-tabs { display: flex; gap: 18px; margin-top: 20px; border-bottom: 1px solid var(--line); }
+.day-mode-tabs button { position: relative; padding: 0 0 9px; border: 0; color: #8a8f8d; background: transparent; cursor: pointer; font-size: 10px; font-weight: 800; }
+.day-mode-tabs button::after { content: ""; position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: var(--orange); transform: scaleX(0); transition: transform .18s ease; }
+.day-mode-tabs button:hover, .day-mode-tabs button:focus-visible, .day-mode-tabs button.active { color: var(--ink); }
+.day-mode-tabs button.active::after { transform: scaleX(1); }
+.day-mode-tabs button span { display: inline-grid; min-width: 16px; height: 16px; margin-left: 3px; place-items: center; border-radius: 50%; color: #746a5e; background: #ebe5db; font-size: 8px; }
+.day-mode-panel { padding-top: 17px; animation: story-in .22s ease both; }
+.journey-summary { margin: 0 0 20px; color: var(--muted); font-size: 13px; line-height: 1.75; }
 .stop-route { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .stop-route li { position: relative; min-height: 31px; padding: 0 0 13px 25px; color: #45504d; font-size: 11px; }
 .stop-route li::before { content: ""; position: absolute; top: 2px; left: 2px; width: 8px; height: 8px; border: 2px solid var(--orange); border-radius: 50%; background: var(--card); }
@@ -331,7 +338,27 @@ img { display: block; width: 100%; }
 .journey-stay small { display: block; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
 .journey-stay strong { display: block; margin-top: 5px; font-size: 12px; }
 .journey-stay em { padding: 5px 9px; border-radius: 99px; color: #a95e38; background: var(--orange-pale); font-size: 9px; font-style: normal; }
-.story-controls { display: flex; justify-content: space-between; gap: 12px; margin-top: 22px; }
+.mode-intro { margin: 0 0 10px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+.food-list { margin: 0; padding: 0; list-style: none; }
+.food-list li { display: grid; grid-template-columns: 92px 1fr; gap: 3px 12px; padding: 11px 0; border-top: 1px solid #e8e4dc; }
+.food-list li > span { grid-row: 1 / span 2; padding-top: 2px; color: var(--orange); font-size: 9px; font-weight: 800; }
+.food-list a { width: fit-content; color: var(--ink); font-size: 12px; font-weight: 900; text-decoration: none; }
+.food-list a:hover, .food-list a:focus-visible { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; }
+.food-list p { margin: 0; color: var(--muted); font-size: 9px; line-height: 1.55; }
+.drone-verdict { position: relative; padding-left: 18px; border-left: 3px solid #a8aca9; }
+.drone-verdict.best { border-color: #2f7b6f; }
+.drone-verdict.conditional { border-color: #c28b2d; }
+.drone-verdict.avoid { border-color: #a85f4e; }
+.drone-verdict > span { display: block; color: var(--muted); font-size: 9px; font-weight: 900; letter-spacing: .06em; }
+.drone-verdict.best > span { color: #2f7b6f; }
+.drone-verdict.conditional > span { color: #a36d18; }
+.drone-verdict.avoid > span { color: #9c5545; }
+.drone-verdict strong { display: block; margin-top: 5px; font-size: 17px; }
+.drone-verdict p { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+.drone-source-links { display: flex; flex-wrap: wrap; gap: 7px 12px; margin-top: 16px; }
+.drone-source-links a { color: #4f625e; font-size: 9px; font-weight: 800; text-decoration-color: #abb5b2; text-underline-offset: 3px; }
+.drone-baseline { margin: 13px 0 0; padding-top: 12px; border-top: 1px solid #e8e4dc; color: #7a807e; font-size: 9px; line-height: 1.6; }
+.story-controls { display: flex; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 18px; }
 .story-controls button { padding: 8px 0; border: 0; color: var(--muted); background: transparent; cursor: pointer; font-size: 11px; }
 .story-controls button:hover { color: var(--ink); }
 .story-controls button:disabled { opacity: .25; cursor: default; }
@@ -399,9 +426,11 @@ img { display: block; width: 100%; }
   .journey-visual { grid-template-rows: 270px 90px; height: 360px; min-height: 360px; }
   .scene-strip { padding: 8px; }
   .scene-button { flex-basis: 105px; }
-  .journey-copy { padding: 24px 18px; }
+  .journey-copy { max-height: none; padding: 24px 18px; overflow: visible; }
   .journey-copy h2 { font-size: 31px; }
-  .journey-summary { margin: 15px 0 19px; }
+  .day-mode-tabs { gap: 16px; margin-top: 18px; }
+  .journey-summary { margin-bottom: 19px; }
+  .food-list li { grid-template-columns: 84px 1fr; }
   .site-footer { display: block; }
   .site-footer details { margin-top: 10px; text-align: left; }
 }
@@ -423,6 +452,7 @@ img { display: block; width: 100%; }
   .print-day h2 { margin: 0; font-size: 13px; }
   .print-day p { margin: 4px 0; font-size: 8px; line-height: 1.45; }
   .print-day small { color: #555; font-size: 7px; }
+  .print-guide { display: grid; gap: 2px; margin-top: 5px; }
   .print-day aside { text-align: right; }
   .print-day aside strong { margin-top: 4px; font-size: 8px; }
 }
