@@ -12,248 +12,146 @@
   <meta name="twitter:image" content="https://itsshannai.github.io/australia-road-trip-2026/og.png">
   <title>向西，再向南｜澳大利亚自驾旅行 2026</title>
   <link rel="preconnect" href="https://commons.wikimedia.org">
+  <link rel="preconnect" href="https://tile.openstreetmap.org">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynqudKItbY9xFQhR9uHUUu6grum4=" crossorigin="">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero" id="top">
-    <nav class="nav shell" aria-label="主导航">
-      <a class="brand" href="#top"><span class="brand-mark">AUS</span><span>Road Trip ’26</span></a>
-      <div class="nav-links">
-        <a href="#overview">总览</a>
-        <a href="#itinerary">日程</a>
-        <a href="#stays">住宿</a>
-        <a href="#notes">提醒</a>
-      </div>
-    </nav>
+  <header class="app-header">
+    <div class="header-row shell">
+      <a class="brand" href="#home" data-tab-link="home" aria-label="返回行程首页">
+        <span class="brand-mark">AUS</span>
+        <span><strong>向西，再向南</strong><small>09.23—10.11 · Road Trip ’26</small></span>
+      </a>
+      <button class="print-button" id="printButton" type="button" aria-label="打印行程">打印 / PDF</button>
+    </div>
 
-    <div class="hero-media" role="img" aria-label="西澳尖峰石阵"></div>
-    <div class="hero-shade"></div>
-    <div class="hero-content shell">
-      <p class="eyebrow">WESTERN AUSTRALIA · TASMANIA</p>
-      <h1>向西，再向南</h1>
-      <p class="hero-lede">从印度洋的白沙海岸，到塔斯马尼亚的荒野公路。<br>四个人，十九天，两段自驾，一座离岛。</p>
-      <div class="hero-actions">
-        <a class="button primary" href="#itinerary">查看每日行程</a>
-        <button class="button ghost" id="printButton" type="button">打印 / 存为 PDF</button>
-      </div>
-    </div>
-    <div class="hero-meta shell" aria-label="行程摘要">
-      <span>2026.09.23—10.11</span><span>19 天 · 18 晚</span><span>杭州出发</span><span>4 人自驾</span>
-    </div>
+    <nav class="tab-bar shell" role="tablist" aria-label="行程分类">
+      <button class="tab-button active" id="tab-home" type="button" role="tab" aria-selected="true" aria-controls="panel-home" data-tab="home">首页</button>
+      <button class="tab-button" id="tab-south" type="button" role="tab" aria-selected="false" aria-controls="panel-south" data-tab="south">西澳南线</button>
+      <button class="tab-button" id="tab-north" type="button" role="tab" aria-selected="false" aria-controls="panel-north" data-tab="north">北线 &amp; 老鼠岛</button>
+      <button class="tab-button" id="tab-tas" type="button" role="tab" aria-selected="false" aria-controls="panel-tas" data-tab="tas">塔斯马尼亚</button>
+      <button class="tab-button" id="tab-stays" type="button" role="tab" aria-selected="false" aria-controls="panel-stays" data-tab="stays">住宿 &amp; 准备</button>
+    </nav>
   </header>
 
-  <main>
-    <section class="section shell" id="overview">
-      <div class="section-head split-head">
-        <div>
-          <p class="eyebrow dark">THE BIG PICTURE</p>
-          <h2>四段旅程，一条完整弧线</h2>
+  <main class="app-main shell">
+    <section class="tab-panel active" id="panel-home" role="tabpanel" aria-labelledby="tab-home" data-panel="home">
+      <div class="home-hero">
+        <div class="home-hero-copy">
+          <p class="eyebrow">WESTERN AUSTRALIA · TASMANIA</p>
+          <h1>一万公里海岸线，<br>十九天向南而行。</h1>
+          <p>杭州出发，从西澳的白沙、巨树与粉红湖，到塔州的海湾、荒野公路与南大洋。这里是完整路线和每天可直接执行的计划。</p>
+          <div class="hero-actions">
+            <button class="primary-button" type="button" data-tab-link="south">从第一段开始</button>
+            <span>2026.09.23—10.11 · 19天18晚</span>
+          </div>
         </div>
-        <p>先用七天穿过西澳南部，再沿印度洋北上至粉红湖；留一天给罗特尼斯岛，最后飞往塔州完成霍巴特往返环线。</p>
+        <div class="hero-photo" role="img" aria-label="西澳尖峰石阵"></div>
       </div>
 
-      <div class="stats" aria-label="旅行数据">
-        <article><strong>19</strong><span>旅行天数</span></article>
-        <article><strong>18</strong><span>住宿晚数</span></article>
-        <article><strong>4</strong><span>旅程阶段</span></article>
-        <article><strong>2</strong><span>租车段</span></article>
-      </div>
-
-      <div class="phase-grid">
-        <article class="phase-card south">
-          <span class="phase-number">01</span>
-          <div><p>09.23—09.30</p><h3>西澳南线</h3><span>珀斯 · Esperance · Albany · Pemberton · Margaret River</span></div>
+      <div class="overview-grid">
+        <article class="map-card">
+          <div class="card-heading">
+            <div><p class="eyebrow dark">FULL ROUTE</p><h2>全程路线图</h2></div>
+            <span class="map-note">示意线路 · 实际导航以当天路况为准</span>
+          </div>
+          <div id="routeMap" aria-label="西澳和塔斯马尼亚全程路线地图"></div>
+          <div class="map-legend" aria-label="地图图例">
+            <span><i class="legend-line wa"></i>西澳自驾</span>
+            <span><i class="legend-line tas"></i>塔州自驾</span>
+            <span><i class="legend-line flight"></i>珀斯—霍巴特航段</span>
+          </div>
         </article>
-        <article class="phase-card north">
-          <span class="phase-number">02</span>
-          <div><p>10.01—10.02</p><h3>西澳北线</h3><span>Lancelin · Pinnacles · Geraldton · Hutt Lagoon</span></div>
+
+        <aside class="phase-list" aria-label="旅程阶段">
+          <button class="phase-link south" type="button" data-tab-link="south">
+            <span>01</span><div><small>09.23—09.30</small><strong>西澳南线</strong><p>Esperance · Albany · Pemberton · Yallingup</p></div><b>8天</b>
+          </button>
+          <button class="phase-link north" type="button" data-tab-link="north">
+            <span>02</span><div><small>10.01—10.03</small><strong>北线 &amp; 老鼠岛</strong><p>Pinnacles · Hutt Lagoon · Rottnest</p></div><b>3天</b>
+          </button>
+          <button class="phase-link tas" type="button" data-tab-link="tas">
+            <span>03</span><div><small>10.04—10.11</small><strong>塔斯马尼亚与返程</strong><p>Hobart · Stanley · Bay of Fires · Bruny</p></div><b>8天</b>
+          </button>
+          <button class="phase-link stay" type="button" data-tab-link="stays">
+            <span>✓</span><div><small>BOOKING BOARD</small><strong>住宿与出发准备</strong><p>按晚查看住宿地，勾选预订与行前事项</p></div><b>清单</b>
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-south" role="tabpanel" aria-labelledby="tab-south" data-panel="south" hidden>
+      <header class="panel-heading">
+        <div><p class="eyebrow dark">STAGE 01 · 09.23—09.30</p><h1>西澳南线</h1></div>
+        <p>抵达珀斯后的第一个自驾日长途前往 Esperance，随后沿南海岸与森林区一路回到珀斯。把最累的一段集中在开头，后半程更适合慢慢看海。</p>
+      </header>
+      <div class="day-grid" id="southDays"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-north" role="tabpanel" aria-labelledby="tab-north" data-panel="north" hidden>
+      <header class="panel-heading">
+        <div><p class="eyebrow dark">STAGE 02 · 10.01—10.03</p><h1>北线 &amp; 罗特尼斯岛</h1></div>
+        <p>北线只到 Hutt Lagoon，看到粉红湖后立即南返；第三天完整留给罗特尼斯岛，傍晚转往机场区域，次日飞塔州。</p>
+      </header>
+      <div class="day-grid compact-days" id="northDays"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-tas" role="tabpanel" aria-labelledby="tab-tas" data-panel="tas" hidden>
+      <header class="panel-heading">
+        <div><p class="eyebrow dark">STAGE 03 · 10.04—10.11</p><h1>塔斯马尼亚 · 霍巴特往返</h1></div>
+        <p>六晚自驾环线。摇篮山以观景和接驳车为主，不安排徒步；保留布鲁尼岛一整天，以及塔斯曼海上巡游与亚瑟港。</p>
+      </header>
+      <div class="day-grid" id="tasDays"></div>
+    </section>
+
+    <section class="tab-panel" id="panel-stays" role="tabpanel" aria-labelledby="tab-stays" data-panel="stays" hidden>
+      <header class="panel-heading">
+        <div><p class="eyebrow dark">STAYS &amp; CHECKLIST</p><h1>住宿与准备</h1></div>
+        <p>住宿优先订可免费取消、带停车位的房型。长途日尽量住在第二天出发方向一侧，减少早高峰和折返。</p>
+      </header>
+
+      <div class="stays-layout">
+        <article class="stay-card">
+          <div class="card-heading"><div><p class="eyebrow dark">18 NIGHTS</p><h2>逐晚住宿表</h2></div><span>建议区域</span></div>
+          <div class="stay-table-wrap">
+            <table class="stay-table">
+              <thead><tr><th>日期</th><th>住宿地</th><th>区域建议 / 备注</th></tr></thead>
+              <tbody id="stayRows"></tbody>
+            </table>
+          </div>
         </article>
-        <article class="phase-card island">
-          <span class="phase-number">03</span>
-          <div><p>10.03</p><h3>罗特尼斯岛</h3><span>Quokka · Island Explorer · 印度洋海湾</span></div>
-        </article>
-        <article class="phase-card tas">
-          <span class="phase-number">04</span>
-          <div><p>10.04—10.10</p><h3>塔斯马尼亚</h3><span>Hobart · Cradle Mountain · Stanley · Bay of Fires</span></div>
-        </article>
-      </div>
-    </section>
 
-    <section class="gallery" aria-label="目的地照片">
-      <figure class="gallery-main">
-        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cradle%20Mountain%20and%20Dove%20Lake%2C%20Tas.jpg?width=1600" alt="摇篮山与鸽子湖" loading="lazy">
-        <figcaption><span>Cradle Mountain</span><small>塔斯马尼亚</small></figcaption>
-      </figure>
-      <figure>
-        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/RottnestQuokka.jpg?width=1000" alt="罗特尼斯岛上的短尾矮袋鼠" loading="lazy">
-        <figcaption><span>Quokka</span><small>Rottnest Island</small></figcaption>
-      </figure>
-      <figure>
-        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Bay%20of%20Fires%20Tasmania.jpg?width=1200" alt="塔斯马尼亚火焰湾" loading="lazy">
-        <figcaption><span>Bay of Fires</span><small>塔州东海岸</small></figcaption>
-      </figure>
-    </section>
-
-    <section class="section itinerary-section" id="itinerary">
-      <div class="shell">
-        <div class="section-head split-head">
-          <div><p class="eyebrow dark">DAY BY DAY</p><h2>每日行程</h2></div>
-          <p>点击日期查看当天的详细停靠点。可按阶段筛选，快速查看南线、北线、离岛或塔州部分。</p>
-        </div>
-
-        <div class="filters" role="group" aria-label="筛选行程">
-          <button class="filter active" type="button" data-filter="all">全部</button>
-          <button class="filter" type="button" data-filter="south">西澳南线</button>
-          <button class="filter" type="button" data-filter="north">北线</button>
-          <button class="filter" type="button" data-filter="island">老鼠岛</button>
-          <button class="filter" type="button" data-filter="tas">塔州</button>
-        </div>
-
-        <div class="timeline" id="timeline">
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-23"><b>09.23</b><span>周三</span></time><div><span class="tag south">抵达</span><h3>杭州 → 珀斯</h3><p>晚间落地，先让身体进入西澳节奏</p></div><span class="stay">Perth Airport / Ascot</span></summary>
-            <div class="day-detail"><p>办理入境、取行李后直接入住机场附近。第二天开始长途驾驶，不在市区绕行。</p><ul><li>住宿要求：2卧室、停车位、方便早出发</li><li>当晚完成电话卡、导航和离线地图准备</li></ul></div>
-          </details>
-          <details class="day high" data-phase="south">
-            <summary><time datetime="2026-09-24"><b>09.24</b><span>周四</span></time><div><span class="tag south">南线 · 高强度</span><h3>珀斯 → York → Wave Rock → Esperance</h3><p>一次完成内陆穿越，换来三晚海岸停留</p></div><span class="stay">Esperance · 3晚</span></summary>
-            <div class="day-detail"><p>建议06:00—06:30出发。York只作短停，Wave Rock控制在约1—1.5小时，两人以上轮换驾驶。</p><ul><li>York老街与早餐</li><li>Hyden午餐、Wave Rock</li><li>日落前后抵达Esperance</li></ul></div>
-          </details>
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-25"><b>09.25</b><span>周五</span></time><div><span class="tag south">海岸</span><h3>Esperance Great Ocean Drive</h3><p>蓝色海湾、白色沙滩与轻松的环线公路</p></div><span class="stay">Esperance</span></summary>
-            <div class="day-detail"><ul><li>West Beach、Blue Haven</li><li>Twilight Beach、Observatory Point</li><li>Pink Lake旧址与镇中心补给</li></ul></div>
-          </details>
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-26"><b>09.26</b><span>周六</span></time><div><span class="tag south">国家公园</span><h3>Cape Le Grand · Lucky Bay</h3><p>整天留给西澳最纯净的一段海岸</p></div><span class="stay">Esperance</span></summary>
-            <div class="day-detail"><ul><li>Lucky Bay与白沙海岸</li><li>Hellfire Bay、Thistle Cove</li><li>不赶路，天气差时与前一天灵活互换</li></ul></div>
-          </details>
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-27"><b>09.27</b><span>周日</span></time><div><span class="tag south">转场</span><h3>Esperance → Albany</h3><p>从南大洋东端驶向历史港口</p></div><span class="stay">Albany</span></summary>
-            <div class="day-detail"><p>以公路转场为主，沿途按天气选择短停。抵达后可去Albany Wind Farm或海岸观景。</p></div>
-          </details>
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-28"><b>09.28</b><span>周一</span></time><div><span class="tag south">森林</span><h3>Albany → Denmark → Pemberton</h3><p>从花岗岩海湾进入西南巨树森林</p></div><span class="stay">Pemberton</span></summary>
-            <div class="day-detail"><ul><li>Greens Pool、Elephant Rocks</li><li>Valley of the Giants Tree Top Walk</li><li>Pemberton森林木屋体验</li></ul></div>
-          </details>
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-29"><b>09.29</b><span>周二</span></time><div><span class="tag south">葡萄酒海岸</span><h3>Pemberton → Augusta → Yallingup</h3><p>灯塔、魟鱼、森林与海边日落</p></div><span class="stay">Dunsborough / Yallingup</span></summary>
-            <div class="day-detail"><ul><li>Cape Leeuwin、Hamelin Bay</li><li>Boranup Forest、Margaret River</li><li>Sugarloaf Rock日落</li></ul></div>
-          </details>
-          <details class="day" data-phase="south">
-            <summary><time datetime="2026-09-30"><b>09.30</b><span>周三</span></time><div><span class="tag south">闭环</span><h3>Dunsborough → Busselton → Rockingham → Perth</h3><p>南线收尾，回到机场区域补给</p></div><span class="stay">Perth Airport</span></summary>
-            <div class="day-detail"><p>根据前几日体力决定Busselton与Rockingham停留时长，晚上整理行李并补充北线物资。</p></div>
-          </details>
-          <details class="day" data-phase="north">
-            <summary><time datetime="2026-10-01"><b>10.01</b><span>周四</span></time><div><span class="tag north">北线</span><h3>Perth → Lancelin → Pinnacles → Geraldton</h3><p>沙丘、石柱与印度洋公路</p></div><span class="stay">Geraldton</span></summary>
-            <div class="day-detail"><ul><li>Lancelin白色沙丘</li><li>Nambung National Park尖峰石阵</li><li>Jurien Bay海边午餐</li></ul></div>
-          </details>
-          <details class="day high" data-phase="north">
-            <summary><time datetime="2026-10-02"><b>10.02</b><span>周五</span></time><div><span class="tag north">粉红湖 · 高强度</span><h3>Geraldton → Hutt Lagoon → Fremantle</h3><p>最北只到粉红湖，随后直接返程</p></div><span class="stay">Fremantle</span></summary>
-            <div class="day-detail"><p>上午约10点抵达Hutt Lagoon，停留后原路南返。尽量在天黑前进入珀斯都市圈。</p></div>
-          </details>
-          <details class="day" data-phase="island">
-            <summary><time datetime="2026-10-03"><b>10.03</b><span>周六</span></time><div><span class="tag island">离岛</span><h3>Rottnest Island 一日</h3><p>坐巴士环岛，寻找微笑的Quokka</p></div><span class="stay">Perth Airport</span></summary>
-            <div class="day-detail"><ul><li>建议09:00 Fremantle出发、17:30返程</li><li>Island Explorer环岛巴士，提前订票</li><li>The Basin、Parker Point、West End</li><li>回港后取车与行李，前往机场还车</li></ul></div>
-          </details>
-          <details class="day" data-phase="tas">
-            <summary><time datetime="2026-10-04"><b>10.04</b><span>周日</span></time><div><span class="tag tas">塔州 Day 1</span><h3>Perth → Hobart → kunanyi</h3><p>跨越澳洲大陆，天气允许则登惠灵顿山</p></div><span class="stay">Hobart</span></summary>
-            <div class="day-detail"><p>霍巴特机场取车。山顶云雾大或道路关闭时直接取消，把时间留给码头与晚餐。</p></div>
-          </details>
-          <details class="day high" data-phase="tas">
-            <summary><time datetime="2026-10-05"><b>10.05</b><span>周一</span></time><div><span class="tag tas">塔州 Day 2 · 高强度</span><h3>Hobart → Queenstown → Cradle Mountain → Stanley</h3><p>西海岸荒野公路，全程最紧凑的一天</p></div><span class="stay">Stanley</span></summary>
-            <div class="day-detail"><p>05:30—06:00出发。皇后镇短停；摇篮山在游客中心换乘接驳车到Dove Lake观景，不安排徒步，14:30前继续前往Stanley。</p></div>
-          </details>
-          <details class="day high" data-phase="tas">
-            <summary><time datetime="2026-10-06"><b>10.06</b><span>周二</span></time><div><span class="tag tas">塔州 Day 3</span><h3>Stanley → Devonport → Launceston → Bay of Fires</h3><p>沿北海岸横穿塔州，傍晚抵达火焰湾</p></div><span class="stay">St Helens</span></summary>
-            <div class="day-detail"><ul><li>上午Stanley小镇与The Nut缆车</li><li>Devonport午餐、Launceston短停</li><li>Binalong Bay傍晚观景</li></ul></div>
-          </details>
-          <details class="day" data-phase="tas">
-            <summary><time datetime="2026-10-07"><b>10.07</b><span>周三</span></time><div><span class="tag tas">塔州 Day 4</span><h3>St Helens → Freycinet → Ross → Hobart</h3><p>东海岸公路与砂岩古镇</p></div><span class="stay">Hobart · 3晚</span></summary>
-            <div class="day-detail"><p>不走Wineglass Bay爬坡观景台，改看Friendly Beaches、Coles Bay、Honeymoon Bay与Cape Tourville可选短木栈道，之后经Ross回霍巴特。</p></div>
-          </details>
-          <details class="day" data-phase="tas">
-            <summary><time datetime="2026-10-08"><b>10.08</b><span>周四</span></time><div><span class="tag tas">塔州 Day 5</span><h3>Bruny Island 自驾</h3><p>车辆渡轮、海湾公路与岛屿风味</p></div><span class="stay">Hobart</span></summary>
-            <div class="day-detail"><ul><li>Kettering车辆渡轮</li><li>The Neck、Adventure Bay、Cloudy Bay</li><li>奶酪、牡蛎、蜂蜜与沿途海景</li></ul></div>
-          </details>
-          <details class="day" data-phase="tas">
-            <summary><time datetime="2026-10-09"><b>10.09</b><span>周五</span></time><div><span class="tag tas">塔州 Day 6</span><h3>Tasman Island Cruise · Port Arthur</h3><p>从海上看塔斯曼半岛，再进入历史遗址</p></div><span class="stay">Hobart</span></summary>
-            <div class="day-detail"><ul><li>约3小时塔斯曼海岸巡游</li><li>Port Arthur Historic Site</li><li>Tasman Arch、Devils Kitchen视时间选择</li></ul></div>
-          </details>
-          <details class="day" data-phase="tas">
-            <summary><time datetime="2026-10-10"><b>10.10</b><span>周六</span></time><div><span class="tag tas">返程</span><h3>Hobart → Perth</h3><p>如航班时间允许，上午逛Salamanca Market</p></div><span class="stay">Perth Airport</span></summary>
-            <div class="day-detail"><p>霍巴特机场同点还车，优先选择直飞珀斯。抵达后只住机场附近，不再安排珀斯市区。</p></div>
-          </details>
-          <details class="day" data-phase="all">
-            <summary><time datetime="2026-10-11"><b>10.11</b><span>周日</span></time><div><span class="tag home">回家</span><h3>Perth → Hangzhou</h3><p>结束西澳与塔州的十九天公路旅行</p></div><span class="stay">—</span></summary>
-            <div class="day-detail"><p>国际航班前一晚住机场区域，预留充足退税、值机和安检时间。</p></div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="feature-break">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Neck%20Bruny%20Island.jpg?width=1600" alt="布鲁尼岛The Neck狭长地峡" loading="lazy">
-      <div class="feature-copy"><p class="eyebrow">SIX NIGHTS IN TASMANIA</p><h2>不以徒步丈量塔州，<br>而以公路与海岸。</h2></div>
-    </section>
-
-    <section class="section shell" id="stays">
-      <div class="section-head split-head">
-        <div><p class="eyebrow dark">SLEEP WELL</p><h2>住宿分布</h2></div>
-        <p>四人同行，所有住宿优先筛选两卧室、独立停车位和免费取消。长途驾驶日前一晚尤其重视出城便利。</p>
-      </div>
-      <div class="stay-grid">
-        <article><span class="stay-date">09.23</span><h3>Perth Airport</h3><p>Ascot · Belmont · Redcliffe</p><b>1晚</b></article>
-        <article><span class="stay-date">09.24—26</span><h3>Esperance</h3><p>Town Centre · West Beach</p><b>3晚</b></article>
-        <article><span class="stay-date">09.27</span><h3>Albany</h3><p>Middleton Beach</p><b>1晚</b></article>
-        <article><span class="stay-date">09.28</span><h3>Pemberton</h3><p>Forest chalet / cottage</p><b>1晚</b></article>
-        <article><span class="stay-date">09.29</span><h3>Yallingup</h3><p>Dunsborough周边</p><b>1晚</b></article>
-        <article><span class="stay-date">09.30</span><h3>Perth Airport</h3><p>北线前补给</p><b>1晚</b></article>
-        <article><span class="stay-date">10.01</span><h3>Geraldton</h3><p>Foreshore附近</p><b>1晚</b></article>
-        <article><span class="stay-date">10.02</span><h3>Fremantle</h3><p>步行到轮渡区域优先</p><b>1晚</b></article>
-        <article><span class="stay-date">10.03</span><h3>Perth Airport</h3><p>次日早班机</p><b>1晚</b></article>
-        <article><span class="stay-date">10.04 / 07—09</span><h3>Hobart</h3><p>Waterfront · Salamanca</p><b>4晚</b></article>
-        <article><span class="stay-date">10.05</span><h3>Stanley</h3><p>The Nut附近</p><b>1晚</b></article>
-        <article><span class="stay-date">10.06</span><h3>St Helens</h3><p>镇中心 · Binalong Bay</p><b>1晚</b></article>
-        <article><span class="stay-date">10.10</span><h3>Perth Airport</h3><p>国际航班缓冲</p><b>1晚</b></article>
-      </div>
-    </section>
-
-    <section class="section notes-section" id="notes">
-      <div class="shell notes-grid">
-        <div class="note-lead"><p class="eyebrow">BEFORE YOU GO</p><h2>现在就该锁定的事项</h2><p>这趟旅行真正稀缺的不是景点，而是直飞班次、热门小镇的两卧室住宿，以及几个必须提前预订的交通体验。</p></div>
-        <div class="checklist">
-          <label><input type="checkbox"><span><b>珀斯 ⇄ 霍巴特机票</b><small>优先确认10月4日去、10月10日回的直飞与托运行李总价</small></span></label>
-          <label><input type="checkbox"><span><b>西澳连续租车</b><small>9月24日机场取车，10月3日晚同机场还车</small></span></label>
-          <label><input type="checkbox"><span><b>塔州租车</b><small>10月4—10日霍巴特机场同点还车</small></span></label>
-          <label><input type="checkbox"><span><b>Rottnest轮渡与环岛巴士</b><small>旺季周六，09:00去、17:30回，巴士建议提前购买</small></span></label>
-          <label><input type="checkbox"><span><b>Tasman Island Cruise</b><small>天气敏感项目，选择可调整或取消的票价</small></span></label>
-          <label><input type="checkbox"><span><b>国家公园通票</b><small>分别核算西澳与塔州公园通票，摇篮山需接驳车</small></span></label>
-        </div>
-      </div>
-    </section>
-
-    <section class="section shell driving">
-      <div class="section-head"><p class="eyebrow dark">LONG ROAD DAYS</p><h2>四个需要尊重的驾驶日</h2></div>
-      <div class="drive-list">
-        <article><span>01</span><div><b>09.24 · Perth → Esperance</b><p>全程最远的内陆穿越；York与Wave Rock严格控时。</p></div></article>
-        <article><span>02</span><div><b>10.02 · Hutt Lagoon → Fremantle</b><p>粉红湖后立即返程，避免夜间仍在偏远公路。</p></div></article>
-        <article><span>03</span><div><b>10.05 · Hobart → Stanley</b><p>途经Queenstown与Cradle Mountain，05:30出发、至少两人换驾。</p></div></article>
-        <article><span>04</span><div><b>10.06 · Stanley → St Helens</b><p>北海岸横穿塔州，只在Devonport和Launceston短停。</p></div></article>
+        <aside class="checklist-card">
+          <div class="card-heading"><div><p class="eyebrow dark">BEFORE YOU GO</p><h2>预订清单</h2></div><span>自动保存</span></div>
+          <div class="checklist" id="checklist">
+            <label><input type="checkbox"><span>杭州—珀斯国际航班</span></label>
+            <label><input type="checkbox"><span>珀斯—霍巴特往返航班</span></label>
+            <label><input type="checkbox"><span>西澳南线租车与异地/里程条款</span></label>
+            <label><input type="checkbox"><span>西澳北线租车</span></label>
+            <label><input type="checkbox"><span>塔州租车与全险</span></label>
+            <label><input type="checkbox"><span>罗特尼斯岛船票与自行车/环岛巴士</span></label>
+            <label><input type="checkbox"><span>布鲁尼岛渡轮时刻与车辆安排</span></label>
+            <label><input type="checkbox"><span>塔斯曼岛巡游与亚瑟港门票</span></label>
+            <label><input type="checkbox"><span>国家公园通票与摇篮山接驳信息</span></label>
+            <label><input type="checkbox"><span>离线地图、驾照翻译件与旅行保险</span></label>
+          </div>
+          <div class="weather-note"><strong>季节提醒</strong><p>9月底至10月初昼夜温差大。塔州山区可能遇到低温、强风或降雪；每日出发前确认公路、渡轮和巡游状态。</p></div>
+        </aside>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="shell footer-grid">
-      <div><span class="brand-mark">AUS</span><h2>See you on the road.</h2><p>路线为2026年8月版本；开放时间、轮渡、航班和路况以出发前官方信息为准。</p></div>
-      <div class="credits"><b>图片来源与许可</b>
-        <a href="https://commons.wikimedia.org/wiki/File:Pinnacles_Desert,_Nambung_National_Park,_Western_Australia_08.jpg">Pinnacles · Dhx1 · CC0</a>
-        <a href="https://commons.wikimedia.org/wiki/File:Cradle_Mountain_and_Dove_Lake,_Tas.jpg">Cradle Mountain · Thennicke · CC BY-SA 4.0</a>
-        <a href="https://commons.wikimedia.org/wiki/File:RottnestQuokka.jpg">Quokka · Ena Music · CC BY-SA 4.0</a>
-        <a href="https://commons.wikimedia.org/wiki/File:Bay_of_Fires_Tasmania.jpg">Bay of Fires · Andy Hos · CC BY 2.0</a>
-        <a href="https://commons.wikimedia.org/wiki/File:The_Neck_Bruny_Island.jpg">Bruny Island · JJ Harrison · CC BY-SA 2.5</a>
-      </div>
-    </div>
+  <footer class="site-footer shell">
+    <p>路线为旅行规划草案，请以航班、道路、景区和天气的最新信息为准。</p>
+    <details>
+      <summary>图片来源与授权</summary>
+      <p>图片来自 Wikimedia Commons：<a href="https://commons.wikimedia.org/wiki/File:Perth_skyline_2024.jpg">Perth skyline</a>、<a href="https://commons.wikimedia.org/wiki/File:Pinnacles_Desert,_Nambung_National_Park,_Western_Australia_08.jpg">Pinnacles / Dhx1</a>、<a href="https://commons.wikimedia.org/wiki/File:Wave-Rock-Hyden-WA.jpg">Wave Rock</a>、<a href="https://commons.wikimedia.org/wiki/File:White_beach_Lucky_Bay_in_Esperance.jpg">Lucky Bay / Stan Feldman</a>、<a href="https://commons.wikimedia.org/wiki/File:Port_of_Albany.jpg">Albany / Cygnis insignis</a>、<a href="https://commons.wikimedia.org/wiki/File:Valley_of_the_Giants_Tree_Top_Walk_(2009).jpg">Valley of the Giants</a>、<a href="https://commons.wikimedia.org/wiki/File:Cape_Leeuwin_Lighthouse_WA_(3406973349).jpg">Cape Leeuwin / Amanda Slater</a>、<a href="https://commons.wikimedia.org/wiki/File:Hutt_Lagoon,_Western_Australia.jpg">Hutt Lagoon / Samuel Orchard</a>、<a href="https://commons.wikimedia.org/wiki/File:RottnestQuokka.jpg">Quokka / Ena Music</a>、<a href="https://commons.wikimedia.org/wiki/File:Viewing_Platform_Mount_Wellington_Hobart_Tasmania.jpg">Hobart / Salonee-2021</a>、<a href="https://commons.wikimedia.org/wiki/File:Stanley_and_the_Nut.jpg">Stanley / Thilver</a>、<a href="https://commons.wikimedia.org/wiki/File:Cradle_Mountain_and_Dove_Lake,_Tas.jpg">Cradle Mountain / Thennicke</a>、<a href="https://commons.wikimedia.org/wiki/File:Bay_of_Fires_Tasmania.jpg">Bay of Fires / Andy Hos</a>、<a href="https://commons.wikimedia.org/wiki/File:Wineglass_Bay_from_Lookout.jpg">Wineglass Bay / JJ Harrison</a>、<a href="https://commons.wikimedia.org/wiki/File:The_Neck_Bruny_Island.jpg">Bruny Island / JJ Harrison</a>、<a href="https://commons.wikimedia.org/wiki/File:Tasmania_port_arthur.jpg">Port Arthur / Sue McArthur</a>。各图授权以源页面标注为准。</p>
+    </details>
   </footer>
+
+  <noscript><p class="noscript">请启用 JavaScript 以查看 Tab 行程与路线地图。</p></noscript>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="script.js"></script>
 </body>
 </html>
