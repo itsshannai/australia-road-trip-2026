@@ -22,6 +22,7 @@ const images = {
   blueHaven: photo('Blue Haven beach, Esperance.jpg', 'Esperance Blue Haven 蓝色海湾'),
   twilight: photo('Twilight Beach, bay and rocks, Esperance, January 2024 01.jpg', 'Esperance Twilight Beach 海湾与礁石'),
   pinkLakeEsperance: photo('Sunset over Pink Lake, Esperance, January 2024 09.jpg', 'Esperance Pink Lake Lookout 日落'),
+  elevenMile: photo('Eleven Mile Lagoon, Esperance, January 2024 03.jpg', 'Esperance Eleven Mile Lagoon 十一英里泻湖'),
   capeLeGrand: photo('Cape Le Grand National Park, Western Australia 34.jpg', 'Cape Le Grand 国家公园海岸'),
   lucky: photo('White beach Lucky Bay in Esperance.jpg', 'Esperance Lucky Bay 白沙海岸'),
   hellfire: photo('Hellfire Bay, Cape Le Grand National Park, January 2025 01.jpg', 'Hellfire Bay 湛蓝海湾'),
@@ -96,54 +97,54 @@ const itinerary = {
       gallery: [scene('West Beach', images.westBeach), scene('Blue Haven', images.blueHaven), scene('Twilight Beach', images.twilight), scene('Pink Lake Lookout', images.pinkLakeEsperance)]
     },
     {
-      day: 4, date: '09.26 · 周六', title: 'Cape Le Grand & Lucky Bay', stay: 'Esperance · 原住宿续住', pace: '海岸日',
-      summary: '早上直达 Cape Le Grand。以 Lucky Bay 白沙滩为核心，不安排高强度徒步；天气好再补 Hellfire Bay。',
-      stops: ['Cape Le Grand', 'Lucky Bay', 'Hellfire Bay', 'Thistle Cove'], picture: images.lucky,
-      gallery: [scene('Cape Le Grand', images.capeLeGrand), scene('Lucky Bay', images.lucky), scene('Hellfire Bay', images.hellfire), scene('Thistle Cove', images.thistle)]
+      day: 4, date: '09.26 · 周六', title: 'Cape Le Grand → Ravensthorpe', stay: 'Ravensthorpe · 镇中心', pace: '海岸 + 转场',
+      summary: '清晨去 Cape Le Grand 与 Lucky Bay，不安排长徒步；午后折返 Esperance，经 Eleven Mile Lagoon 停留后继续向西约两小时，住 Ravensthorpe。不要为日落拖到夜间赶路。',
+      stops: ['Cape Le Grand', 'Lucky Bay', 'Hellfire Bay 可选', 'Eleven Mile Lagoon', 'Ravensthorpe'], picture: images.lucky,
+      gallery: [scene('Cape Le Grand', images.capeLeGrand), scene('Lucky Bay', images.lucky), scene('Hellfire Bay', images.hellfire), scene('Eleven Mile Lagoon', images.elevenMile)]
     },
     {
-      day: 5, date: '09.27 · 周日', title: 'Esperance → Albany', stay: 'Albany · Middleton Beach', pace: '转场日',
-      summary: '沿 South Coast Highway 西行。途中以加油、午餐和短暂停车为主，下午抵达 Albany 后看海港或 Middleton Beach。',
-      stops: ['Ravensthorpe', 'Jerramungup', 'Albany', 'Middleton Beach'], picture: images.albany,
+      day: 5, date: '09.27 · 周日', title: 'Ravensthorpe → Albany / Denmark 东侧', stay: 'Albany / Denmark 东侧', pace: '转场日',
+      summary: '从 Ravensthorpe 沿 South Coast Highway 西行，经 Jerramungup 抵达 Albany。若住宿订在 Denmark 东侧，再向西推进约 40—50 分钟；若住 Albany，则傍晚看 Middleton Beach。',
+      stops: ['Ravensthorpe', 'Jerramungup', 'Albany', 'Middleton Beach / Denmark 东侧'], picture: images.albany,
       gallery: [scene('Albany', images.albany), scene('Middleton Beach', images.middleton)]
     },
     {
-      day: 6, date: '09.28 · 周一', title: 'Albany → Pemberton', stay: 'Pemberton · Forest Chalet', pace: '景观公路',
-      summary: '先到 Denmark 的 Greens Pool 与 Elephant Rocks，再进入巨树森林。务必在 Tree Top Walk 最晚入场前抵达。',
-      stops: ['Denmark', 'Greens Pool', 'Elephant Rocks', 'Valley of the Giants'], picture: images.giants,
+      day: 6, date: '09.28 · 周一', title: 'Albany / Denmark → Augusta', stay: 'Augusta · 镇中心 / 河口', pace: '高强度景观日',
+      summary: '早出发，经 Denmark、Greens Pool 与 Elephant Rocks 进入巨树森林，赶在 Tree Top Walk 最晚入场前完成游览，再经 Pemberton 一带继续到 Augusta。当天景点多，需严格控制停留时间。',
+      stops: ['Denmark', 'Greens Pool', 'Elephant Rocks', 'Valley of the Giants', 'Pemberton 途经', 'Augusta'], picture: images.giants,
       gallery: [scene('Greens Pool', images.greensPool), scene('Elephant Rocks', images.elephantRocks), scene('Valley of the Giants', images.giants), scene('Pemberton Forest', images.pemberton)]
     },
     {
-      day: 7, date: '09.29 · 周二', title: 'Pemberton → Yallingup', stay: 'Dunsborough / Yallingup', pace: '内容丰富',
-      summary: '从森林到海角，串联 Cape Leeuwin、Hamelin Bay、Boranup 和 Margaret River。日落前赶到 Sugarloaf Rock。',
-      stops: ['Cape Leeuwin', 'Hamelin Bay', 'Boranup Forest', 'Margaret River', 'Sugarloaf Rock'], picture: images.leeuwin,
+      day: 7, date: '09.29 · 周二', title: 'Augusta → Busselton', stay: 'Busselton · Jetty 附近', pace: '海角与酒乡',
+      summary: '从 Cape Leeuwin 开始，依次串联 Hamelin Bay、Boranup Forest 与 Margaret River；时间充足再去 Sugarloaf Rock，晚上住 Busselton Jetty 周边。',
+      stops: ['Cape Leeuwin', 'Hamelin Bay', 'Boranup Forest', 'Margaret River', 'Sugarloaf Rock 可选', 'Busselton'], picture: images.leeuwin,
       gallery: [scene('Cape Leeuwin', images.leeuwin), scene('Hamelin Bay', images.hamelin), scene('Boranup Forest', images.boranup), scene('Margaret River', images.margaretVineyard), scene('Sugarloaf Rock', images.sugarloaf)]
     },
     {
-      day: 8, date: '09.30 · 周三', title: 'Yallingup → 珀斯', stay: 'Perth Airport / Fremantle', pace: '弹性返程',
-      summary: '上午经 Busselton Jetty，之后一路北返。Rockingham 只作天气好时的可选停留，优先保证还车与休息。',
-      stops: ['Busselton Jetty', 'Rockingham 可选', '珀斯补给', '还车 / 换车'], picture: images.busselton,
+      day: 8, date: '09.30 · 周三', title: 'Busselton → Fremantle', stay: 'Fremantle · 港口 / 轮渡码头', pace: '轻松北返',
+      summary: '上午慢逛 Busselton Jetty，之后北返；Rockingham 只作天气好时的可选停留。抵达 Fremantle 后确认次日船班与报到位置，建议同一酒店连住两晚。',
+      stops: ['Busselton Jetty', 'Rockingham 可选', 'Fremantle', '轮渡码头踩点'], picture: images.busselton,
       gallery: [scene('Busselton Jetty', images.busselton), scene('Rockingham', images.rockingham), scene('Fremantle Harbour', images.fremantleHarbour)]
     }
   ],
   north: [
     {
-      day: 9, date: '10.01 · 周四', title: '珀斯 → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
+      day: 9, date: '10.01 · 周四', title: '罗特尼斯岛一日', stay: 'Fremantle · 原住宿续住', pace: '离岛日',
+      summary: '从 Fremantle 乘早班船上岛，选择自行车或环岛巴士看海湾和 Quokka。傍晚返航后回原酒店，不搬行李，次日再开车北上。',
+      stops: ['Fremantle Ferry', 'The Basin', 'Wadjemup Lighthouse', 'Quokka'], picture: images.quokka,
+      gallery: [scene('The Basin', images.basin), scene('Wadjemup Lighthouse', images.wadjemup), scene('Quokka', images.quokka)]
+    },
+    {
+      day: 10, date: '10.02 · 周五', title: 'Fremantle → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
       summary: '沿印度洋公路北上，在 Lancelin 沙丘短停，把下午重点留给 Pinnacles；经 Jurien Bay 后抵达 Geraldton。',
       stops: ['Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles,
       gallery: [scene('Lancelin', images.lancelin), scene('Pinnacles', images.pinnacles), scene('Jurien Bay', images.jurien), scene('Geraldton', images.geraldton)]
     },
     {
-      day: 10, date: '10.02 · 周五', title: '粉红湖 → Fremantle', stay: 'Fremantle · 港口周边', pace: '长途折返',
-      summary: '上午从 Geraldton 前往 Hutt Lagoon，完成北线最北点后立即折返。下午一路南下，晚上住 Fremantle。',
-      stops: ['Hutt Lagoon', 'Port Gregory', '海岸公路', 'Fremantle'], picture: images.hutt,
-      gallery: [scene('Hutt Lagoon', images.hutt), scene('Fremantle 日落', images.fremantleSunset)]
-    },
-    {
-      day: 11, date: '10.03 · 周六', title: '罗特尼斯岛一日', stay: 'Perth Airport 周边', pace: '离岛日',
-      summary: '从 Fremantle 乘早班船上岛，选择自行车或环岛巴士看海湾和 Quokka。傍晚返航后转往机场住宿。',
-      stops: ['Fremantle Ferry', 'The Basin', 'Wadjemup Lighthouse', 'Quokka'], picture: images.quokka,
-      gallery: [scene('The Basin', images.basin), scene('Wadjemup Lighthouse', images.wadjemup), scene('Quokka', images.quokka)]
+      day: 11, date: '10.03 · 周六', title: 'Hutt Lagoon → Perth Airport', stay: 'Perth Airport 周边', pace: '长途折返',
+      summary: '清晨从 Geraldton 北上 Hutt Lagoon，完成北线最北点后立即折返。当天车程长，每两小时停车休息，晚上直接住机场周边衔接次日航班。',
+      stops: ['Hutt Lagoon', 'Port Gregory', 'Geraldton 补给', 'Perth Airport'], picture: images.hutt,
+      gallery: [scene('Hutt Lagoon', images.hutt)]
     }
   ],
   tas: [
@@ -237,13 +238,13 @@ const dailyGuides = {
   4: {
     food: [
       eat('午餐 · 自带', 'Lucky Bay 野餐', '国家公园内选择少，前一晚准备水、三明治和热饮。', 'Lucky Bay Cape Le Grand National Park'),
-      eat('晚餐 · Esperance', 'Lucky Bay Brewing', '本地谷物精酿与柴火披萨，结束海岸日很合适。', 'Lucky Bay Brewing Esperance WA')
+      eat('晚餐 · Ravensthorpe', 'Palace Hotel', '抵达后吃热食；周六通常也有午晚餐，出发前仍要确认厨房截单时间。', 'Palace Hotel Ravensthorpe WA')
     ],
-    drone: { level: 'conditional', label: '绝佳画面 · 谨慎飞', place: 'Lucky Bay / Hellfire Bay', shot: '白沙与蓝绿色海水的顶视效果最强。西澳公园休闲飞行通常无需预批，但应事先联系 DBCA 当地区域、避开游客和野生动物。', scope: 'wa' }
+    drone: { level: 'conditional', label: '绝佳画面 · 谨慎飞', place: 'Lucky Bay / Eleven Mile Lagoon', shot: '白沙、泻湖和蓝绿色海水的顶视效果很强。西澳公园休闲飞行通常无需预批，但应事先联系 DBCA 当地区域、避开游客和野生动物；下午还要赶路，不为航拍压缩安全余量。', scope: 'wa' }
   },
   5: {
     food: [
-      eat('午餐 · Ravensthorpe', 'Palace Hotel', '长途转场中的热食与休息点，出发前复核周日厨房时间。', 'Palace Hotel Ravensthorpe WA'),
+      eat('午餐 · Jerramungup', 'Jerramungup Roadhouse', '加油、简餐和短休一次完成，减少转场日停留。', 'Jerramungup Roadhouse WA'),
       eat('晚餐 · Albany', 'Garrison Restaurant', '位于 National Anzac Centre 一带，景观与本地食材兼顾；周日也较适合作为正式晚餐。', 'Garrison Restaurant Albany WA')
     ],
     drone: { level: 'conditional', label: '只在空旷时考虑', place: 'Middleton Beach 外缘', shot: 'King George Sound 的海岸弧线适合低角度横移；海滩有人或风大就放弃，港口与城区不要飞。', scope: 'wa' }
@@ -251,45 +252,46 @@ const dailyGuides = {
   6: {
     food: [
       eat('早午餐 · Denmark', 'Mrs Jones Cafe', '7:00 起供应早餐，周一可用，适合 Greens Pool 前补给。', 'Mrs Jones Cafe Denmark WA'),
-      eat('晚餐 · Pemberton', 'Forest Lodge Resort Restaurant', '周一晚餐选择有限，这家通常每日营业；务必提前订位。', 'Forest Lodge Resort Restaurant Pemberton WA')
+      eat('午餐 · 自带', '巨树谷野餐', '当天路长，建议在 Denmark 先买好午餐，游览巨树谷后直接赶往 Augusta。', 'Valley of the Giants Tree Top Walk WA'),
+      eat('晚餐 · Augusta', 'Augusta Hotel', '河口边的稳妥晚餐点，周一也供应晚餐；抵达偏晚时先电话确认厨房时间。', 'Augusta Hotel WA')
     ],
     drone: { level: 'conditional', label: '构图漂亮 · 人少才飞', place: 'Greens Pool / Elephant Rocks', shot: '花岗岩与天然泳池的俯视构图很出片；属于 WA 保护地体系，先联系 DBCA，树顶步道与巨树森林不建议飞。', scope: 'wa' }
   },
   7: {
     food: [
-      eat('午餐 · Augusta', 'The Colourpatch', '海角附近的河口景观餐厅，适合灯塔之后休息。', 'The Colourpatch Augusta WA'),
-      eat('晚餐 · Margaret River', "Miki's Open Kitchen", '日式技法结合西澳食材，周二营业但席位少，需要预订。', "Miki's Open Kitchen Margaret River WA"),
-      eat('备选 · Yallingup', 'Lagoon Yallingup', '靠近当晚住宿，海鲜与日落景观兼得。', 'Lagoon Yallingup WA')
+      eat('晚午餐 · Margaret River', 'Riversmith', '每日供应早午餐至下午，厨房通常 15:30 截单；适合完成 Hamelin Bay 与 Boranup 后休息，若延误则直接跳过。', 'Riversmith Margaret River WA'),
+      eat('晚餐 · Busselton', 'Shelter Brewing Co.', '就在栈桥一带，抵达后步行可达，适合精酿、披萨和轻松收尾。', 'Shelter Brewing Co Busselton WA')
     ],
     drone: { level: 'conditional', label: '日落航拍候选', place: 'Sugarloaf Rock / 酒庄', shot: 'Sugarloaf Rock 适合侧逆光揭示海岸线；酒庄航拍需业主许可。Hamelin Bay 禁止追拍或靠近魟鱼等野生动物。', scope: 'wa' }
   },
   8: {
     food: [
-      eat('午餐 · Busselton', 'Shelter Brewing Co.', '就在栈桥一带，精酿、披萨和海景，停车后步行可达。', 'Shelter Brewing Co Busselton WA'),
+      eat('早午餐 · Busselton', 'The Goose Beach Bar & Kitchen', '就在栈桥海滨，适合慢一点的早餐或早午餐。', 'The Goose Beach Bar and Kitchen Busselton WA'),
       eat('晚餐 · Fremantle', 'Bread in Common', '仓库空间与炭火分享菜，适合作为南线收尾餐。', 'Bread in Common Fremantle WA')
     ],
     drone: { level: 'avoid', label: '不建议起飞', place: 'Busselton / Rockingham / Fremantle', shot: '栈桥、港口、热门海滩与城区人员密集，附近亦有机场及直升机活动；这天以地面拍摄为主。', scope: 'wa' }
   },
   9: {
     food: [
+      eat('午餐 · Thomson Bay', 'Isola Bar e Cibo', '海湾边意式海鲜，适合坐下来吃一顿，建议预订。', 'Isola Bar e Cibo Rottnest Island'),
+      eat('备选 · Samphire', 'Lontara', '东南亚风味与岛上食材，靠近主要码头区。', 'Lontara Rottnest Island')
+    ],
+    drone: { level: 'avoid', label: '明确禁飞', place: 'Wadjemup / Rottnest Island', shot: '岛上目前不允许游客进行休闲无人机飞行。不要携机起飞，改用自行车沿线和观景台拍摄。', scope: 'rottnest' }
+  },
+  10: {
+    food: [
       eat('午餐 · Cervantes', 'Lobster Shack', '西澳龙虾与海边简餐，安排在 Pinnacles 前后。', 'Lobster Shack Cervantes WA'),
       eat('晚餐 · Geraldton', 'Salt Dish', '小体量本地餐厅，适合作为北上日正式晚餐，建议预订。', 'Salt Dish Geraldton WA')
     ],
     drone: { level: 'best', label: '重点航拍', place: 'Lancelin Dunes / Pinnacles', shot: '沙丘适合低侧光下的纹理与跟车远景；Pinnacles 适合长阴影俯拍。避开车辆游客，并提前联系 DBCA 确认公园作业。', scope: 'wa' }
   },
-  10: {
-    food: [
-      eat('早餐 · Geraldton', 'Quiet Life Specialty Coffee', '出发前咖啡与早餐，适合长途折返日。', 'Quiet Life Specialty Coffee Geraldton WA'),
-      eat('晚餐 · Fremantle', 'Gage Roads Freo', '港边大空间、精酿与轻松餐食，抵达时间弹性较大。', 'Gage Roads Freo Fremantle WA')
-    ],
-    drone: { level: 'best', label: '全程最佳航拍点', place: 'Hutt Lagoon', shot: '粉色盐湖的色块、盐田线条与海岸对比最适合垂直俯拍。只从合法公共位置起降，不进私有地；起飞前查风速、空域和临时限制。', scope: 'wa' }
-  },
   11: {
     food: [
-      eat('午餐 · Thomson Bay', 'Isola Bar e Cibo', '海湾边意式海鲜，适合坐下来吃一顿，建议预订。', 'Isola Bar e Cibo Rottnest Island'),
-      eat('备选 · Samphire', 'Lontara', '东南亚风味与岛上食材，靠近主要码头区。', 'Lontara Rottnest Island')
+      eat('早餐 · Geraldton', 'Quiet Life Specialty Coffee', '出发前咖啡与早餐，适合粉红湖折返日。', 'Quiet Life Specialty Coffee Geraldton WA'),
+      eat('午餐 · 自带', 'Hutt Lagoon 公路野餐', '粉红湖周边餐饮有限，提前准备水和便携午餐，不在私人土地停留。', 'Hutt Lagoon Western Australia'),
+      eat('晚餐 · 机场东侧', 'The Cray · Belmont', '抵达机场住宿区后再吃晚餐；周六通常营业，仍建议确认厨房截单时间。', 'The Cray Seafood & Grill Restaurant Belmont WA')
     ],
-    drone: { level: 'avoid', label: '明确禁飞', place: 'Wadjemup / Rottnest Island', shot: '岛上目前不允许游客进行休闲无人机飞行。不要携机起飞，改用自行车沿线和观景台拍摄。', scope: 'rottnest' }
+    drone: { level: 'best', label: '全程最佳航拍点', place: 'Hutt Lagoon', shot: '粉色盐湖的色块、盐田线条与海岸对比最适合垂直俯拍。只从合法公共位置起降，不进私有地；起飞前查风速、空域和临时限制。', scope: 'wa' }
   },
   12: {
     food: [
@@ -352,14 +354,14 @@ const dailyGuides = {
 
 const stays = [
   ['09.23', 'Perth Airport / Ascot', '机场东侧；晚到后尽快休息，停车方便'],
-  ['09.24—09.26', 'Esperance', 'Town Centre / West Beach；连续住3晚'],
-  ['09.27', 'Albany', 'Middleton Beach；海边、停车方便'],
-  ['09.28', 'Pemberton', '森林 chalet / cottage；体验感优先'],
-  ['09.29', 'Dunsborough / Yallingup', '靠近 Sugarloaf Rock，方便第二天北返'],
-  ['09.30', 'Perth / Fremantle', '按次日取车点选择；避免市中心绕行'],
-  ['10.01', 'Geraldton', 'Foreshore / CBD；晚餐与第二天加油方便'],
-  ['10.02', 'Fremantle', '靠近轮渡码头；确认停车政策'],
-  ['10.03', 'Perth Airport', '罗特尼斯岛返航后转机场区域'],
+  ['09.24—09.25', 'Esperance', 'Town Centre；连续住2晚'],
+  ['09.26', 'Ravensthorpe', 'Eleven Mile Lagoon 继续向西约2小时；住镇中心'],
+  ['09.27', 'Albany / Denmark 东侧', 'Albany 选择更多；若住 Denmark 东侧可缩短次日路程'],
+  ['09.28', 'Augusta', '镇中心 / 河口；确认支持较晚入住'],
+  ['09.29', 'Busselton', 'Jetty 附近；步行吃饭与看栈桥'],
+  ['09.30—10.01', 'Fremantle', '港口 / 轮渡码头；同一酒店连住2晚，确认停车政策'],
+  ['10.02', 'Geraldton', 'Foreshore / CBD；晚餐与第二天加油方便'],
+  ['10.03', 'Perth Airport', '粉红湖折返后直接住机场区域'],
   ['10.04', 'Hobart', 'CBD / Battery Point；取车后入住'],
   ['10.05', 'Stanley', 'The Nut / 镇中心；尽量支持晚入住'],
   ['10.06', 'St Helens', '镇中心；餐饮和补给最方便'],
@@ -614,27 +616,35 @@ function initRouteMaps() {
   });
 
   const perth = [-31.9523, 115.8613];
+  const perthAirport = [-31.9403, 115.9672];
   const fremantle = [-32.0569, 115.7439];
+  const rottnest = [-32.006, 115.512];
+  const ravensthorpe = [-33.583, 120.046];
+  const augusta = [-34.315, 115.159];
+  const busselton = [-33.646, 115.344];
   const waSouthRoute = [
-    perth, [-31.8896, 116.7680], [-32.443, 118.897], [-33.8608, 121.8896],
-    [-33.991, 122.232], [-35.0275, 117.884], [-34.9607, 117.353], [-34.974, 116.897],
-    [-34.444, 116.034], [-34.3749, 115.1365], [-33.9535, 115.073], [-33.646, 115.033],
-    [-33.644, 115.344], [-32.2768, 115.729], perth
+    perthAirport, [-31.8896, 116.7680], [-32.443, 118.897], [-33.8608, 121.8896],
+    [-33.991, 122.232], [-33.873, 121.759], ravensthorpe, [-35.0275, 117.884],
+    [-34.9607, 117.353], [-34.974, 116.897], [-34.444, 116.034], augusta,
+    [-34.3749, 115.1365], [-33.9535, 115.073], [-33.539, 115.005], busselton,
+    [-32.2768, 115.729], fremantle
   ];
   const waNorthRoute = [
-    perth, [-31.022, 115.333], [-30.604, 115.159], [-30.305, 115.038],
+    fremantle, perth, [-31.022, 115.333], [-30.604, 115.159], [-30.305, 115.038],
     [-28.7774, 114.614], [-28.158, 114.242], [-28.7774, 114.614], [-30.305, 115.038],
-    perth, fremantle
+    perthAirport
   ];
-  const waIslandRoute = [fremantle, [-32.006, 115.512], fremantle, perth];
+  const waIslandRoute = [fremantle, rottnest, fremantle];
   const waMap = createMap('waRouteMap');
   L.polyline(waSouthRoute, { color: '#d47745', weight: 4, opacity: .92 }).addTo(waMap);
   L.polyline(waNorthRoute, { color: '#b58a32', weight: 4, opacity: .9 }).addTo(waMap);
   L.polyline(waIslandRoute, { color: '#496c93', weight: 3, opacity: .9, dashArray: '6 7' }).addTo(waMap);
   addPlaces(waMap, [
-    ['珀斯', perth, 'right'], ['粉红湖', [-28.158, 114.242], 'right'],
+    ['珀斯机场', perthAirport, 'right'], ['Fremantle', fremantle, 'left'],
+    ['Geraldton', [-28.7774, 114.614], 'right'], ['粉红湖', [-28.158, 114.242], 'right'],
     ['Esperance', [-33.8608, 121.8896], 'left'], ['Albany', [-35.0275, 117.884], 'bottom'],
-    ['Pemberton', [-34.444, 116.034], 'left'], ['罗特尼斯岛', [-32.006, 115.512], 'left']
+    ['Ravensthorpe', ravensthorpe, 'top'], ['Augusta', augusta, 'left'],
+    ['Busselton', busselton, 'bottom'], ['罗特尼斯岛', rottnest, 'left']
   ]);
   waMap.fitBounds(L.latLngBounds([...waSouthRoute, ...waNorthRoute, ...waIslandRoute]), { padding: [30, 30] });
 
