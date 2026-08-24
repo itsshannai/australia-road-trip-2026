@@ -52,17 +52,22 @@ const images = {
   hobart: photo('Viewing Platform Mount Wellington Hobart Tasmania.jpg', '惠灵顿山观景台俯瞰霍巴特'),
   hobartWaterfront: photo('Hobart waterfront.jpg', 'Hobart Waterfront 港湾'),
   batteryPoint: photo('Battery Point 2015.jpg', 'Hobart Battery Point 历史街区'),
-  queenstown: photo('Landscape near Queenstown, Tasmania.jpg', 'Queenstown 西部荒野'),
+  deloraine: photo('Meander River at Deloraine - panoramio.jpg', 'Deloraine 的 Meander River 河畔'),
+  sheffield: photo('Murals in Sheffield - 2013.04 - panoramio.jpg', 'Sheffield 壁画小镇'),
   cradle: photo('Cradle Mountain and Dove Lake, Tas.jpg', '摇篮山与 Dove Lake'),
   stanleyArrival: photo('Stanley and The Nut (6280265492).jpg', 'Stanley 田野与 The Nut'),
   stanley: photo('Highfield, Stanley, Tasmania (31351168474).jpg', 'Stanley Highfield 与 The Nut'),
+  burnie: photo('Boardwalk-Burnie-20120808-004.jpg', 'Burnie 海滨木栈道'),
   devonport: photo('Devonport, TAS.JPG', 'Devonport 港口航拍'),
   cataract: photo('Cataract Gorge, Launceston in spring.jpg', 'Launceston Cataract Gorge 春日峡谷'),
+  ansonsBay: photo('Ansons Bay Aerial.jpg', 'Ansons Bay 海湾与湿地'),
   bayOfFires: photo('Bay of Fires-07.jpg', 'Bay of Fires 橙红巨石海岸'),
+  bayOfFiresMorning: photo('Bay of Fires TAS.jpg', 'Bay of Fires 清晨海岸'),
   bicheno: photo('Bicheno coastline, Tasmania (46113230991).jpg', 'Bicheno 东海岸'),
   capeTourville: photo('Cape Tourville Lighthouse.jpg', 'Cape Tourville 灯塔海岸'),
   wineglass: photo('Wineglass Bay from Lookout.jpg', 'Freycinet 国家公园 Wineglass Bay'),
   honeymoon: photo('Honeymoon Bay Sunset.jpg', 'Freycinet Honeymoon Bay 日落'),
+  swansea: photo('Swansea Beach, Tasmania - panoramio.jpg', 'Swansea 海滩'),
   ross: photo('Ross Bridge.jpg', 'Ross 小镇石桥'),
   bruny: photo('The Neck Bruny Island.jpg', '布鲁尼岛 The Neck 地峡'),
   adventureBay: photo('Adventure Bay, Bruny Island, Tasmania.jpg', 'Bruny Island Adventure Bay'),
@@ -150,27 +155,27 @@ const itinerary = {
   tas: [
     {
       day: 12, date: '10.04 · 周日', title: '珀斯 → 霍巴特', stay: 'Hobart · CBD / Battery Point', pace: '飞行日',
-      summary: '抵达霍巴特后取车。若天色、云量和道路条件合适，当天上 kunanyi / Mount Wellington；否则留到回城后机动补上。',
-      stops: ['PER → HBA', '霍巴特取车', 'Battery Point', 'Mount Wellington 可选'], picture: images.hobart,
-      gallery: [scene('Hobart Waterfront', images.hobartWaterfront), scene('Battery Point', images.batteryPoint), scene('Mount Wellington', images.hobart)]
+      summary: 'VA594 约 17:00 抵达霍巴特，取车入住后只安排 Battery Point 与 Salamanca Place 晚餐，不再塞入惠灵顿山。',
+      stops: ['PER → HBA', '17:00 抵达', '霍巴特取车', 'Battery Point', 'Salamanca 晚餐'], picture: images.hobartWaterfront,
+      gallery: [scene('Hobart Waterfront', images.hobartWaterfront), scene('Battery Point', images.batteryPoint), scene('Salamanca Place', images.salamancaPlace)]
     },
     {
-      day: 13, date: '10.05 · 周一', title: '霍巴特 → 摇篮山 → Stanley', stay: 'Stanley · The Nut 附近', pace: '全程最紧张',
-      summary: '清晨出发，经 Queenstown 进入西部荒野。摇篮山只坐接驳车到 Dove Lake 观景，不徒步，随后继续赶往 Stanley。',
-      stops: ['Queenstown', 'Cradle Mountain', 'Dove Lake', 'Stanley'], picture: images.cradle,
-      gallery: [scene('Queenstown', images.queenstown), scene('Cradle Mountain & Dove Lake', images.cradle), scene('Stanley', images.stanleyArrival)]
+      day: 13, date: '10.05 · 周一', title: '霍巴特 → 摇篮山 → Stanley', stay: 'Stanley · The Nut 附近', pace: '高强度长途',
+      summary: '清晨沿北线经 Deloraine、Sheffield 前往摇篮山；只坐接驳车到 Dove Lake 观景，不安排徒步。下午继续赶往 Stanley，在 The Nut 与海湾一带看日落。',
+      stops: ['Deloraine', 'Sheffield', 'Cradle Mountain', 'Dove Lake', 'Stanley / The Nut 日落'], picture: images.cradle,
+      gallery: [scene('Deloraine', images.deloraine), scene('Sheffield 壁画小镇', images.sheffield), scene('Cradle Mountain & Dove Lake', images.cradle), scene('Stanley & The Nut', images.stanleyArrival)]
     },
     {
       day: 14, date: '10.06 · 周二', title: 'Stanley → St Helens', stay: 'St Helens · 镇中心', pace: '北海岸长途',
-      summary: '上午逛 Stanley 与 The Nut，午后沿北海岸东行，经 Devonport、Launceston 后到 Bay of Fires，晚住 St Helens。',
-      stops: ['Stanley', 'Devonport', 'Launceston', 'Bay of Fires', 'St Helens'], picture: images.stanley,
-      gallery: [scene('Stanley', images.stanley), scene('Devonport', images.devonport), scene('Launceston', images.cataract), scene('Bay of Fires', images.bayOfFires)]
+      summary: '上午逛 Stanley，随后沿北海岸经过 Burnie、Devonport，在 Launceston 的 Cataract Gorge 短停，再向东北绕至 Ansons Bay，晚上回到 St Helens。当天距离很长，各城只作短停。',
+      stops: ['Stanley', 'Burnie', 'Devonport', 'Cataract Gorge', 'Ansons Bay', 'St Helens'], picture: images.stanley,
+      gallery: [scene('Stanley', images.stanley), scene('Burnie', images.burnie), scene('Devonport', images.devonport), scene('Cataract Gorge', images.cataract), scene('Ansons Bay', images.ansonsBay)]
     },
     {
-      day: 15, date: '10.07 · 周三', title: '东海岸 → 霍巴特', stay: 'Hobart · 原住宿区域', pace: '海岸环线',
-      summary: '从 St Helens 南下，经 Bicheno 到 Freycinet。以 Cape Tourville 等车行观景点为主；如愿意短走，再临时增加 Wineglass Bay Lookout，之后经 Ross 回霍巴特。',
-      stops: ['Bicheno', 'Cape Tourville', 'Honeymoon Bay', 'Ross', 'Hobart'], picture: images.wineglass,
-      gallery: [scene('Bicheno', images.bicheno), scene('Cape Tourville', images.capeTourville), scene('Wineglass Bay', images.wineglass), scene('Honeymoon Bay', images.honeymoon), scene('Ross', images.ross)]
+      day: 15, date: '10.07 · 周三', title: '火焰湾 → 霍巴特', stay: 'Hobart · Sandy Bay / Battery Point', pace: '东海岸长途',
+      summary: '从 St Helens 先看火焰湾晨景，再经 Bicheno 前往 Freycinet，步行至 Wineglass Bay Lookout。之后沿东海岸经过 Swansea，并在 Ross 小镇短停，傍晚回到霍巴特。',
+      stops: ['Bay of Fires 晨景', 'Bicheno', 'Wineglass Bay Lookout', 'Swansea', 'Ross', 'Hobart'], picture: images.wineglass,
+      gallery: [scene('Bay of Fires 晨景', images.bayOfFiresMorning), scene('Bicheno', images.bicheno), scene('Wineglass Bay Lookout', images.wineglass), scene('Swansea', images.swansea), scene('Ross', images.ross)]
     },
     {
       day: 16, date: '10.08 · 周四', title: '布鲁尼岛一日', stay: 'Hobart · 原住宿续住', pace: '离岛日',
@@ -186,8 +191,8 @@ const itinerary = {
     },
     {
       day: 18, date: '10.10 · 周六', title: '霍巴特 → 珀斯', stay: 'Perth Airport / 航班衔接区', pace: '返程航段',
-      summary: '按航班时间还车并飞回珀斯。若起飞较晚，可上午短逛 Salamanca Market；不强行给珀斯市区留完整一天。',
-      stops: ['Salamanca 可选', 'Hobart 还车', 'HBA → PER', '珀斯机场'], picture: images.salamanca,
+      summary: '上午逛周六 Salamanca Market，随后回酒店取行李、还车并前往机场，搭乘 15:15 航班经墨尔本返回珀斯。',
+      stops: ['Salamanca Market', 'Hobart 还车', '15:15 HBA → MEL → PER', '珀斯机场'], picture: images.salamanca,
       gallery: [scene('Salamanca Market', images.salamanca), scene('Salamanca Place', images.salamancaPlace)]
     },
     {
@@ -298,15 +303,15 @@ const dailyGuides = {
       eat('晚餐 · Hobart CBD', 'Bar Wa Izakaya', '日式居酒屋与塔州食材，全天供餐到较晚，适合航班抵达日。', 'Bar Wa Izakaya Hobart'),
       eat('升级选项 · 码头', 'Mures Upper Deck', '维多利亚码头景观与塔州海鲜，10月周日晚餐营业，建议预订。', 'Mures Upper Deck Hobart')
     ],
-    drone: { level: 'avoid', label: '不建议／公园禁飞', place: 'Hobart / kunanyi', shot: '霍巴特靠近受控机场且城区人口密集；Wellington Park 无许可禁止任何尺寸无人机起降。', scope: 'tas' }
+    drone: { level: 'avoid', label: '不建议起飞', place: 'Hobart / Salamanca', shot: '霍巴特靠近受控机场，Battery Point 与 Salamanca 又是人口密集城区；抵达日不安排无人机。', scope: 'tas' }
   },
   13: {
     food: [
-      eat('午餐 · Queenstown', 'Empire Hotel', '每天供应午餐，历史建筑本身也值得短停。', 'Empire Hotel Queenstown Tasmania'),
+      eat('早午餐 · Sheffield', 'The Epicurean Cafe', '周一营业，位于壁画小镇主街；以咖啡、烘焙和轻食快速补给。', 'The Epicurean Cafe Sheffield Tasmania'),
       eat('补给 · Cradle Mountain', 'Cradle Mountain Cafe', '以咖啡、热食和补给为主，不占用太多观景时间。', 'Cradle Mountain Cafe Tasmania'),
       eat('晚餐 · Stanley', 'Hursey Seafoods', '自家船队海鲜与龙虾，抵达 Stanley 后最有地方特色的一餐。', 'Hursey Seafoods Stanley Tasmania')
     ],
-    drone: { level: 'avoid', label: '保护区禁飞', place: 'Cradle Mountain / The Nut', shot: '两处航拍潜力都很强，但属于塔州公园或保留地体系，游客休闲飞行不允许；Queenstown 也需先核对具体土地边界。', scope: 'tas' }
+    drone: { level: 'avoid', label: '保护区禁飞', place: 'Cradle Mountain / The Nut', shot: '两处航拍潜力都很强，但属于塔州公园或保留地体系，游客休闲飞行不允许；用 Dove Lake 湖畔与 Stanley 海湾地面机位替代。', scope: 'tas' }
   },
   14: {
     food: [
@@ -314,7 +319,7 @@ const dailyGuides = {
       eat('咖啡外带 · Launceston', 'Bread + Butter', '酥点、酸种与咖啡，周二营业至下午；若已在 Devonport 正式吃饭则只快速打包。', 'Bread and Butter Launceston Tasmania'),
       eat('晚餐 · St Helens', 'Bay Bar & Bistro', '周二有晚餐，是长途抵达后相对稳妥的选择。', 'Bay Bar and Bistro St Helens Tasmania')
     ],
-    drone: { level: 'avoid', label: '保护区禁飞', place: 'Stanley / Bay of Fires', shot: '海岸纹理确实适合航拍，但 The Nut 与 Bay of Fires 多处为 PWS 管理的保留地；游客无人机不允许使用。', scope: 'tas' }
+    drone: { level: 'avoid', label: '保护区禁飞', place: 'Stanley / Ansons Bay', shot: '海岸纹理确实适合航拍，但 The Nut 与东北海岸多处为 PWS 管理的保留地；游客无人机不允许使用。', scope: 'tas' }
   },
   15: {
     food: [
@@ -649,18 +654,33 @@ function initRouteMaps() {
   waMap.fitBounds(L.latLngBounds([...waSouthRoute, ...waNorthRoute, ...waIslandRoute]), { padding: [30, 30] });
 
   const hobart = [-42.8821, 147.3272];
+  const deloraine = [-41.5245, 146.6570];
+  const sheffield = [-41.3830, 146.3250];
+  const cradleMountain = [-41.6840, 145.9510];
+  const stanley = [-40.7600, 145.2950];
+  const burnie = [-41.0520, 145.9060];
+  const devonport = [-41.1780, 146.3510];
+  const cataractGorge = [-41.4440, 147.1290];
+  const ansonsBay = [-41.0373, 148.2691];
+  const stHelens = [-41.3210, 148.2490];
+  const bicheno = [-41.8750, 148.3030];
+  const freycinet = [-42.1240, 148.2890];
+  const swansea = [-42.1233, 148.0776];
+  const ross = [-42.0300, 147.4920];
   const tasRoute = [
-    hobart, [-42.895, 147.236], [-42.0805, 145.556], [-41.684, 145.951], [-40.760, 145.295],
-    [-41.178, 146.351], [-41.434, 147.144], [-41.251, 148.307], [-41.321, 148.249],
-    [-42.124, 148.289], [-42.030, 147.492], hobart, [-43.273, 147.349], hobart,
+    hobart, deloraine, sheffield, cradleMountain, stanley,
+    burnie, devonport, cataractGorge, ansonsBay, stHelens,
+    [-41.251, 148.307], bicheno, freycinet, swansea, ross, hobart, [-43.273, 147.349], hobart,
     [-43.148, 147.850], hobart
   ];
   const tasMap = createMap('tasRouteMap');
   L.polyline(tasRoute, { color: '#247a78', weight: 4, opacity: .92 }).addTo(tasMap);
   addPlaces(tasMap, [
-    ['霍巴特', hobart, 'left'], ['摇篮山', [-41.684, 145.951], 'right'],
-    ['Stanley', [-40.760, 145.295], 'right'], ['St Helens', [-41.321, 148.249], 'left'],
-    ['Freycinet', [-42.124, 148.289], 'left'], ['布鲁尼岛', [-43.273, 147.349], 'left'],
+    ['霍巴特', hobart, 'left'], ['Deloraine', deloraine, 'right'],
+    ['Sheffield', sheffield, 'left'], ['摇篮山', cradleMountain, 'right'],
+    ['Stanley', stanley, 'right'], ['Ansons Bay', ansonsBay, 'top'],
+    ['St Helens', stHelens, 'left'], ['Freycinet', freycinet, 'left'],
+    ['布鲁尼岛', [-43.273, 147.349], 'left'],
     ['亚瑟港', [-43.148, 147.850], 'right']
   ]);
   tasMap.fitBounds(L.latLngBounds(tasRoute), { padding: [30, 30] });
