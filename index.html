@@ -122,8 +122,14 @@
     <section class="tab-panel" id="panel-stays" role="tabpanel" aria-labelledby="tab-stays" data-panel="stays" hidden>
       <header class="panel-heading">
         <div><p class="eyebrow dark">STAYS &amp; CHECKLIST</p><h1>住宿与准备</h1></div>
-        <p>住宿优先订可免费取消、带停车位的房型。长途日尽量住在第二天出发方向一侧，减少早高峰和折返。</p>
+        <p>住宿优先订可免费取消、带停车位的房型。下方清单覆盖证件、入境、租车、衣物、药品、通信、无人机与每日出发前复核，勾选状态会保存在当前设备。</p>
       </header>
+
+      <section class="prep-deadlines" aria-label="预订与复核时间表">
+        <article><small>现在完成</small><strong>锁定不可替代项目</strong><p>住宿、三段租车、罗特尼斯岛船票、塔斯曼巡游、亚瑟港门票。</p></article>
+        <article><small>出发前 2—4 周</small><strong>补齐通票与设备</strong><p>WA / 塔州公园通票、驾照翻译件、保险、eSIM、无人机电池运输确认。</p></article>
+        <article><small>每段前 24—48 小时</small><strong>复核动态信息</strong><p>天气、道路、渡轮、巡游、航班、日落时间、餐厅营业和无人机临时限制。</p></article>
+      </section>
 
       <div class="stays-layout">
         <article class="stay-card">
@@ -136,25 +142,162 @@
           </div>
         </article>
 
-        <aside class="checklist-card">
-          <div class="card-heading"><div><p class="eyebrow dark">BEFORE YOU GO</p><h2>预订清单</h2></div><span>自动保存</span></div>
-          <div class="checklist" id="checklist">
-            <label><input type="checkbox"><span>杭州—珀斯国际航班</span></label>
-            <label><input type="checkbox"><span>珀斯—霍巴特往返航班</span></label>
-            <label><input type="checkbox"><span>西澳南线租车与异地/里程条款</span></label>
-            <label><input type="checkbox"><span>西澳北线租车</span></label>
-            <label><input type="checkbox"><span>塔州租车与全险</span></label>
-            <label><input type="checkbox"><span>罗特尼斯岛船票与自行车/环岛巴士</span></label>
-            <label><input type="checkbox"><span>布鲁尼岛渡轮时刻与车辆安排</span></label>
-            <label><input type="checkbox"><span>塔斯曼岛巡游与亚瑟港门票</span></label>
-            <label><input type="checkbox"><span>国家公园通票与摇篮山接驳信息</span></label>
-            <label><input type="checkbox"><span>安装 CASA 认可的无人机安全地图，收藏 WA / 塔州公园规则</span></label>
-            <label><input type="checkbox"><span>无人机电池随身携带、保护触点，并核对航空公司数量与容量限制</span></label>
-            <label><input type="checkbox"><span>离线地图、驾照翻译件与旅行保险</span></label>
-          </div>
-          <div class="weather-note"><strong>季节提醒</strong><p>9月底至10月初昼夜温差大。塔州山区可能遇到低温、强风或降雪；每日出发前确认公路、渡轮和巡游状态。</p></div>
+        <aside class="stay-notes-card">
+          <div class="card-heading"><div><p class="eyebrow dark">ROOM FILTER</p><h2>订房核对</h2></div><span>每晚都确认</span></div>
+          <ul>
+            <li><strong>床型</strong><span>明确选择 2 Twin Beds / 2 Single Beds，不只写 Special Request。</span></li>
+            <li><strong>自驾</strong><span>停车位、限高、费用、夜间出入与次日出城方向。</span></li>
+            <li><strong>入住</strong><span>长途日确认 late check-in、钥匙盒与前台关闭时间。</span></li>
+            <li><strong>退改</strong><span>优先免费取消；记录最后取消日和预扣款时间。</span></li>
+            <li><strong>生活设施</strong><span>连续住两晚以上优先洗衣；偏远小镇确认暖气与早餐。</span></li>
+          </ul>
+          <div class="weather-note"><strong>季节提醒</strong><p>9月底至10月初昼夜温差大。塔州山区可能遇到低温、强风或降雪；长途驾驶尽量在天黑前结束。</p></div>
         </aside>
       </div>
+
+      <article class="checklist-card full-checklist">
+        <div class="card-heading checklist-heading">
+          <div><p class="eyebrow dark">BEFORE YOU GO</p><h2>完整准备清单</h2></div>
+          <div class="check-progress" aria-live="polite"><strong id="checklistProgress">0 / 0</strong><span>已完成 · 自动保存</span></div>
+        </div>
+        <div class="checklist-groups" id="checklist">
+          <details class="check-group" open>
+            <summary><span>01</span><strong>证件、订单与资金</strong><small>8 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="passport"><span>护照原件有效，并留有足够空白页；护照信息与全部机票一致</span></label>
+              <label><input type="checkbox" data-check-id="visa"><span>澳大利亚签证批准信下载到手机，并打印一份备用</span></label>
+              <label><input type="checkbox" data-check-id="licence"><span>中国驾照原件 + 有效英文翻译件 / 认可的国际驾照文件</span></label>
+              <label><input type="checkbox" data-check-id="offline-docs"><span>机票、住宿、租车、船票、巡游订单离线保存并共享给同行人</span></label>
+              <label><input type="checkbox" data-check-id="emergency-copy"><span>护照、签证、驾照、银行卡留云端备份及紧急联系人副本</span></label>
+              <label><input type="checkbox" data-check-id="cards"><span>至少两张可境外使用的 Visa / Mastercard，分开放置并确认境外支付</span></label>
+              <label><input type="checkbox" data-check-id="cash"><span>准备少量澳元现金，记录银行卡挂失电话与信用卡押金额度</span></label>
+              <label><input type="checkbox" data-check-id="insurance"><span>评估并购买覆盖租车自驾、医疗与行程取消的旅行保险</span></label>
+            </div>
+          </details>
+
+          <details class="check-group" open>
+            <summary><span>02</span><strong>航班与入境</strong><small>7 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="flight-baggage"><span>逐段核对托运行李、手提行李、液体与尺寸限制，特别是澳洲国内段</span></label>
+              <label><input type="checkbox" data-check-id="battery-policy"><span>向航空公司确认无人机 / 相机电池数量和 Wh 限制；备用锂电池全部随身</span></label>
+              <label><input type="checkbox" data-check-id="battery-terminals"><span>备用电池逐块装保护袋或绝缘触点，不放托运行李</span></label>
+              <label><input type="checkbox" data-check-id="biosecurity"><span>入境卡如实申报食物、药品、木制品和动植物制品；不确定就申报</span></label>
+              <label><input type="checkbox" data-check-id="clean-gear"><span>彻底清洁鞋底、三脚架、户外和涉水装备，不带泥土、种子或植物残留</span></label>
+              <label><input type="checkbox" data-check-id="medicine-letter"><span>处方药保留原包装、英文处方 / 医生说明，携带量控制在个人合理用量</span></label>
+              <label><input type="checkbox" data-check-id="checkin-alarm"><span>设置各航班值机提醒；国际段提前约 3 小时、国内段提前约 2 小时到达</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>03</span><strong>租车与长途驾驶</strong><small>9 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="rental-three"><span>确认西澳南线、北线、塔州三段租车的取还车时间与航站楼</span></label>
+              <label><input type="checkbox" data-check-id="rental-driver"><span>所有实际驾驶人加入合同，并携带各自驾照和翻译件</span></label>
+              <label><input type="checkbox" data-check-id="rental-cover"><span>确认免赔额、轮胎 / 玻璃、单车事故、道路救援和拖车范围</span></label>
+              <label><input type="checkbox" data-check-id="unsealed"><span>核对碎石路 / 未铺装路限制；Ansons Bay 等路段若不允许则改走铺装路线</span></label>
+              <label><input type="checkbox" data-check-id="rental-inspect"><span>取车时拍摄车身、玻璃、轮胎、油表和里程，确认备胎 / 补胎工具</span></label>
+              <label><input type="checkbox" data-check-id="fuel-rule"><span>长途日油量低于半箱就补；保存沿途加油站，偏远路段不赌下一站</span></label>
+              <label><input type="checkbox" data-check-id="car-kit"><span>车内常备每人至少 2L 水、零食、纸巾、垃圾袋、充电线和小手电</span></label>
+              <label><input type="checkbox" data-check-id="wildlife-driving"><span>避免黄昏和夜间赶路；见到袋鼠、袋熊或低能见度立即降速</span></label>
+              <label><input type="checkbox" data-check-id="roadside-number"><span>保存三家租车公司的道路救援电话、保单号和澳洲紧急电话 000</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>04</span><strong>必须预订与门票</strong><small>8 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="hotels"><span>18 晚住宿全部确认：床型、停车、取消期限和晚到入住方式</span></label>
+              <label><input type="checkbox" data-check-id="rottnest"><span>罗特尼斯岛往返船票 + 自行车或环岛巴士；提前 30 分钟到 Fremantle 码头</span></label>
+              <label><input type="checkbox" data-check-id="wa-pass"><span>比较并购买合适的 WA Holiday Park Pass；注意 Tree Top Walk 需另购票</span></label>
+              <label><input type="checkbox" data-check-id="tree-top"><span>确认 Valley of the Giants Tree Top Walk 当日开放与最后入场时间</span></label>
+              <label><input type="checkbox" data-check-id="tas-pass"><span>购买塔州 Holiday Vehicle Pass；租车未取到时登记 HIRE</span></label>
+              <label><input type="checkbox" data-check-id="cradle-shuttle"><span>出发前复核摇篮山接驳时间；到 Visitor Centre 办理接驳票</span></label>
+              <label><input type="checkbox" data-check-id="bruny-ferry"><span>布鲁尼岛车渡可预购票但不锁定班次；早点到 Kettering 排队</span></label>
+              <label><input type="checkbox" data-check-id="tasman-cruise"><span>塔斯曼岛巡游、亚瑟港门票及集合点 / 集合时间确认</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>05</span><strong>衣物与个人用品</strong><small>9 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="layers"><span>分层保暖：速干内层、抓绒 / 薄羽绒、可防风防水外壳</span></label>
+              <label><input type="checkbox" data-check-id="rainwear"><span>轻便雨衣或冲锋衣；塔州和南海岸不只依赖雨伞</span></label>
+              <label><input type="checkbox" data-check-id="shoes"><span>防滑步行鞋 + 备用轻便鞋，鞋底提前清洁</span></label>
+              <label><input type="checkbox" data-check-id="sun"><span>SPF50+ 防晒、太阳镜、遮阳帽与润唇膏</span></label>
+              <label><input type="checkbox" data-check-id="warm-accessories"><span>薄手套、保暖帽、厚袜；摇篮山和海上巡游随身携带</span></label>
+              <label><input type="checkbox" data-check-id="swim"><span>泳衣、速干毛巾、防水袋与可替换干衣</span></label>
+              <label><input type="checkbox" data-check-id="toiletries"><span>洗漱用品、隐形眼镜 / 备用眼镜、女性用品和小包装洗衣液</span></label>
+              <label><input type="checkbox" data-check-id="daypack"><span>轻便日包、折叠购物袋、保温水杯和可重复使用餐具</span></label>
+              <label><input type="checkbox" data-check-id="motion-sickness"><span>晕船药提前试用；罗特尼斯船、布鲁尼渡轮和塔斯曼巡游当天随身带</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>06</span><strong>药品与安全</strong><small>7 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="regular-meds"><span>常用处方药多备 2—3 天并分装在随身行李，保留原包装</span></label>
+              <label><input type="checkbox" data-check-id="first-aid"><span>创可贴、消毒用品、止痛退烧、肠胃药、抗过敏药和个人特殊药品</span></label>
+              <label><input type="checkbox" data-check-id="repellent"><span>驱蚊液 / 防虫喷雾；海岸、湿地与傍晚时段使用</span></label>
+              <label><input type="checkbox" data-check-id="weather-alerts"><span>收藏 Emergency WA、TasALERT、BOM 天气与 Tasmania Police 道路信息</span></label>
+              <label><input type="checkbox" data-check-id="cruise-clothes"><span>海上巡游准备防风防水外层，贵重物品放防水袋</span></label>
+              <label><input type="checkbox" data-check-id="share-location"><span>长途日开启位置共享，把当天路线和预计抵达时间发给同行人</span></label>
+              <label><input type="checkbox" data-check-id="rest-rule"><span>驾驶约每 2 小时休息并轮换；疲劳、强风或暴雨时主动删减景点</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>07</span><strong>通信、导航与充电</strong><small>8 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="esim"><span>开通澳洲 eSIM / SIM，确认郊区覆盖与热点共享</span></label>
+              <label><input type="checkbox" data-check-id="offline-maps"><span>下载 WA、塔州离线地图和每天路线，保存住宿与加油站坐标</span></label>
+              <label><input type="checkbox" data-check-id="phone-mount"><span>手机支架、车充、双口充电头及备用数据线</span></label>
+              <label><input type="checkbox" data-check-id="adapter"><span>澳大利亚 Type I 转换插头 + 多口充电器</span></label>
+              <label><input type="checkbox" data-check-id="power-bank"><span>充电宝按航空规则随身携带，不托运</span></label>
+              <label><input type="checkbox" data-check-id="camera-storage"><span>相机 / 运动相机、备用存储卡、读卡器与每天备份方案</span></label>
+              <label><input type="checkbox" data-check-id="offline-translation"><span>下载离线翻译与航司、租车、酒店 App，开启订单通知</span></label>
+              <label><input type="checkbox" data-check-id="timezones"><span>手机自动时区开启；注意珀斯、霍巴特和杭州时差及塔州夏令时</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>08</span><strong>无人机与影像</strong><small>8 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="drone-app"><span>安装 CASA 认可的安全地图，并在出发前缓存计划起飞点</span></label>
+              <label><input type="checkbox" data-check-id="drone-rules"><span>熟悉 120m、距人 30m、目视、白天、不越过人群等休闲飞行规则</span></label>
+              <label><input type="checkbox" data-check-id="park-rules"><span>收藏 WA DBCA 与 Tasmania PWS 规则；国家公园、保护区以现场规定为准</span></label>
+              <label><input type="checkbox" data-check-id="drone-no-go"><span>标记明确不飞：罗特尼斯岛、塔州国家公园 / 保护区、城市与机场周边</span></label>
+              <label><input type="checkbox" data-check-id="drone-kit"><span>机身、遥控器、桨叶、备用桨、充电器、读卡器、ND 镜和起降垫</span></label>
+              <label><input type="checkbox" data-check-id="firmware"><span>在家完成固件、遥控器、App 更新并试飞，不在偏远地点临时升级</span></label>
+              <label><input type="checkbox" data-check-id="drone-weather"><span>每次起飞前查风速、降雨、空域、现场标牌、人群、野生动物和紧急作业</span></label>
+              <label><input type="checkbox" data-check-id="drone-backup"><span>每天回酒店备份素材，电池冷却后再充电，损坏或鼓包电池停用</span></label>
+            </div>
+          </details>
+
+          <details class="check-group">
+            <summary><span>09</span><strong>每天出发前 5 分钟</strong><small>8 项</small></summary>
+            <div class="checklist">
+              <label><input type="checkbox" data-check-id="daily-weather"><span>查当天分段天气、风速、降雨、道路关闭和火险 / 紧急信息</span></label>
+              <label><input type="checkbox" data-check-id="daily-route"><span>确认导航目的地顺序、预计车程、天黑时间和最后可删景点</span></label>
+              <label><input type="checkbox" data-check-id="daily-fuel"><span>油量、胎压警示、车灯和挡风玻璃状态正常</span></label>
+              <label><input type="checkbox" data-check-id="daily-water"><span>水、零食、午餐、药品、防晒与保暖层已上车</span></label>
+              <label><input type="checkbox" data-check-id="daily-booking"><span>当天门票、餐厅、渡轮或巡游仍正常，集合地址已存地图</span></label>
+              <label><input type="checkbox" data-check-id="daily-checkout"><span>护照、钱包、充电器、冰箱、浴室、保险箱和房卡全部检查</span></label>
+              <label><input type="checkbox" data-check-id="daily-arrival"><span>将预计到店时间发给下一家住宿；晚到时提前拿到自助入住说明</span></label>
+              <label><input type="checkbox" data-check-id="daily-stop"><span>约定最晚停止游玩时间；到点就走，不用夜间赶路弥补延误</span></label>
+            </div>
+          </details>
+        </div>
+        <div class="official-links" aria-label="官方准备信息">
+          <a href="https://www.agriculture.gov.au/travelling/to-australia" target="_blank" rel="noopener">澳洲入境与生物安全 ↗</a>
+          <a href="https://exploreparks.dbca.wa.gov.au/park-passes" target="_blank" rel="noopener">WA 公园通票 ↗</a>
+          <a href="https://parks.tas.gov.au/explore-our-parks/know-before-you-go/park-passes-and-entry-fees" target="_blank" rel="noopener">塔州公园通票 ↗</a>
+          <a href="https://parks.tas.gov.au/explore-our-parks/cradle-mountain/cradle-mountain-shuttle-bus-information" target="_blank" rel="noopener">摇篮山接驳 ↗</a>
+          <a href="https://www.rottnestisland.com/visit/getting-here/by-ferry" target="_blank" rel="noopener">罗特尼斯岛船班 ↗</a>
+          <a href="https://www.sealink.com.au/bruny-island/ferry-information/ferry-timetable/" target="_blank" rel="noopener">布鲁尼岛渡轮 ↗</a>
+          <a href="https://www.casa.gov.au/knowyourdrone/drone-rules" target="_blank" rel="noopener">CASA 无人机规则 ↗</a>
+          <a href="https://www.casa.gov.au/drones/drone-rules/travelling-your-drone" target="_blank" rel="noopener">无人机电池运输 ↗</a>
+        </div>
+      </article>
     </section>
   </main>
 

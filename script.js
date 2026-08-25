@@ -127,8 +127,8 @@ const itinerary = {
     },
     {
       day: 8, date: '09.30 · 周三', title: 'Busselton → Fremantle', stay: 'Fremantle · 港口 / 轮渡码头', pace: '轻松北返',
-      summary: '上午慢逛 Busselton Jetty，之后北返；Rockingham 只作天气好时的可选停留。抵达 Fremantle 后确认次日船班与报到位置，建议同一酒店连住两晚。',
-      stops: ['Busselton Jetty', 'Rockingham 可选', 'Fremantle', '轮渡码头踩点'], picture: images.busselton,
+      summary: '上午慢逛 Busselton Jetty，之后北返；Rockingham 只作天气好时的可选停留。抵达 Fremantle 后归还南线租车、确认次日船班与报到位置，建议同一酒店连住两晚。',
+      stops: ['Busselton Jetty', 'Rockingham 可选', 'Fremantle', '归还南线租车', '轮渡码头踩点'], picture: images.busselton,
       gallery: [scene('Busselton Jetty', images.busselton), scene('Rockingham', images.rockingham), scene('Fremantle Harbour', images.fremantleHarbour)]
     }
   ],
@@ -141,14 +141,14 @@ const itinerary = {
     },
     {
       day: 10, date: '10.02 · 周五', title: 'Fremantle → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
-      summary: '沿印度洋公路北上，在 Lancelin 沙丘短停，把下午重点留给 Pinnacles；经 Jurien Bay 后抵达 Geraldton。',
-      stops: ['Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles,
+      summary: '清晨领取北线租车后沿印度洋公路北上，在 Lancelin 沙丘短停，把下午重点留给 Pinnacles；经 Jurien Bay 后抵达 Geraldton。',
+      stops: ['领取北线租车', 'Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles,
       gallery: [scene('Lancelin', images.lancelin), scene('Pinnacles', images.pinnacles), scene('Jurien Bay', images.jurien), scene('Geraldton', images.geraldton)]
     },
     {
       day: 11, date: '10.03 · 周六', title: 'Hutt Lagoon → Perth Airport', stay: 'Perth Airport 周边', pace: '长途折返',
-      summary: '清晨从 Geraldton 北上 Hutt Lagoon，完成北线最北点后立即折返。当天车程长，每两小时停车休息，晚上直接住机场周边衔接次日航班。',
-      stops: ['Hutt Lagoon', 'Port Gregory', 'Geraldton 补给', 'Perth Airport'], picture: images.hutt,
+      summary: '清晨从 Geraldton 北上 Hutt Lagoon，完成北线最北点后立即折返。当天车程长，每两小时停车休息，抵达机场后归还北线租车并住机场周边。',
+      stops: ['Hutt Lagoon', 'Port Gregory', 'Geraldton 补给', 'Perth Airport', '归还北线租车'], picture: images.hutt,
       gallery: [scene('Hutt Lagoon', images.hutt)]
     }
   ],
@@ -357,6 +357,243 @@ const dailyGuides = {
   }
 };
 
+const routePlans = {
+  1: {
+    distance: '约 15 km', drive: '约 20—30 分钟', depart: '17:10 抵达后', booking: '机场酒店 · 晚到入住',
+    timeline: [
+      ['17:10', '航班抵达珀斯，办理入境、取行李与生物安全检查'],
+      ['18:30', '机场取车；拍摄车况、核对油量和道路救援电话'],
+      ['19:15', 'Belmont / Ascot 简单晚餐与超市补给'],
+      ['20:30', '入住，设好次日 05:15 闹钟并提前装车']
+    ],
+    guard: '若入境耗时较长，取消超市停留，直接入住；长途日所需水和早餐可在机场便利店补。'
+  },
+  2: {
+    distance: '约 760 km', drive: '约 8.5—9 小时纯驾驶', depart: '05:45 前', booking: 'Wave Rock 门票 / Esperance 晚入住',
+    timeline: [
+      ['05:30', '退房装车，确认满油、水和当天离线导航'],
+      ['07:10', 'York 早餐与 Town Hall 快速停留，08:00 前离开'],
+      ['11:15', '抵达 Hyden；Wave Rock + 午餐控制在 90 分钟内'],
+      ['12:45', '离开 Hyden，每约 2 小时停车轮换驾驶'],
+      ['17:15—18:00', '抵达 Esperance，先入住再晚餐']
+    ],
+    guard: '当天最重要的是在天黑前抵达。若 08:00 仍未离开 York，取消 York 游览；若 12:00 后才到 Hyden，Wave Rock 只停 45—60 分钟。'
+  },
+  3: {
+    distance: '约 45—60 km', drive: '约 1.5 小时', depart: '08:30', booking: '热门晚餐建议订位',
+    timeline: [
+      ['08:30', '镇上早餐后沿 Great Ocean Drive 顺时针出发'],
+      ['09:00', 'West Beach，先看风浪再决定下到沙滩'],
+      ['10:30', 'Blue Haven 与 Salmon Beach 观景'],
+      ['12:30', '回镇上或海边午餐，下午保留弹性'],
+      ['14:30', 'Twilight Beach；天气好再补 Eleven Mile 一带'],
+      ['17:15', 'Pink Lake Lookout / Rotary Lookout 后返回镇上']
+    ],
+    guard: '这是南线唯一的缓冲日。若前一天到得晚，上午先补觉；大风或下雨时删去下海和无人机，只走观景台。'
+  },
+  4: {
+    distance: '约 350—390 km', drive: '约 4.5—5 小时', depart: '06:45', booking: 'Cape Le Grand 通票 / Ravensthorpe 晚入住',
+    timeline: [
+      ['06:45', '满油出发前往 Cape Le Grand，车上准备早餐'],
+      ['07:45', 'Lucky Bay 晨景；不安排长徒步'],
+      ['09:30', 'Thistle Cove / Hellfire Bay 二选一'],
+      ['11:30', '离开国家公园，经 Esperance 快速补油和午餐'],
+      ['14:15', 'Eleven Mile Lagoon，控制 45—60 分钟'],
+      ['15:15', '向西出发，约 17:30 抵达 Ravensthorpe']
+    ],
+    guard: '15:30 仍未离开 Eleven Mile Lagoon 就直接上路；不为日落停留，以避免在野生动物活跃时段夜驾。'
+  },
+  5: {
+    distance: '约 300—355 km', drive: '约 3.5—4.5 小时', depart: '08:00', booking: 'Albany / Denmark 东侧住宿',
+    timeline: [
+      ['08:00', 'Ravensthorpe 加满油后出发'],
+      ['10:00', 'Jerramungup 加油、咖啡和短休一次完成'],
+      ['12:45', '抵达 Albany 午餐'],
+      ['14:15', 'Middleton Beach / Mount Clarence 二选一'],
+      ['16:30', '入住 Albany；若住 Denmark 东侧则继续向西']
+    ],
+    guard: '当天主要用于恢复体力。若住 Denmark 东侧，Albany 只保留午餐和一个观景点，确保日落前抵达住宿。'
+  },
+  6: {
+    distance: '约 410—450 km', drive: '约 5.5—6 小时', depart: '06:45', booking: 'Tree Top Walk · Augusta 晚入住',
+    timeline: [
+      ['06:45', '退房向 Denmark 出发，镇上快速早餐'],
+      ['08:15', 'Greens Pool + Elephant Rocks，共约 90 分钟'],
+      ['10:00', '向 Valley of the Giants 出发'],
+      ['11:30', 'Tree Top Walk 与 Ancient Empire，约 90 分钟'],
+      ['13:15', '车上 / Walpole 简单午餐，继续向 Pemberton'],
+      ['15:30', 'Pemberton 仅作加油和短休，随后直达 Augusta'],
+      ['18:00—18:45', '抵达 Augusta，使用提前确认的晚到入住']
+    ],
+    guard: '这天不要把 Pemberton 当正式景点。若 12:30 后才离开巨树谷，取消沿途森林停留并直接去 Augusta；Tree Top Walk 最后入场时间出发前再核对。'
+  },
+  7: {
+    distance: '约 260—300 km', drive: '约 4—4.5 小时', depart: '08:00', booking: '酒庄午餐如需用餐须预约',
+    timeline: [
+      ['08:00', 'Cape Leeuwin Lighthouse，先看开放与风况'],
+      ['10:00', 'Hamelin Bay；不追逐、不触碰魟鱼'],
+      ['11:30', 'Boranup Forest 短停 30—45 分钟'],
+      ['13:00', 'Margaret River 午餐 / 酒庄二选一'],
+      ['15:30', '若时间和天气允许，再去 Sugarloaf Rock'],
+      ['18:00', 'Busselton Jetty 附近入住并步行晚餐']
+    ],
+    guard: 'Sugarloaf Rock 是可删项；15:30 后仍在 Margaret River 就直接去 Busselton，避免绕行后再赶路。'
+  },
+  8: {
+    distance: '约 220—270 km', drive: '约 3—3.5 小时', depart: '09:00', booking: '南线还车 · 次日船票',
+    timeline: [
+      ['08:30', '退房后步行游览 Busselton Jetty'],
+      ['10:30', '开始北返'],
+      ['12:30', 'Rockingham 午餐；天气一般则不停'],
+      ['15:00', '抵达 Fremantle，先入住并卸下行李'],
+      ['15:45', '按订单在 Fremantle / Perth 还南线租车，再回酒店'],
+      ['17:00', '踩点次日轮渡码头，确认报到入口'],
+      ['18:00', 'Fremantle 散步与晚餐']
+    ],
+    guard: '次日船班优先级高于 Rockingham。船票确认页、停车场和登船二维码今晚全部离线保存。'
+  },
+  9: {
+    distance: '岛上约 20—30 km', drive: '0 小时（无自驾）', depart: '开船前 30—45 分钟报到', booking: '船票 + 自行车 / 巴士',
+    timeline: [
+      ['07:15', '从酒店步行 / 驾车到 Fremantle 码头报到'],
+      ['08:00 前后', '乘早班船，实际班次以订单为准'],
+      ['09:00', 'Thomson Bay 取车或换乘环岛巴士'],
+      ['10:00', 'The Basin 与西侧海湾'],
+      ['12:30', '岛上午餐，午后 Wadjemup Lighthouse'],
+      ['16:00 前后', '回到 Thomson Bay，预留还车和排队时间'],
+      ['傍晚', '返航 Fremantle，回原酒店']
+    ],
+    guard: 'Fremantle 出发航程约 25 分钟，船班受天气影响。岛上不飞无人机；骑行遇强风时立即改乘环岛巴士。'
+  },
+  10: {
+    distance: '约 470—500 km', drive: '约 5.5—6 小时', depart: '07:00', booking: '北线取车 · Pinnacles 通票',
+    timeline: [
+      ['06:15', '退房并按订单在 Fremantle / Perth 取北线租车'],
+      ['07:00', '验车、装车后满油出发，避开珀斯通勤高峰'],
+      ['09:15', 'Lancelin Dunes，停留约 45 分钟'],
+      ['11:15', 'Cervantes 午餐 / 龙虾工厂'],
+      ['12:45', 'Pinnacles Desert，环线与步行约 90 分钟'],
+      ['14:30', 'Jurien Bay 仅作咖啡和海边短停'],
+      ['17:30—18:00', '抵达 Geraldton Foreshore 入住']
+    ],
+    guard: '若 13:00 后才进入 Pinnacles，取消 Jurien Bay；若强风影响沙丘，Lancelin 只停观景点。'
+  },
+  11: {
+    distance: '约 620—660 km', drive: '约 7—7.5 小时', depart: '06:30', booking: '北线机场还车 · 酒店晚入住',
+    timeline: [
+      ['06:30', 'Geraldton 满油出发，车上早餐'],
+      ['07:45', 'Hutt Lagoon / Port Gregory，从合法公共位置观景'],
+      ['09:30', '开始向南折返，不再继续北上'],
+      ['11:00', 'Geraldton 补油、咖啡和午餐打包'],
+      ['14:00', 'Jurien / Cervantes 一带第二次补油和换司机'],
+      ['17:30—18:30', '机场附近加满油并归还北线租车'],
+      ['19:00', '入住 Perth Airport 酒店，整理次日飞行行李']
+    ],
+    guard: '这是全程疲劳风险最高的驾驶日之一。09:30 必须南返；若出现强风、疲劳或车辆警示，立即删航拍并增加休息。'
+  },
+  12: {
+    distance: '霍巴特市内约 20 km', drive: '约 30—45 分钟', depart: 'VA594 09:50', booking: '国内航班 + 塔州租车',
+    timeline: [
+      ['07:30', '机场酒店退房，搭酒店接驳 / 步行前往航站楼'],
+      ['08:00', 'PER 国内航站楼办理值机与托运'],
+      ['09:50', 'VA594 珀斯起飞'],
+      ['17:00', '抵达 Hobart，取车并拍摄车况'],
+      ['18:30', 'Hobart 入住；Battery Point 与 Salamanca 晚餐']
+    ],
+    guard: '珀斯与霍巴特有时差，手机开启自动时区。抵达后不安排惠灵顿山，给取车和超市补给留余量。'
+  },
+  13: {
+    distance: '约 480—510 km', drive: '约 6—6.5 小时', depart: '05:45', booking: '塔州公园通票 + 摇篮山接驳',
+    timeline: [
+      ['05:45', 'Hobart 满油出发，车上早餐'],
+      ['08:10', 'Deloraine 河畔短停 30 分钟'],
+      ['09:20', 'Sheffield 壁画小镇，停留约 45 分钟'],
+      ['11:15', 'Cradle Mountain Visitor Centre 停车、验票'],
+      ['11:45—14:00', '乘接驳到 Dove Lake，仅湖边观景、不徒步'],
+      ['14:15', '离开摇篮山前往 Stanley'],
+      ['17:00—17:45', '抵达 Stanley；天气好在 The Nut 一带看日落']
+    ],
+    guard: '接驳时刻会随季节和天气调整，出发前复核。14:30 必须离开摇篮山；若晚到，删除 Deloraine 或 Sheffield 停留。'
+  },
+  14: {
+    distance: '约 470—520 km', drive: '约 6—7 小时', depart: '07:30 游览 / 09:15 上路', booking: '确认租车允许计划道路',
+    timeline: [
+      ['07:30', 'Stanley 镇与海湾晨景；不安排 The Nut 长线'],
+      ['09:15', '离开 Stanley'],
+      ['10:20', 'Burnie 海滨短停 20—30 分钟'],
+      ['11:30', 'Devonport 早午餐 / 加油'],
+      ['13:15', 'Launceston Cataract Gorge，控制 60 分钟'],
+      ['14:30', '向东北出发；导航前确认 Ansons Bay 道路与天气'],
+      ['17:15', 'Ansons Bay 快速观景'],
+      ['18:30—19:00', 'St Helens 入住和晚餐']
+    ],
+    guard: '当天路程非常满。14:45 仍未离开 Launceston 就跳过 Ansons Bay，直接去 St Helens；任何未铺装路必须符合租车合同。'
+  },
+  15: {
+    distance: '约 390—430 km', drive: '约 5.5—6 小时', depart: '06:45', booking: 'Freycinet 公园通票',
+    timeline: [
+      ['06:45', 'St Helens 出发，先到 Binalong Bay / Bay of Fires'],
+      ['08:30', '离开火焰湾南下'],
+      ['09:45', 'Bicheno 海岸短停与咖啡'],
+      ['11:15', '抵达 Freycinet；午餐后前往 Wineglass Bay Lookout'],
+      ['12:15—14:00', '完成观景台往返，留意台阶与风雨'],
+      ['15:00', 'Swansea 短停'],
+      ['16:30', 'Ross 石桥与小镇，最晚 17:15 离开'],
+      ['18:30—19:00', '回到 Hobart，连续入住三晚']
+    ],
+    guard: '若 Wineglass Bay 停车紧张或天气恶劣，改走 Cape Tourville 短步道；Ross 是最后可删项。'
+  },
+  16: {
+    distance: '约 220—270 km', drive: '约 4—5 小时 + 车渡', depart: '06:45', booking: '车渡预购票 · 不锁定班次',
+    timeline: [
+      ['06:45', 'Hobart 出发，约 35 分钟到 Kettering'],
+      ['07:20', '进入车辆队列；搭乘下一班可用渡轮'],
+      ['08:15', 'Great Bay 生蚝与奶酪路线'],
+      ['10:30', 'The Neck 观景台'],
+      ['12:00', 'Adventure Bay 午餐与海岸'],
+      ['14:00', '时间充足再前往 Cape Bruny Lighthouse'],
+      ['16:30 前', '回到 Roberts Point 排队返航'],
+      ['18:30', '回 Hobart']
+    ],
+    guard: 'Bruny 采用排队制，预购票不代表固定班次。返程排队可能较久；若上午上岛延误，删 Cape Bruny，不压缩返程余量。'
+  },
+  17: {
+    distance: '约 210—230 km', drive: '约 3 小时', depart: '07:00', booking: 'Tasman Island Cruise + Port Arthur',
+    timeline: [
+      ['07:00', 'Hobart 出发，按订单集合点导航'],
+      ['08:45 前', '抵达巡游集合点并办理报到'],
+      ['上午', 'Tasman Island Cruise；穿防风防水外层'],
+      ['13:30', '午餐后进入 Port Arthur Historic Site'],
+      ['16:45', '最晚离开 Port Arthur'],
+      ['18:15', '返回 Hobart；途中视时间短停 Eaglehawk Neck']
+    ],
+    guard: '巡游可能因海况调整或取消，前晚与清晨都查通知；订单时间优先于本页示意，Eaglehawk Neck 是可删项。'
+  },
+  18: {
+    distance: '市内 + 机场约 25 km', drive: '约 35—45 分钟', depart: '12:00 前离开市区', booking: 'VA1327 / VA699',
+    timeline: [
+      ['08:30', '退房寄存行李，步行逛 Salamanca Market'],
+      ['10:45', '回酒店取行李并最后加油'],
+      ['11:45', '离开 Hobart 市区前往机场'],
+      ['12:30', '还车、车况复核与国内值机'],
+      ['15:15', 'VA1327 飞往 Melbourne'],
+      ['18:45', '转乘 VA699，20:10 抵达 Perth']
+    ],
+    guard: '不要为了市集拖延还车。两段航班经 Melbourne 衔接，行李是否直挂应在 Hobart 值机柜台再次确认。'
+  },
+  19: {
+    distance: '机场接驳', drive: '0 小时（无自驾）', depart: '航班前约 3 小时', booking: 'TR29 / TR188',
+    timeline: [
+      ['02:30', '起床退房，确认护照与全部随身电池'],
+      ['03:00 前', '抵达 PER T1 办理国际值机'],
+      ['05:35', 'TR29 珀斯飞新加坡'],
+      ['10:55', '抵达新加坡，按转机指引前往下一登机口'],
+      ['16:30', 'TR188 飞杭州，21:45 抵达']
+    ],
+    guard: '前一晚把托运行李封箱、液体分装和退税材料一次整理好；早班机不安排任何市区活动。'
+  }
+};
+
 const stays = [
   ['09.23', 'Perth Airport / Ascot', '机场东侧；晚到后尽快休息，停车方便'],
   ['09.24—09.25', 'Esperance', 'Town Centre；连续住2晚'],
@@ -392,6 +629,7 @@ function renderJourney(containerId, days) {
   function showDay(index) {
     const day = days[index];
     const guide = dailyGuides[day.day];
+    const plan = routePlans[day.day];
     const droneLinks = droneSources[guide.drone.scope];
     const dayScenes = day.gallery?.length ? day.gallery : [scene(day.picture.alt, day.picture)];
     const leadScene = dayScenes[0];
@@ -420,13 +658,26 @@ function renderJourney(containerId, days) {
           <div class="journey-kicker"><span>DAY ${String(day.day).padStart(2, '0')} · ${day.date}</span><span>${day.pace}</span></div>
           <h2>${day.title}</h2>
           <div class="day-mode-tabs" role="tablist" aria-label="DAY ${day.day} 查看内容">
-            <button class="active" id="day-${day.day}-route-tab" type="button" role="tab" aria-selected="true" aria-controls="day-${day.day}-route" data-day-mode="route">路线</button>
+            <button class="active" id="day-${day.day}-route-tab" type="button" role="tab" aria-selected="true" aria-controls="day-${day.day}-route" data-day-mode="route">路线 &amp; 时间</button>
             <button id="day-${day.day}-food-tab" type="button" role="tab" aria-selected="false" aria-controls="day-${day.day}-food" tabindex="-1" data-day-mode="food">沿路餐厅 <span>${guide.food.length}</span></button>
             <button id="day-${day.day}-drone-tab" type="button" role="tab" aria-selected="false" aria-controls="day-${day.day}-drone" tabindex="-1" data-day-mode="drone">无人机</button>
           </div>
           <section class="day-mode-panel active" id="day-${day.day}-route" role="tabpanel" aria-labelledby="day-${day.day}-route-tab" data-day-panel="route">
             <p class="journey-summary">${day.summary}</p>
-            <ol class="stop-route">${day.stops.map(stop => `<li>${stop}</li>`).join('')}</ol>
+            <dl class="route-facts">
+              <div><dt>里程</dt><dd>${plan.distance}</dd></div>
+              <div><dt>纯驾驶</dt><dd>${plan.drive}</dd></div>
+              <div><dt>建议出发</dt><dd>${plan.depart}</dd></div>
+              <div><dt>提前确认</dt><dd>${plan.booking}</dd></div>
+            </dl>
+            <div class="route-timeline" aria-label="DAY ${day.day} 建议时间轴">
+              ${plan.timeline.map(item => `<div><time>${item[0]}</time><p>${item[1]}</p></div>`).join('')}
+            </div>
+            <div class="route-guard"><strong>延误预案</strong><p>${plan.guard}</p></div>
+            <details class="route-stop-details">
+              <summary>查看完整途经点 <span>${day.stops.length}</span></summary>
+              <ol class="stop-route">${day.stops.map(stop => `<li>${stop}</li>`).join('')}</ol>
+            </details>
             <div class="journey-stay"><span><small>TONIGHT</small><strong>${day.stay}</strong></span><em>${day.pace}</em></div>
           </section>
           <section class="day-mode-panel" id="day-${day.day}-food" role="tabpanel" aria-labelledby="day-${day.day}-food-tab" data-day-panel="food" hidden>
@@ -520,15 +771,15 @@ document.getElementById('printItinerary').innerHTML = `
   ${allDays.map(day => `
     <article class="print-day">
       <div><strong>DAY ${String(day.day).padStart(2, '0')}</strong><span>${day.date}</span></div>
-      <section><h2>${day.title}</h2><p>${day.summary}</p><small>${day.stops.join(' → ')}</small><span class="print-guide"><small>餐饮：${dailyGuides[day.day].food.map(item => item.name).join(' / ')}</small><small>无人机：${dailyGuides[day.day].drone.label} · ${dailyGuides[day.day].drone.place}</small></span></section>
+      <section><h2>${day.title}</h2><p>${day.summary}</p><small>${day.stops.join(' → ')}</small><span class="print-guide"><small>路线：${routePlans[day.day].distance} · ${routePlans[day.day].drive} · 建议出发 ${routePlans[day.day].depart}</small><small>餐饮：${dailyGuides[day.day].food.map(item => item.name).join(' / ')}</small><small>无人机：${dailyGuides[day.day].drone.label} · ${dailyGuides[day.day].drone.place}</small></span></section>
       <aside><span>住宿</span><strong>${day.stay}</strong></aside>
     </article>`).join('')}`;
 document.getElementById('stayRows').innerHTML = stays.map(row =>
   `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`
 ).join('');
 
-const tabs = [...document.querySelectorAll('[role="tab"]')];
-const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+const tabs = [...document.querySelectorAll('.tab-bar [data-tab]')];
+const panels = [...document.querySelectorAll('.app-main > .tab-panel[data-panel]')];
 const validTabs = new Set(tabs.map(tab => tab.dataset.tab));
 let routeMaps = [];
 let routeMapObservers = [];
@@ -581,11 +832,25 @@ document.querySelectorAll('[data-tab-link]').forEach(link => {
 window.addEventListener('popstate', () => activateTab(location.hash.slice(1), false));
 document.getElementById('printButton')?.addEventListener('click', () => window.print());
 
-document.querySelectorAll('.checklist input').forEach((box, index) => {
-  const key = `aus-road-trip-check-${index}`;
-  box.checked = localStorage.getItem(key) === 'true';
-  box.addEventListener('change', () => localStorage.setItem(key, box.checked));
+const checklistBoxes = [...document.querySelectorAll('.checklist input')];
+const checklistProgress = document.getElementById('checklistProgress');
+
+function updateChecklistProgress() {
+  const completed = checklistBoxes.filter(box => box.checked).length;
+  if (checklistProgress) checklistProgress.textContent = `${completed} / ${checklistBoxes.length}`;
+}
+
+checklistBoxes.forEach((box, index) => {
+  const id = box.dataset.checkId || String(index);
+  const key = `aus-road-trip-check-v2-${id}`;
+  const saved = localStorage.getItem(key);
+  box.checked = saved === 'true';
+  box.addEventListener('change', () => {
+    localStorage.setItem(key, box.checked);
+    updateChecklistProgress();
+  });
 });
+updateChecklistProgress();
 
 function initRouteMaps() {
   if (!window.L || !document.getElementById('waRouteMap') || !document.getElementById('tasRouteMap')) return;
