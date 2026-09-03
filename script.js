@@ -854,6 +854,350 @@ checklistBoxes.forEach((box, index) => {
 });
 updateChecklistProgress();
 
+const documentVault = {
+  dbName: 'aus-road-trip-document-vault',
+  storeName: 'documents',
+  db: null,
+  files: [],
+  objectUrls: [],
+  renderToken: 0
+};
+
+const documentCategories = {
+  flight: '机票 / 登机',
+  stay: '住宿',
+  ferry: '船票 / 交通',
+  ticket: '门票 / 活动',
+  car: '租车',
+  dining: '餐厅',
+  other: '其他'
+};
+
+function openDocumentVault() {
+  return new Promise((resolve, reject) => {
+    if (!('indexedDB' in window)) {
+      reject(new Error('当前浏览器不支持本地文件存储'));
+      return;
+    }
+    const request = indexedDB.open(documentVault.dbName, 1);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(documentVault.storeName)) {
+        db.createObjectStore(documentVault.storeName, { keyPath: 'id' });
+      }
+    };
+    request.onsuccess = () => {
+      documentVault.db = request.result;
+      resolve(request.result);
+    };
+    request.onerror = () => reject(request.error || new Error('无法打开本地票据夹'));
+  });
+}
+
+function vaultGetAll() {
+  return new Promise((resolve, reject) => {
+    const request = documentVault.db.transaction(documentVault.storeName, 'readonly').objectStore(documentVault.storeName).getAll();
+    request.onsuccess = () => resolve(request.result || []);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+function vaultAdd(records) {
+  return new Promise((resolve, reject) => {
+    const transaction = documentVault.db.transaction(documentVault.storeName, 'readwrite');
+    const store = transaction.objectStore(documentVault.storeName);
+    records.forEach(record => store.add(record));
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error || new Error('本地保存失败'));
+    transaction.onabort = () => reject(transaction.error || new Error('本地保存已中止'));
+  });
+}
+
+function vaultDelete(id) {
+  return new Promise((resolve, reject) => {
+    const transaction = documentVault.db.transaction(documentVault.storeName, 'readwrite');
+    transaction.objectStore(documentVault.storeName).delete(id);
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error || new Error('删除失败'));
+  });
+}
+
+function formatFileSize(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 ** 2) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / 1024 ** 2).toFixed(1)} MB`;
+}
+
+function formatDocumentDate(value) {
+  if (!value) return '未标日期';
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat('zh-CN', { month: 'numeric', day: 'numeric', weekday: 'short' }).format(date);
+}
+
+function documentExtension(name) {
+  const pieces = name.split('.');
+  return pieces.length > 1 ? pieces.pop().slice(0, 5).toUpperCase() : 'FILE';
+}
+
+function isAllowedDocument(file) {
+  const allowedTypes = [
+    'application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif',
+    'application/vnd.apple.pkpass', 'text/plain', 'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ];
+  const allowedExtensions = /\.(pdf|jpe?g|png|webp|gif|heic|heif|pkpass|txt|docx?)$/i;
+  return allowedTypes.includes(file.type) || allowedExtensions.test(file.name);
+}
+
+function setDocumentMessage(text, success = false) {
+  const message = document.getElementById('documentFormMessage');
+  if (!message) return;
+  message.textContent = text;
+  message.classList.toggle('success', success);
+}
+
+function setSelectedDocuments(files) {
+  documentVault.files = [...files];
+  const label = document.getElementById('selectedFiles');
+  if (!label) return;
+  if (!documentVault.files.length) {
+    label.textContent = '尚未选择文件';
+    return;
+  }
+  const total = documentVault.files.reduce((sum, file) => sum + file.size, 0);
+  label.textContent = `${documentVault.files.length} 份 · ${formatFileSize(total)} · ${documentVault.files.map(file => file.name).join(' / ')}`;
+}
+
+async function updateDocumentStorageUsage() {
+  const usageLabel = document.getElementById('storageUsage');
+  const meter = document.getElementById('storageMeterBar');
+  if (!usageLabel || !meter || !navigator.storage?.estimate) {
+    if (usageLabel) usageLabel.textContent = '本机空间信息不可用';
+    return;
+  }
+  const { usage = 0, quota = 0 } = await navigator.storage.estimate();
+  const percent = quota ? Math.min(100, (usage / quota) * 100) : 0;
+  meter.style.width = `${percent}%`;
+  usageLabel.textContent = `本站已用 ${formatFileSize(usage)} · 浏览器可用约 ${formatFileSize(quota)}`;
+}
+
+function clearDocumentObjectUrls() {
+  documentVault.objectUrls.forEach(url => URL.revokeObjectURL(url));
+  documentVault.objectUrls = [];
+}
+
+async function renderDocumentLibrary() {
+  const list = document.getElementById('documentList');
+  const empty = document.getElementById('documentEmpty');
+  const count = document.getElementById('documentCount');
+  if (!list || !empty || !documentVault.db) return;
+
+  const renderToken = ++documentVault.renderToken;
+  const allDocuments = await vaultGetAll();
+  if (renderToken !== documentVault.renderToken) return;
+  clearDocumentObjectUrls();
+  allDocuments.sort((a, b) => (a.date || '9999-99-99').localeCompare(b.date || '9999-99-99') || a.createdAt - b.createdAt);
+  if (count) count.textContent = String(allDocuments.length);
+
+  const search = document.getElementById('documentSearch')?.value.trim().toLocaleLowerCase('zh-CN') || '';
+  const category = document.getElementById('documentFilter')?.value || 'all';
+  const visibleDocuments = allDocuments.filter(record => {
+    const matchesCategory = category === 'all' || record.category === category;
+    const haystack = `${record.title} ${record.fileName} ${record.reference || ''}`.toLocaleLowerCase('zh-CN');
+    return matchesCategory && (!search || haystack.includes(search));
+  });
+
+  list.replaceChildren();
+  empty.hidden = visibleDocuments.length > 0;
+  const emptyTitle = empty.querySelector('strong');
+  const emptyCopy = empty.querySelector('p');
+  if (allDocuments.length && !visibleDocuments.length) {
+    emptyTitle.textContent = '没有符合条件的凭证';
+    emptyCopy.textContent = '试试更换搜索词或选择“全部类别”。';
+  } else {
+    emptyTitle.textContent = '还没有保存凭证';
+    emptyCopy.textContent = '上传后会按旅行日期排列，需要时可直接打开或下载。';
+  }
+
+  visibleDocuments.forEach(record => {
+    const objectUrl = URL.createObjectURL(record.blob);
+    documentVault.objectUrls.push(objectUrl);
+
+    const item = document.createElement('article');
+    item.className = 'document-item';
+
+    const preview = document.createElement('div');
+    preview.className = `document-preview ${record.category || 'other'}${record.fileType === 'application/pdf' ? ' pdf' : ''}`;
+    if (record.fileType?.startsWith('image/') && record.fileType !== 'image/svg+xml') {
+      const image = document.createElement('img');
+      image.src = objectUrl;
+      image.alt = '';
+      image.loading = 'lazy';
+      preview.appendChild(image);
+    } else {
+      preview.textContent = documentExtension(record.fileName);
+    }
+
+    const copy = document.createElement('div');
+    copy.className = 'document-item-copy';
+
+    const meta = document.createElement('div');
+    meta.className = 'document-item-meta';
+    const categoryTag = document.createElement('span');
+    categoryTag.className = 'document-category';
+    categoryTag.textContent = documentCategories[record.category] || documentCategories.other;
+    const date = document.createElement('time');
+    date.dateTime = record.date || '';
+    date.textContent = formatDocumentDate(record.date);
+    meta.append(categoryTag, date);
+
+    const title = document.createElement('h3');
+    title.textContent = record.title;
+    title.title = record.title;
+    copy.append(meta, title);
+
+    if (record.reference) {
+      const reference = document.createElement('p');
+      reference.className = 'document-reference';
+      reference.textContent = record.reference;
+      reference.title = record.reference;
+      copy.appendChild(reference);
+    }
+
+    const fileMeta = document.createElement('p');
+    fileMeta.className = 'document-file-meta';
+    fileMeta.textContent = `${record.fileName} · ${formatFileSize(record.fileSize)}`;
+    fileMeta.title = record.fileName;
+    copy.appendChild(fileMeta);
+
+    const actions = document.createElement('div');
+    actions.className = 'document-actions';
+    const open = document.createElement('a');
+    open.href = objectUrl;
+    open.target = '_blank';
+    open.rel = 'noopener';
+    open.textContent = '打开';
+    const download = document.createElement('a');
+    download.href = objectUrl;
+    download.download = record.fileName;
+    download.textContent = '下载';
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.textContent = '删除';
+    remove.addEventListener('click', async () => {
+      if (!window.confirm(`从当前浏览器删除“${record.title}”？此操作无法撤销。`)) return;
+      try {
+        await vaultDelete(record.id);
+        await renderDocumentLibrary();
+        await updateDocumentStorageUsage();
+      } catch (error) {
+        setDocumentMessage(error.message || '删除失败');
+      }
+    });
+    actions.append(open, download, remove);
+    copy.appendChild(actions);
+    item.append(preview, copy);
+    list.appendChild(item);
+  });
+}
+
+async function initDocumentVault() {
+  const form = document.getElementById('documentForm');
+  const fileInput = document.getElementById('documentFiles');
+  const dropzone = document.getElementById('documentDropzone');
+  if (!form || !fileInput || !dropzone) return;
+
+  try {
+    await openDocumentVault();
+    await renderDocumentLibrary();
+    await updateDocumentStorageUsage();
+  } catch (error) {
+    setDocumentMessage(`${error.message}。请使用 Safari、Chrome 或 Edge 的普通浏览模式。`);
+    form.querySelectorAll('input, select, button').forEach(control => { control.disabled = true; });
+    return;
+  }
+
+  fileInput.addEventListener('change', () => setSelectedDocuments(fileInput.files));
+  ['dragenter', 'dragover'].forEach(type => dropzone.addEventListener(type, event => {
+    event.preventDefault();
+    dropzone.classList.add('dragging');
+  }));
+  ['dragleave', 'drop'].forEach(type => dropzone.addEventListener(type, event => {
+    event.preventDefault();
+    dropzone.classList.remove('dragging');
+  }));
+  dropzone.addEventListener('drop', event => setSelectedDocuments(event.dataTransfer.files));
+
+  document.getElementById('documentSearch')?.addEventListener('input', renderDocumentLibrary);
+  document.getElementById('documentFilter')?.addEventListener('change', renderDocumentLibrary);
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    setDocumentMessage('');
+    if (!documentVault.files.length) {
+      setDocumentMessage('请先选择至少一个文件。');
+      return;
+    }
+
+    const invalid = documentVault.files.find(file => !isAllowedDocument(file));
+    if (invalid) {
+      setDocumentMessage(`不支持“${invalid.name}”的文件格式。`);
+      return;
+    }
+    const tooLarge = documentVault.files.find(file => file.size > 25 * 1024 ** 2);
+    if (tooLarge) {
+      setDocumentMessage(`“${tooLarge.name}”超过 25 MB，请先压缩或拆分。`);
+      return;
+    }
+    const batchSize = documentVault.files.reduce((sum, file) => sum + file.size, 0);
+    if (batchSize > 100 * 1024 ** 2) {
+      setDocumentMessage('本次文件总计超过 100 MB，请分批保存。');
+      return;
+    }
+
+    const submit = document.getElementById('documentSubmit');
+    submit.disabled = true;
+    submit.textContent = '正在保存…';
+    const formData = new FormData(form);
+    const customTitle = String(formData.get('title') || '').trim();
+    const date = String(formData.get('date') || '');
+    const category = String(formData.get('category') || 'other');
+    const reference = String(formData.get('reference') || '').trim();
+    const now = Date.now();
+    const records = documentVault.files.map((file, index) => ({
+      id: crypto.randomUUID ? crypto.randomUUID() : `${now}-${index}-${Math.random().toString(36).slice(2)}`,
+      title: customTitle ? (documentVault.files.length > 1 ? `${customTitle} · ${index + 1}` : customTitle) : file.name.replace(/\.[^.]+$/, ''),
+      date,
+      category,
+      reference,
+      fileName: file.name,
+      fileType: file.type || 'application/octet-stream',
+      fileSize: file.size,
+      blob: file.slice(0, file.size, file.type || 'application/octet-stream'),
+      createdAt: now + index
+    }));
+
+    try {
+      await vaultAdd(records);
+      if (navigator.storage?.persist) navigator.storage.persist().catch(() => {});
+      form.reset();
+      setSelectedDocuments([]);
+      setDocumentMessage(`已安全保存 ${records.length} 份凭证到当前浏览器。`, true);
+      await renderDocumentLibrary();
+      await updateDocumentStorageUsage();
+    } catch (error) {
+      setDocumentMessage(`${error.message || '保存失败'}。可能是本机空间不足。`);
+    } finally {
+      submit.disabled = false;
+      submit.textContent = '保存到本机票据夹';
+    }
+  });
+}
+
+initDocumentVault();
+window.addEventListener('beforeunload', clearDocumentObjectUrls);
+
 function initRouteMaps() {
   if (!window.L || !document.getElementById('waRouteMap') || !document.getElementById('tasRouteMap')) return;
 
