@@ -124,23 +124,23 @@ const itinerary = {
       summary: '从 Cape Leeuwin 开始，依次串联 Hamelin Bay、Boranup Forest 与 Margaret River；时间充足再去 Sugarloaf Rock，晚上住 Busselton Jetty 周边。',
       stops: ['Cape Leeuwin', 'Hamelin Bay', 'Boranup Forest', 'Margaret River', 'Sugarloaf Rock 可选', 'Busselton'], picture: images.leeuwin,
       gallery: [scene('Cape Leeuwin', images.leeuwin), scene('Hamelin Bay', images.hamelin), scene('Boranup Forest', images.boranup), scene('Margaret River', images.margaretVineyard), scene('Sugarloaf Rock', images.sugarloaf)]
-    },
-    {
-      day: 8, date: '09.30 · 周三', title: 'Busselton → Fremantle', stay: 'Fremantle · 港口 / 轮渡码头', pace: '轻松北返',
-      summary: '上午慢逛 Busselton Jetty，之后北返；Rockingham 只作天气好时的可选停留。抵达 Fremantle 后归还南线租车、确认次日船班与报到位置，建议同一酒店连住两晚。',
-      stops: ['Busselton Jetty', 'Rockingham 可选', 'Fremantle', '归还南线租车', '轮渡码头踩点'], picture: images.busselton,
-      gallery: [scene('Busselton Jetty', images.busselton), scene('Rockingham', images.rockingham), scene('Fremantle Harbour', images.fremantleHarbour)]
     }
   ],
   north: [
     {
-      day: 9, date: '10.01 · 周四', title: '罗特尼斯岛一日', stay: 'Fremantle · 原住宿续住', pace: '离岛日',
-      summary: '从 Fremantle 乘早班船上岛，选择自行车或环岛巴士看海湾和 Quokka。傍晚返航后回原酒店，不搬行李，次日再开车北上。',
-      stops: ['Fremantle Ferry', 'The Basin', 'Wadjemup Lighthouse', 'Quokka'], picture: images.quokka,
+      day: 8, date: '09.30 · 周三', title: 'Busselton → 罗特尼斯岛', stay: 'Rottnest Island · Thomson Bay', pace: '转场 + 岛宿',
+      summary: '早上简短游览 Busselton Jetty，随后直达 Fremantle。归还南线租车、托运行李后，搭乘 14:30 左右的船班上岛，傍晚在 Thomson Bay、The Basin 或 Pinky Beach 看日落。',
+      stops: ['Busselton Jetty', 'Fremantle 还车', '14:30 左右轮渡', 'Thomson Bay', 'The Basin / Pinky Beach 日落'], picture: images.busselton,
+      gallery: [scene('Busselton Jetty', images.busselton), scene('Fremantle Harbour', images.fremantleHarbour), scene('The Basin 金色时刻', images.basin), scene('Quokka', images.quokka)]
+    },
+    {
+      day: 9, date: '10.01 · 周四', title: '罗特尼斯岛 → Perth', stay: 'Perth · CBD / 北上取车点附近', pace: '环岛 + 返城',
+      summary: '早上在岛上取自行车或搭环岛巴士，把完整白天留给西侧海湾、Wadjemup Lighthouse 和 Quokka。下午回 Thomson Bay 取行李，搭乘 16:30 左右直达 Perth CBD 的船班。',
+      stops: ['The Basin', '西侧海湾', 'Wadjemup Lighthouse', 'Quokka', '16:30 左右轮渡', 'Perth CBD'], picture: images.quokka,
       gallery: [scene('The Basin', images.basin), scene('Wadjemup Lighthouse', images.wadjemup), scene('Quokka', images.quokka)]
     },
     {
-      day: 10, date: '10.02 · 周五', title: 'Fremantle → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
+      day: 10, date: '10.02 · 周五', title: 'Perth → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
       summary: '清晨领取北线租车后沿印度洋公路北上，在 Lancelin 沙丘短停，把下午重点留给 Pinnacles；经 Jurien Bay 后抵达 Geraldton。',
       stops: ['领取北线租车', 'Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles,
       gallery: [scene('Lancelin', images.lancelin), scene('Pinnacles', images.pinnacles), scene('Jurien Bay', images.jurien), scene('Geraldton', images.geraldton)]
@@ -271,15 +271,16 @@ const dailyGuides = {
   },
   8: {
     food: [
-      eat('早午餐 · Busselton', 'The Goose Beach Bar & Kitchen', '就在栈桥海滨，适合慢一点的早餐或早午餐。', 'The Goose Beach Bar and Kitchen Busselton WA'),
-      eat('晚餐 · Fremantle', 'Bread in Common', '仓库空间与炭火分享菜，适合作为南线收尾餐。', 'Bread in Common Fremantle WA')
+      eat('早餐 · Busselton', 'The Goose Beach Bar & Kitchen', '栈桥海滨的快速早餐；今天要赶船，不安排长时间早午餐。', 'The Goose Beach Bar and Kitchen Busselton WA'),
+      eat('晚餐 · Rottnest', 'Lontara', '东南亚岛屿风味与西澳食材，适合住岛当晚慢慢吃；周三晚餐营业，建议预订。', 'Lontara Rottnest Island')
     ],
-    drone: { level: 'avoid', label: '不建议起飞', place: 'Busselton / Rockingham / Fremantle', shot: '栈桥、港口、热门海滩与城区人员密集，附近亦有机场及直升机活动；这天以地面拍摄为主。', scope: 'wa' }
+    drone: { level: 'avoid', label: '明确不飞', place: 'Fremantle / Wadjemup', shot: '港口和码头人流密集，抵达罗特尼斯岛后也不允许游客休闲无人机飞行；今天全程不起飞。', scope: 'rottnest' }
   },
   9: {
     food: [
-      eat('午餐 · Thomson Bay', 'Isola Bar e Cibo', '海湾边意式海鲜，适合坐下来吃一顿，建议预订。', 'Isola Bar e Cibo Rottnest Island'),
-      eat('备选 · Samphire', 'Lontara', '东南亚风味与岛上食材，靠近主要码头区。', 'Lontara Rottnest Island')
+      eat('早餐 · Settlement', 'Rottnest Bakery', '面包、咖啡和便携食物，可一次买好环岛途中的补给。', 'Rottnest Bakery'),
+      eat('午餐 · Thomson Bay', 'Isola Bar e Cibo', '海湾边意式海鲜，建议订 12:30—13:00，吃完仍有充足时间取行李和登船。', 'Isola Bar e Cibo Rottnest Island'),
+      eat('晚餐 · Perth', 'Hearth Restaurant', '到达 Barrack Street Jetty 后就近吃晚餐；如果船班延误，则改为 Elizabeth Quay 附近轻食。', 'Hearth Restaurant Perth WA')
     ],
     drone: { level: 'avoid', label: '明确禁飞', place: 'Wadjemup / Rottnest Island', shot: '岛上目前不允许游客进行休闲无人机飞行。不要携机起飞，改用自行车沿线和观景台拍摄。', scope: 'rottnest' }
   },
@@ -440,35 +441,35 @@ const routePlans = {
     guard: 'Sugarloaf Rock 是可删项；15:30 后仍在 Margaret River 就直接去 Busselton，避免绕行后再赶路。'
   },
   8: {
-    distance: '约 220—270 km', drive: '约 3—3.5 小时', depart: '09:00', booking: '南线还车 · 次日船票',
+    distance: '约 225 km + 船程', drive: '约 2.5—3 小时', depart: '09:15', booking: '南线还车 + 上岛船票 + 岛上住宿',
     timeline: [
-      ['08:30', '退房后步行游览 Busselton Jetty'],
-      ['10:30', '开始北返'],
-      ['12:30', 'Rockingham 午餐；天气一般则不停'],
-      ['15:00', '抵达 Fremantle，先入住并卸下行李'],
-      ['15:45', '按订单在 Fremantle / Perth 还南线租车，再回酒店'],
-      ['17:00', '踩点次日轮渡码头，确认报到入口'],
-      ['18:00', 'Fremantle 散步与晚餐']
+      ['07:45', '退房后游览 Busselton Jetty，早餐从简'],
+      ['09:15', '准时北上，不再绕行 Rockingham'],
+      ['11:45—12:15', '抵达 Fremantle，加满油并归还南线租车'],
+      ['13:15', '到 O\'Connor Landing / Victoria Quay，托运行李、领登船牌'],
+      ['14:30', '目标船班离开 Fremantle，约 30 分钟上岛'],
+      ['15:15', 'Thomson Bay 取行李并办理入住'],
+      ['16:00—日落', 'Settlement、The Basin / Pinky Beach 与 Quokka，晚上岛上用餐']
     ],
-    guard: '次日船班优先级高于 Rockingham。船票确认页、停车场和登船二维码今晚全部离线保存。'
+    guard: '必须先确认租车订单允许在 Fremantle 还车。若还车点不便或路上延误，改搭 15:30 / 16:30 左右船班；当天不安排 Rockingham。'
   },
   9: {
-    distance: '岛上约 20—30 km', drive: '0 小时（无自驾）', depart: '开船前 30—45 分钟报到', booking: '船票 + 自行车 / 巴士',
+    distance: '岛上约 20—30 km', drive: '0 小时（无自驾）', depart: '早上环岛', booking: '回 Perth CBD 船票 + 自行车 / 巴士',
     timeline: [
-      ['07:15', '从酒店步行 / 驾车到 Fremantle 码头报到'],
-      ['08:00 前后', '乘早班船，实际班次以订单为准'],
-      ['09:00', 'Thomson Bay 取车或换乘环岛巴士'],
-      ['10:00', 'The Basin 与西侧海湾'],
-      ['12:30', '岛上午餐，午后 Wadjemup Lighthouse'],
-      ['16:00 前后', '回到 Thomson Bay，预留还车和排队时间'],
-      ['傍晚', '返航 Fremantle，回原酒店']
+      ['07:30', '早餐后取自行车，或到 Settlement 换乘环岛巴士'],
+      ['08:00—12:00', '西侧海湾、Wadjemup Lighthouse 与沿途观景点'],
+      ['12:30', '回 Thomson Bay / Settlement 午餐'],
+      ['14:00', 'Quokka 与聚落区慢逛，回住宿取行李'],
+      ['15:45', '到码头报到，托运行李并归还租借设备'],
+      ['16:30', '搭 SeaLink 直达 Perth CBD 的船班，实际以订单为准'],
+      ['18:00 左右', '抵达 Barrack Street Jetty，前往 Perth 住宿']
     ],
-    guard: 'Fremantle 出发航程约 25 分钟，船班受天气影响。岛上不飞无人机；骑行遇强风时立即改乘环岛巴士。'
+    guard: '岛上不飞无人机；骑行遇强风时立即改乘环岛巴士。返程要选择目的地为 Perth CBD / Barrack Street 的船票，不要误订成 Fremantle。'
   },
   10: {
     distance: '约 470—500 km', drive: '约 5.5—6 小时', depart: '07:00', booking: '北线取车 · Pinnacles 通票',
     timeline: [
-      ['06:15', '退房并按订单在 Fremantle / Perth 取北线租车'],
+      ['06:15', '退房并按订单在 Perth 取北线租车'],
       ['07:00', '验车、装车后满油出发，避开珀斯通勤高峰'],
       ['09:15', 'Lancelin Dunes，停留约 45 分钟'],
       ['11:15', 'Cervantes 午餐 / 龙虾工厂'],
@@ -601,7 +602,8 @@ const stays = [
   ['09.27', 'Albany / Denmark 东侧', 'Albany 选择更多；若住 Denmark 东侧可缩短次日路程'],
   ['09.28', 'Augusta', '镇中心 / 河口；确认支持较晚入住'],
   ['09.29', 'Busselton', 'Jetty 附近；步行吃饭与看栈桥'],
-  ['09.30—10.01', 'Fremantle', '港口 / 轮渡码头；同一酒店连住2晚，确认停车政策'],
+  ['09.30', 'Rottnest Island', 'Thomson Bay / Settlement；确认行李托运、码头接送和退房后寄存'],
+  ['10.01', 'Perth', 'CBD / Barrack Street Jetty 或次日取车点附近'],
   ['10.02', 'Geraldton', 'Foreshore / CBD；晚餐与第二天加油方便'],
   ['10.03', 'Perth Airport', '粉红湖折返后直接住机场区域'],
   ['10.04', 'Hobart', 'CBD / Battery Point；取车后入住'],
@@ -900,17 +902,17 @@ function initRouteMaps() {
     [-32.2768, 115.729], fremantle
   ];
   const waNorthRoute = [
-    fremantle, perth, [-31.022, 115.333], [-30.604, 115.159], [-30.305, 115.038],
+    perth, [-31.022, 115.333], [-30.604, 115.159], [-30.305, 115.038],
     [-28.7774, 114.614], [-28.158, 114.242], [-28.7774, 114.614], [-30.305, 115.038],
     perthAirport
   ];
-  const waIslandRoute = [fremantle, rottnest, fremantle];
+  const waIslandRoute = [fremantle, rottnest, perth];
   const waMap = createMap('waRouteMap');
   L.polyline(waSouthRoute, { color: '#d47745', weight: 4, opacity: .92 }).addTo(waMap);
   L.polyline(waNorthRoute, { color: '#b58a32', weight: 4, opacity: .9 }).addTo(waMap);
   L.polyline(waIslandRoute, { color: '#496c93', weight: 3, opacity: .9, dashArray: '6 7' }).addTo(waMap);
   addPlaces(waMap, [
-    ['珀斯机场', perthAirport, 'right'], ['Fremantle', fremantle, 'left'],
+    ['珀斯机场', perthAirport, 'right'], ['Perth', perth, 'left'], ['Fremantle', fremantle, 'left'],
     ['Geraldton', [-28.7774, 114.614], 'right'], ['粉红湖', [-28.158, 114.242], 'right'],
     ['Esperance', [-33.8608, 121.8896], 'left'], ['Albany', [-35.0275, 117.884], 'bottom'],
     ['Ravensthorpe', ravensthorpe, 'top'], ['Augusta', augusta, 'left'],
