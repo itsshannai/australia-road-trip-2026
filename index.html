@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://upload.wikimedia.org">
   <link rel="preconnect" href="https://tile.openstreetmap.org">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="styles.css?v=20260904-documents">
+  <link rel="stylesheet" href="styles.css?v=20260906-bookings">
 </head>
 <body>
   <header class="app-header">
@@ -33,7 +33,6 @@
       <button class="tab-button" id="tab-north" type="button" role="tab" aria-selected="false" aria-controls="panel-north" data-tab="north">老鼠岛 &amp; 北线</button>
       <button class="tab-button" id="tab-tas" type="button" role="tab" aria-selected="false" aria-controls="panel-tas" data-tab="tas">塔斯马尼亚</button>
       <button class="tab-button" id="tab-stays" type="button" role="tab" aria-selected="false" aria-controls="panel-stays" data-tab="stays">住宿 &amp; 准备</button>
-      <button class="tab-button" id="tab-documents" type="button" role="tab" aria-selected="false" aria-controls="panel-documents" data-tab="documents">票据夹</button>
     </nav>
   </header>
 
@@ -92,9 +91,6 @@
           <button class="phase-link stay" type="button" data-tab-link="stays">
             <span>✓</span><div><small>BOOKING BOARD</small><strong>住宿与出发准备</strong><p>按晚查看住宿地，勾选预订与行前事项</p></div><b>清单</b>
           </button>
-          <button class="phase-link documents" type="button" data-tab-link="documents">
-            <span>↑</span><div><small>LOCAL DOCUMENT VAULT</small><strong>门票与预订单</strong><p>在本机整理机票、住宿、船票与活动凭证</p></div><b>私密</b>
-          </button>
         </aside>
       </div>
     </section>
@@ -110,7 +106,7 @@
     <section class="tab-panel" id="panel-north" role="tabpanel" aria-labelledby="tab-north" data-panel="north" hidden>
       <header class="panel-heading">
         <div><p class="eyebrow dark">STAGE 02 · 09.30—10.03</p><h1>老鼠岛（罗特尼斯岛）&amp; 北线</h1></div>
-        <p>9 月 30 日从 Busselton 到 Fremantle 还车后直接乘船上岛，当晚住罗特尼斯岛；10 月 1 日白天环岛，傍晚直接回 Perth CBD。次日再开始北线，到 Hutt Lagoon 后立即南返。岛上不安排无人机。</p>
+        <p>已确认 Rottnest Express：9/30 16:15 从 Fremantle B Shed 上岛，住 The Lodge Wadjemup；10/1 17:30 乘船返回 B Shed，再转车去 Perth。次日开始北线，到 Hutt Lagoon 后南返。岛上不安排无人机。</p>
       </header>
       <div class="journey-browser" id="northJourney"></div>
     </section>
@@ -126,21 +122,31 @@
     <section class="tab-panel" id="panel-stays" role="tabpanel" aria-labelledby="tab-stays" data-panel="stays" hidden>
       <header class="panel-heading">
         <div><p class="eyebrow dark">STAYS &amp; CHECKLIST</p><h1>住宿与准备</h1></div>
-        <p>住宿优先订可免费取消、带停车位的房型。下方清单覆盖证件、入境、租车、衣物、药品、通信、无人机与每日出发前复核，勾选状态会保存在当前设备。</p>
+        <p>根据提供的 10 份住宿确认单与 1 份往返船票整理。住宿覆盖 12 / 18 晚，其余日期标为“未收到单据”；确认单状态不代表实时订单查询。展开酒店可查看房型、地址、入住及退改信息。所有时间均为当地时间。</p>
       </header>
 
+      <section class="booking-review" aria-label="单据核对结果">
+        <div><p class="eyebrow dark">CONFIRMED / TO CHECK</p><h2>把已订与待补分清楚</h2></div>
+        <dl>
+          <div><dt>12 / 18 晚已收到单据</dt><dd>待补：9/26、9/27、9/28、9/29、10/1、10/9。未收到单据不等于尚未预订。</dd></div>
+          <div><dt>10/9 住宿需单独落实</dt><dd>Wrest Point 仅订 10/7–10/9，住两晚。巡游当天需要退房、寄存行李，晚上入住待确认住宿。</dd></div>
+          <div><dt>床型按房型核对</dt><dd>Wrest Point 明确为 Twin；Esperance 是大床 + 单人床。其余 King / Queen 房和未列床型的住宿需确认，TwinBeds 备注不等于双床已落实。</dd></div>
+          <div><dt>往返均为 Fremantle B Shed</dt><dd>9/30 16:15 上岛，10/1 17:30 返程。分别于 15:45 / 17:00 准备登船；返程需另接地面交通到 Perth。</dd></div>
+        </dl>
+      </section>
+
       <section class="prep-deadlines" aria-label="预订与复核时间表">
-        <article><small>现在完成</small><strong>锁定不可替代项目</strong><p>住宿、三段租车、罗特尼斯岛船票、塔斯曼巡游、亚瑟港门票。</p></article>
+        <article><small>现在完成</small><strong>补齐订单与床型</strong><p>补齐六晚住宿单据，确认双床、三段租车、塔斯曼巡游和亚瑟港门票；罗特尼斯往返船票已收到。</p></article>
         <article><small>出发前 2—4 周</small><strong>补齐通票与设备</strong><p>WA / 塔州公园通票、驾照翻译件、保险、eSIM、无人机电池运输确认。</p></article>
         <article><small>每段前 24—48 小时</small><strong>复核动态信息</strong><p>天气、道路、渡轮、巡游、航班、日落时间、餐厅营业和无人机临时限制。</p></article>
       </section>
 
       <div class="stays-layout">
         <article class="stay-card">
-          <div class="card-heading"><div><p class="eyebrow dark">18 NIGHTS</p><h2>逐晚住宿表</h2></div><span>建议区域</span></div>
+          <div class="card-heading"><div><p class="eyebrow dark">18 NIGHTS · 12 DOCUMENTED</p><h2>住宿与确认信息</h2></div><span>按入住日期 · 展开看详情</span></div>
           <div class="stay-table-wrap">
             <table class="stay-table">
-              <thead><tr><th>日期</th><th>住宿地</th><th>区域建议 / 备注</th></tr></thead>
+              <thead><tr><th>入住日期</th><th>酒店 / 计划住宿地</th><th>确认状态与详情</th></tr></thead>
               <tbody id="stayRows"></tbody>
             </table>
           </div>
@@ -210,8 +216,8 @@
           <details class="check-group">
             <summary><span>04</span><strong>必须预订与门票</strong><small>8 项</small></summary>
             <div class="checklist">
-              <label><input type="checkbox" data-check-id="hotels"><span>18 晚住宿全部确认：床型、停车、取消期限和晚到入住方式</span></label>
-              <label><input type="checkbox" data-check-id="rottnest"><span>罗特尼斯岛船票：9/30 Fremantle 上岛、10/1 回 Perth CBD；同时确认托运行李标签、自行车或环岛巴士</span></label>
+              <label><input type="checkbox" data-check-id="hotels"><span>补齐 9/26–29、10/1、10/9 六晚住宿单据，并确认各晚床型、停车、取消期限和晚到入住</span></label>
+              <label><input type="checkbox" data-check-id="rottnest-confirmed-b-shed"><span>Rottnest Express 已收到：9/30 16:15 B Shed 上岛、10/1 17:30 返回 B Shed；核对行李托运、岛上交通和返程去 Perth 的接驳</span></label>
               <label><input type="checkbox" data-check-id="wa-pass"><span>比较并购买合适的 WA Holiday Park Pass；注意 Tree Top Walk 需另购票</span></label>
               <label><input type="checkbox" data-check-id="tree-top"><span>确认 Valley of the Giants Tree Top Walk 当日开放与最后入场时间</span></label>
               <label><input type="checkbox" data-check-id="tas-pass"><span>购买塔州 Holiday Vehicle Pass；租车未取到时登记 HIRE</span></label>
@@ -304,87 +310,6 @@
       </article>
     </section>
 
-    <section class="tab-panel" id="panel-documents" role="tabpanel" aria-labelledby="tab-documents" data-panel="documents" hidden>
-      <header class="panel-heading document-heading">
-        <div><p class="eyebrow dark">LOCAL DOCUMENT VAULT</p><h1>票据夹</h1></div>
-        <p>把机票、住宿确认单、船票、租车和景点门票放在一起。文件只保存在当前设备的浏览器中，不会上传到 GitHub，也不会对外公开。</p>
-      </header>
-
-      <div class="document-layout">
-        <aside class="document-upload-card">
-          <div class="card-heading">
-            <div><p class="eyebrow dark">ADD DOCUMENT</p><h2>添加凭证</h2></div>
-            <span>支持 PDF、图片等</span>
-          </div>
-          <form id="documentForm" class="document-form">
-            <label class="field-label" for="documentTitle">名称</label>
-            <input id="documentTitle" name="title" type="text" maxlength="80" placeholder="例：罗特尼斯岛往返船票">
-
-            <div class="document-fields-row">
-              <label><span>使用日期</span><input id="documentDate" name="date" type="date" min="2026-09-22" max="2026-10-11"></label>
-              <label><span>类别</span>
-                <select id="documentCategory" name="category">
-                  <option value="flight">机票 / 登机</option>
-                  <option value="stay">住宿</option>
-                  <option value="ferry">船票 / 交通</option>
-                  <option value="ticket">门票 / 活动</option>
-                  <option value="car">租车</option>
-                  <option value="dining">餐厅</option>
-                  <option value="other">其他</option>
-                </select>
-              </label>
-            </div>
-
-            <label class="field-label" for="documentReference">订单号 / 备注 <small>可选</small></label>
-            <input id="documentReference" name="reference" type="text" maxlength="100" placeholder="例：Booking reference / 集合时间">
-
-            <label class="document-dropzone" id="documentDropzone" for="documentFiles">
-              <input id="documentFiles" name="files" type="file" multiple accept="application/pdf,image/*,.pkpass,.doc,.docx,.txt">
-              <span class="upload-mark" aria-hidden="true">↑</span>
-              <strong>选择文件或拖到这里</strong>
-              <small>可一次上传多份，单个文件建议不超过 25 MB</small>
-              <span class="selected-files" id="selectedFiles">尚未选择文件</span>
-            </label>
-
-            <button class="document-submit" id="documentSubmit" type="submit">保存到本机票据夹</button>
-          </form>
-          <p class="document-form-message" id="documentFormMessage" aria-live="polite"></p>
-          <div class="local-storage-note">
-            <strong>本机私密存储</strong>
-            <p>同一网址换手机、换浏览器或清除网站数据后，文件不会自动跟随。重要凭证请同时保留在手机“文件”或可靠云盘中。</p>
-            <div class="storage-meter" aria-hidden="true"><i id="storageMeterBar"></i></div>
-            <span id="storageUsage">正在读取本机占用空间…</span>
-          </div>
-        </aside>
-
-        <section class="document-library-card" aria-label="已保存凭证">
-          <div class="document-library-top">
-            <div><p class="eyebrow dark">MY BOOKINGS</p><h2>已保存凭证 <span id="documentCount">0</span></h2></div>
-            <div class="document-tools">
-              <label class="document-search"><span class="visually-hidden">搜索凭证</span><input id="documentSearch" type="search" placeholder="搜索名称、文件名或备注"></label>
-              <label><span class="visually-hidden">按类别筛选</span>
-                <select id="documentFilter">
-                  <option value="all">全部类别</option>
-                  <option value="flight">机票 / 登机</option>
-                  <option value="stay">住宿</option>
-                  <option value="ferry">船票 / 交通</option>
-                  <option value="ticket">门票 / 活动</option>
-                  <option value="car">租车</option>
-                  <option value="dining">餐厅</option>
-                  <option value="other">其他</option>
-                </select>
-              </label>
-            </div>
-          </div>
-          <div class="document-list" id="documentList"></div>
-          <div class="document-empty" id="documentEmpty">
-            <span aria-hidden="true">◇</span>
-            <strong>还没有保存凭证</strong>
-            <p>上传后会按旅行日期排列，需要时可直接打开或下载。</p>
-          </div>
-        </section>
-      </div>
-    </section>
   </main>
 
   <section class="print-itinerary shell" id="printItinerary" aria-label="完整行程打印版"></section>
@@ -399,6 +324,7 @@
 
   <noscript><p class="noscript">请启用 JavaScript 以查看 Tab 行程与路线地图。</p></noscript>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="script.js?v=20260904-documents"></script>
+  <script src="bookings.js?v=20260906-bookings"></script>
+  <script src="script.js?v=20260906-bookings"></script>
 </body>
 </html>

@@ -85,7 +85,7 @@ const itinerary = {
   south: [
     {
       day: 1, date: '09.23 · 周三', title: '杭州 → 珀斯', stay: 'Perth Airport / Ascot', pace: '抵达日',
-      summary: '抵达后只做取车、补给和入住。住宿选机场东侧，第二天可直接驶上 Great Eastern Highway。',
+      summary: '抵达后取车、补给，入住已订的 Ingot Hotel Perth（Great Eastern Highway）。酒店不在航站楼内，提前安排机场至酒店的交通。',
       stops: ['杭州出发', '珀斯机场', '取车', '附近补给'], picture: images.perthArrival,
       gallery: [scene('珀斯天际线', images.perthArrival), scene('Elizabeth Quay', images.elizabethQuay)]
     },
@@ -129,19 +129,19 @@ const itinerary = {
   north: [
     {
       day: 8, date: '09.30 · 周三', title: 'Busselton → 罗特尼斯岛', stay: 'Rottnest Island · Thomson Bay', pace: '转场 + 岛宿',
-      summary: '早上简短游览 Busselton Jetty，随后直达 Fremantle。归还南线租车、托运行李后，搭乘 14:30 左右的船班上岛，傍晚在 Thomson Bay、The Basin 或 Pinky Beach 看日落。',
-      stops: ['Busselton Jetty', 'Fremantle 还车', '14:30 左右轮渡', 'Thomson Bay', 'The Basin / Pinky Beach 日落'], picture: images.busselton,
+      summary: '早上游览 Busselton Jetty，随后前往 Fremantle，按租车合同落实还车。已订 Rottnest Express 16:15 从 B Shed 出发，15:45 前准备登船；上岛后入住 The Lodge Wadjemup，视抵达时间选择附近海湾看日落。',
+      stops: ['Busselton Jetty', '按合同还车', 'B Shed 15:45 准备登船', '16:15 Rottnest Express', 'The Lodge Wadjemup', '附近海湾日落'], picture: images.busselton,
       gallery: [scene('Busselton Jetty', images.busselton), scene('Fremantle Harbour', images.fremantleHarbour), scene('The Basin 金色时刻', images.basin), scene('Quokka', images.quokka)]
     },
     {
       day: 9, date: '10.01 · 周四', title: '罗特尼斯岛 → Perth', stay: 'Perth · CBD / 北上取车点附近', pace: '环岛 + 返城',
-      summary: '早上在岛上取自行车或搭环岛巴士，把完整白天留给西侧海湾、Wadjemup Lighthouse 和 Quokka。下午回 Thomson Bay 取行李，搭乘 16:30 左右直达 Perth CBD 的船班。',
-      stops: ['The Basin', '西侧海湾', 'Wadjemup Lighthouse', 'Quokka', '16:30 左右轮渡', 'Perth CBD'], picture: images.quokka,
+      summary: '在 The Lodge Wadjemup 早餐、退房并寄存行李后环岛。下午回聚落取行李，17:00 前准备登船；已订 17:30 Rottnest Express 返回 Fremantle B Shed，再另行转车前往 Perth。今晚住宿尚未收到确认单。',
+      stops: ['早餐与退房寄存', 'The Basin', 'Wadjemup Lighthouse', 'Quokka', '17:30 轮渡', 'Fremantle B Shed', '转车前往 Perth'], picture: images.quokka,
       gallery: [scene('The Basin', images.basin), scene('Wadjemup Lighthouse', images.wadjemup), scene('Quokka', images.quokka)]
     },
     {
       day: 10, date: '10.02 · 周五', title: 'Perth → Geraldton', stay: 'Geraldton · Foreshore', pace: '北上日',
-      summary: '清晨领取北线租车后沿印度洋公路北上，在 Lancelin 沙丘短停，把下午重点留给 Pinnacles；经 Jurien Bay 后抵达 Geraldton。',
+      summary: '清晨领取北线租车后沿印度洋公路北上，经 Lancelin、Pinnacles 与 Jurien Bay 到 Geraldton。已订 463 Marine Terrace 的 Family Holiday Unit，尽量 18:00 前办好入住；晚到须提前联系。',
       stops: ['领取北线租车', 'Lancelin', 'Pinnacles', 'Jurien Bay', 'Geraldton'], picture: images.pinnacles,
       gallery: [scene('Lancelin', images.lancelin), scene('Pinnacles', images.pinnacles), scene('Jurien Bay', images.jurien), scene('Geraldton', images.geraldton)]
     },
@@ -155,7 +155,7 @@ const itinerary = {
   tas: [
     {
       day: 12, date: '10.04 · 周日', title: '珀斯 → 霍巴特', stay: 'Hobart · CBD / Battery Point', pace: '飞行日',
-      summary: 'VA594 约 17:00 抵达霍巴特，取车入住后只安排 Battery Point 与 Salamanca Place 晚餐，不再塞入惠灵顿山。',
+      summary: 'VA594 约 17:00 抵达霍巴特，取车后入住 Sandy Bay 的 The Rivulet，再去 Battery Point 与 Salamanca Place 晚餐。次晨早出发，提前询问已含早餐能否打包。',
       stops: ['PER → HBA', '17:00 抵达', '霍巴特取车', 'Battery Point', 'Salamanca 晚餐'], picture: images.hobartWaterfront,
       gallery: [scene('Hobart Waterfront', images.hobartWaterfront), scene('Battery Point', images.batteryPoint), scene('Salamanca Place', images.salamancaPlace)]
     },
@@ -184,9 +184,9 @@ const itinerary = {
       gallery: [scene('The Neck', images.bruny), scene('Adventure Bay', images.adventureBay), scene('Cape Bruny Lighthouse', images.capeBruny)]
     },
     {
-      day: 17, date: '10.09 · 周五', title: '塔斯曼巡游 & 亚瑟港', stay: 'Hobart · 原住宿续住', pace: '提前预订',
-      summary: '早上前往 Tasman Peninsula 参加海上巡游，下午游览 Port Arthur Historic Site，傍晚返回霍巴特。',
-      stops: ['Tasman Island Cruise', 'Eaglehawk Neck', 'Port Arthur', 'Hobart'], picture: images.portArthur,
+      day: 17, date: '10.09 · 周五', title: '塔斯曼巡游 & 亚瑟港', stay: 'Hobart · 当晚住宿待补单据', pace: '提前预订',
+      summary: '早上从 Wrest Point 退房并落实行李寄存，再前往 Tasman Peninsula 参加计划中的巡游，下午游览 Port Arthur。傍晚返回霍巴特，入住当晚待确认的住宿；现有 Wrest Point 订单不含这一晚。巡游与景点门票尚未收到单据。',
+      stops: ['Wrest Point 退房 / 寄存', 'Tasman Island Cruise（待确认）', 'Port Arthur（待确认）', 'Hobart 待确认住宿'], picture: images.portArthur,
       gallery: [scene('Tasman Island', images.tasmanIsland), scene('Eaglehawk Neck', images.eaglehawk), scene('Tasman Arch', images.tasmanArch), scene('Port Arthur', images.portArthur)]
     },
     {
@@ -280,7 +280,7 @@ const dailyGuides = {
     food: [
       eat('早餐 · Settlement', 'Rottnest Bakery', '面包、咖啡和便携食物，可一次买好环岛途中的补给。', 'Rottnest Bakery'),
       eat('午餐 · Thomson Bay', 'Isola Bar e Cibo', '海湾边意式海鲜，建议订 12:30—13:00，吃完仍有充足时间取行李和登船。', 'Isola Bar e Cibo Rottnest Island'),
-      eat('晚餐 · Perth', 'Hearth Restaurant', '到达 Barrack Street Jetty 后就近吃晚餐；如果船班延误，则改为 Elizabeth Quay 附近轻食。', 'Hearth Restaurant Perth WA')
+      eat('晚餐 · Perth 可选', 'Hearth Restaurant', '轮渡返回 Fremantle B Shed 后还需转车到 Perth，按实际抵达时间决定用餐；不把晚餐预约安排得过早。', 'Hearth Restaurant Perth WA')
     ],
     drone: { level: 'avoid', label: '明确禁飞', place: 'Wadjemup / Rottnest Island', shot: '岛上目前不允许游客进行休闲无人机飞行。不要携机起飞，改用自行车沿线和观景台拍摄。', scope: 'rottnest' }
   },
@@ -441,30 +441,32 @@ const routePlans = {
     guard: 'Sugarloaf Rock 是可删项；15:30 后仍在 Margaret River 就直接去 Busselton，避免绕行后再赶路。'
   },
   8: {
-    distance: '约 225 km + 船程', drive: '约 2.5—3 小时', depart: '09:15', booking: '南线还车 + 上岛船票 + 岛上住宿',
+    distance: '约 225 km + 船程', drive: '约 2.5—3 小时', depart: '09:15', booking: '已订 16:15 Rottnest Express · The Lodge Wadjemup',
     timeline: [
       ['07:45', '退房后游览 Busselton Jetty，早餐从简'],
       ['09:15', '准时北上，不再绕行 Rockingham'],
-      ['11:45—12:15', '抵达 Fremantle，加满油并归还南线租车'],
-      ['13:15', '到 O\'Connor Landing / Victoria Quay，托运行李、领登船牌'],
-      ['14:30', '目标船班离开 Fremantle，约 30 分钟上岛'],
-      ['15:15', 'Thomson Bay 取行李并办理入住'],
-      ['16:00—日落', 'Settlement、The Basin / Pinky Beach 与 Quokka，晚上岛上用餐']
+      ['12:00—14:00', '按合同完成加油还车，前往 Fremantle 午餐；异地还车交通另留余量'],
+      ['15:15 建议', '到 B Shed, Victoria Quay 办理行李与登船手续'],
+      ['15:45', '订单要求：提前 30 分钟准备登船'],
+      ['16:15 已订', 'Rottnest Express 从 B Shed Fremantle 直达 Rottnest Island'],
+      ['上岛后', '取行李，前往 The Lodge Wadjemup 办理入住'],
+      ['入住后—日落', '附近海湾或聚落区短逛，随后岛上用餐']
     ],
-    guard: '必须先确认租车订单允许在 Fremantle 还车。若还车点不便或路上延误，改搭 15:30 / 16:30 左右船班；当天不安排 Rockingham。'
+    guard: '已订船班不是随到随走：16:10 停止登船。确认租车实际还车点；若要到机场还车，提前安排回 B Shed 的交通。延误先联系 Rottnest Express，不默认可直接改乘其他班次。'
   },
   9: {
-    distance: '岛上约 20—30 km', drive: '0 小时（无自驾）', depart: '早上环岛', booking: '回 Perth CBD 船票 + 自行车 / 巴士',
+    distance: '岛上约 20—30 km + 返城交通', drive: '0 小时（地面接驳另计）', depart: '早上环岛', booking: '已订 17:30 回 B Shed · Perth 接驳待安排',
     timeline: [
-      ['07:30', '早餐后取自行车，或到 Settlement 换乘环岛巴士'],
+      ['07:30', 'The Lodge Wadjemup 早餐；按酒店要求退房寄存行李，再取自行车或乘巴士'],
       ['08:00—12:00', '西侧海湾、Wadjemup Lighthouse 与沿途观景点'],
       ['12:30', '回 Thomson Bay / Settlement 午餐'],
-      ['14:00', 'Quokka 与聚落区慢逛，回住宿取行李'],
-      ['15:45', '到码头报到，托运行李并归还租借设备'],
-      ['16:30', '搭 SeaLink 直达 Perth CBD 的船班，实际以订单为准'],
-      ['18:00 左右', '抵达 Barrack Street Jetty，前往 Perth 住宿']
+      ['14:00—16:00', 'Quokka 与聚落区慢逛，取行李并归还租借设备'],
+      ['16:30 建议', '前往岛上码头办理行李与登船手续'],
+      ['17:00', '订单要求：提前 30 分钟准备登船'],
+      ['17:30 已订', 'Rottnest Express 直达 B Shed Fremantle'],
+      ['返抵后', '另乘地面交通前往 Perth；酒店与次日取车点衔接待落实']
     ],
-    guard: '岛上不飞无人机；骑行遇强风时立即改乘环岛巴士。返程要选择目的地为 Perth CBD / Barrack Street 的船票，不要误订成 Fremantle。'
+    guard: '17:25 停止登船。返程目的地为 B Shed Fremantle，需另行前往 Perth；确认单未列抵达时间，晚餐与接驳预留弹性。岛上不飞无人机，强风时改乘巴士。'
   },
   10: {
     distance: '约 470—500 km', drive: '约 5.5—6 小时', depart: '07:00', booking: '北线取车 · Pinnacles 通票',
@@ -475,9 +477,9 @@ const routePlans = {
       ['11:15', 'Cervantes 午餐 / 龙虾工厂'],
       ['12:45', 'Pinnacles Desert，环线与步行约 90 分钟'],
       ['14:30', 'Jurien Bay 仅作咖啡和海边短停'],
-      ['17:30—18:00', '抵达 Geraldton Foreshore 入住']
+      ['17:30 目标', '先到 463 Marine Terrace 的 Family Holiday Unit 办理入住，18:00 前完成']
     ],
-    guard: '若 13:00 后才进入 Pinnacles，取消 Jurien Bay；若强风影响沙丘，Lancelin 只停观景点。'
+    guard: '住宿入住窗口为 14:00–18:00，若预计晚到提前联系安排钥匙。13:00 后才进入 Pinnacles 则取消 Jurien Bay，抵达后先入住再吃饭。'
   },
   11: {
     distance: '约 620—660 km', drive: '约 7—7.5 小时', depart: '06:30', booking: '北线机场还车 · 酒店晚入住',
@@ -488,31 +490,31 @@ const routePlans = {
       ['11:00', 'Geraldton 补油、咖啡和午餐打包'],
       ['14:00', 'Jurien / Cervantes 一带第二次补油和换司机'],
       ['17:30—18:30', '机场附近加满油并归还北线租车'],
-      ['19:00', '入住 Perth Airport 酒店，整理次日飞行行李']
+      ['19:00', '入住 Ingot Hotel Perth，落实次晨机场交通并整理飞行行李']
     ],
     guard: '这是全程疲劳风险最高的驾驶日之一。09:30 必须南返；若出现强风、疲劳或车辆警示，立即删航拍并增加休息。'
   },
   12: {
     distance: '霍巴特市内约 20 km', drive: '约 30—45 分钟', depart: 'VA594 09:50', booking: '国内航班 + 塔州租车',
     timeline: [
-      ['07:30', '机场酒店退房，搭酒店接驳 / 步行前往航站楼'],
+      ['07:15 建议', 'Ingot Hotel Perth 退房，乘提前安排的接驳 / 出租车前往国内航站楼'],
       ['08:00', 'PER 国内航站楼办理值机与托运'],
       ['09:50', 'VA594 珀斯起飞'],
       ['17:00', '抵达 Hobart，取车并拍摄车况'],
-      ['18:30', 'Hobart 入住；Battery Point 与 Salamanca 晚餐']
+      ['18:30', 'The Rivulet（391 Sandy Bay Road）入住；随后 Battery Point 与 Salamanca 晚餐']
     ],
     guard: '珀斯与霍巴特有时差，手机开启自动时区。抵达后不安排惠灵顿山，给取车和超市补给留余量。'
   },
   13: {
     distance: '约 480—510 km', drive: '约 6—6.5 小时', depart: '05:45', booking: '塔州公园通票 + 摇篮山接驳',
     timeline: [
-      ['05:45', 'Hobart 满油出发，车上早餐'],
+      ['05:45', 'The Rivulet 退房满油出发；酒店含早餐，提前询问打包或另备便携早餐'],
       ['08:10', 'Deloraine 河畔短停 30 分钟'],
       ['09:20', 'Sheffield 壁画小镇，停留约 45 分钟'],
       ['11:15', 'Cradle Mountain Visitor Centre 停车、验票'],
       ['11:45—14:00', '乘接驳到 Dove Lake，仅湖边观景、不徒步'],
       ['14:15', '离开摇篮山前往 Stanley'],
-      ['17:00—17:45', '抵达 Stanley；天气好在 The Nut 一带看日落']
+      ['17:00—17:45', '入住 Mariner Rose B&B；先按提前约定取钥匙，再看 The Nut 日落']
     ],
     guard: '接驳时刻会随季节和天气调整，出发前复核。14:30 必须离开摇篮山；若晚到，删除 Deloraine 或 Sheffield 停留。'
   },
@@ -540,7 +542,7 @@ const routePlans = {
       ['12:15—14:00', '完成观景台往返，留意台阶与风雨'],
       ['15:00', 'Swansea 短停'],
       ['16:30', 'Ross 石桥与小镇，最晚 17:15 离开'],
-      ['18:30—19:00', '回到 Hobart，连续入住三晚']
+      ['18:30—19:00', '入住 Wrest Point · Water Edge Twin，连住两晚，10/9 退房']
     ],
     guard: '若 Wineglass Bay 停车紧张或天气恶劣，改走 Cape Tourville 短步道；Ross 是最后可删项。'
   },
@@ -559,16 +561,17 @@ const routePlans = {
     guard: 'Bruny 采用排队制，预购票不代表固定班次。返程排队可能较久；若上午上岛延误，删 Cape Bruny，不压缩返程余量。'
   },
   17: {
-    distance: '约 210—230 km', drive: '约 3 小时', depart: '07:00', booking: 'Tasman Island Cruise + Port Arthur',
+    distance: '约 210—230 km', drive: '约 3 小时', depart: '07:00（退房后）', booking: '巡游、亚瑟港、今晚住宿均待补单据',
     timeline: [
-      ['07:00', 'Hobart 出发，按订单集合点导航'],
+      ['06:30 建议', 'Wrest Point 退房；提前落实行李寄存与当晚住宿'],
+      ['07:00', '从 Hobart 出发；巡游确认后按实际集合点导航'],
       ['08:45 前', '抵达巡游集合点并办理报到'],
       ['上午', 'Tasman Island Cruise；穿防风防水外层'],
       ['13:30', '午餐后进入 Port Arthur Historic Site'],
       ['16:45', '最晚离开 Port Arthur'],
-      ['18:15', '返回 Hobart；途中视时间短停 Eaglehawk Neck']
+      ['18:15 左右', '返回 Hobart，取寄存行李并入住当晚待确认的住宿']
     ],
-    guard: '巡游可能因海况调整或取消，前晚与清晨都查通知；订单时间优先于本页示意，Eaglehawk Neck 是可删项。'
+    guard: 'Wrest Point 订单到今天退房，不能按原房续住。巡游及亚瑟港单据尚未收到，时刻为规划值；待确认集合时间后再安排退房和行李寄存。'
   },
   18: {
     distance: '市内 + 机场约 25 km', drive: '约 35—45 分钟', depart: '12:00 前离开市区', booking: 'VA1327 / VA699',
@@ -578,14 +581,15 @@ const routePlans = {
       ['11:45', '离开 Hobart 市区前往机场'],
       ['12:30', '还车、车况复核与国内值机'],
       ['15:15', 'VA1327 飞往 Melbourne'],
-      ['18:45', '转乘 VA699，20:10 抵达 Perth']
+      ['18:45', '转乘 VA699，20:10 抵达 Perth'],
+      ['取行李后', '乘车前往已订 Ingot Hotel Perth，确认凌晨退房与机场交通']
     ],
     guard: '不要为了市集拖延还车。两段航班经 Melbourne 衔接，行李是否直挂应在 Hobart 值机柜台再次确认。'
   },
   19: {
     distance: '机场接驳', drive: '0 小时（无自驾）', depart: '航班前约 3 小时', booking: 'TR29 / TR188',
     timeline: [
-      ['02:30', '起床退房，确认护照与全部随身电池'],
+      ['02:30', 'Ingot Hotel Perth 起床退房，乘预先安排的车辆去机场'],
       ['03:00 前', '抵达 PER T1 办理国际值机'],
       ['05:35', 'TR29 珀斯飞新加坡'],
       ['10:55', '抵达新加坡，按转机指引前往下一登机口'],
@@ -595,23 +599,55 @@ const routePlans = {
   }
 };
 
-const stays = [
-  ['09.23', 'Perth Airport / Ascot', '机场东侧；晚到后尽快休息，停车方便'],
-  ['09.24—09.25', 'Esperance', 'Town Centre；连续住2晚'],
-  ['09.26', 'Ravensthorpe', 'Eleven Mile Lagoon 继续向西约2小时；住镇中心'],
-  ['09.27', 'Albany / Denmark 东侧', 'Albany 选择更多；若住 Denmark 东侧可缩短次日路程'],
-  ['09.28', 'Augusta', '镇中心 / 河口；确认支持较晚入住'],
-  ['09.29', 'Busselton', 'Jetty 附近；步行吃饭与看栈桥'],
-  ['09.30', 'Rottnest Island', 'Thomson Bay / Settlement；确认行李托运、码头接送和退房后寄存'],
-  ['10.01', 'Perth', 'CBD / Barrack Street Jetty 或次日取车点附近'],
-  ['10.02', 'Geraldton', 'Foreshore / CBD；晚餐与第二天加油方便'],
-  ['10.03', 'Perth Airport', '粉红湖折返后直接住机场区域'],
-  ['10.04', 'Hobart', 'CBD / Battery Point；取车后入住'],
-  ['10.05', 'Stanley', 'The Nut / 镇中心；尽量支持晚入住'],
-  ['10.06', 'St Helens', '镇中心；餐饮和补给最方便'],
-  ['10.07—10.09', 'Hobart', '连续住3晚，减少搬运行李'],
-  ['10.10', 'Perth Airport', '按国际航班时间决定是否需要']
-];
+const stayForDay = day => confirmedStays.find(stay => stay.days.includes(day));
+const shortDate = date => date.slice(5).replace('-', '/');
+
+// Apply confirmed lodging to daily summaries and the print itinerary together.
+Object.values(itinerary).flat().forEach(day => {
+  const stay = stayForDay(day.day);
+  if (stay) day.stay = stay.name;
+});
+
+function stayDetails(stay) {
+  return `<div class="stay-booking-details">
+    <dl>
+      <div><dt>入住 → 退房</dt><dd>${shortDate(stay.start)} → ${shortDate(stay.end)} · ${stay.days.length} 晚</dd></div>
+      <div><dt>房型</dt><dd>${stay.room}</dd></div>
+      <div><dt>床型核对</dt><dd class="${stay.bedReview ? 'booking-caution' : ''}">${stay.beds}</dd></div>
+      <div><dt>办理入住</dt><dd>${stay.checkin}</dd></div>
+      <div><dt>办理退房</dt><dd>${stay.checkout}</dd></div>
+      <div><dt>已列设施 / 餐点</dt><dd>${stay.included}</dd></div>
+      <div><dt>预订平台</dt><dd>${stay.platform}</dd></div>
+      ${stay.amount ? `<div><dt>单据金额</dt><dd>${stay.amount}</dd></div>` : ''}
+      <div><dt>取消条款</dt><dd>${stay.cancellation}</dd></div>
+    </dl>
+    <p class="booking-address"><a href="${maps(stay.address)}" target="_blank" rel="noopener">${stay.address} ↗</a></p>
+    <p class="booking-note">${stay.note}</p>
+  </div>`;
+}
+
+function ferryDetails(day) {
+  const ferry = confirmedFerries.find(item => item.day === day);
+  if (!ferry) return '';
+  return `<section class="confirmed-ferry" aria-label="已确认船票">
+    <p class="booking-status">已收到船票 · Rottnest Express</p>
+    <div class="ferry-departure"><time>${ferry.depart}</time><span>${shortDate(ferry.date)} ${ferry.direction}<strong>${ferry.from} → ${ferry.to}</strong></span></div>
+    <p>${ferry.ready} 前准备登船 · ${ferry.closes} 停止登船</p>
+    <p>确认单未列抵达时刻。${day === 9 ? '返程到 Fremantle B Shed，去 Perth 的地面交通另行安排。' : '出发码头为 B Shed；还车地点按租车合同安排。'}</p>
+    <details><summary>票务与费用</summary><p>已付清；往返发票合计 AUD 134.00（含岛屿入岛费）。支付小票总额为 AUD 135.91，差额项目单据未解释，实际支出以扣款记录为准。</p><p>自行车、巴士与行李托运安排尚需核对。退改条件未在此确认单中列出。</p></details>
+    <a href="${maps('Rottnest Express B Shed Fremantle')}" target="_blank" rel="noopener">Fremantle B Shed 地图 ↗</a>
+  </section>`;
+}
+
+function dailyBookingDetails(day) {
+  const stay = stayForDay(day.day);
+  return `${ferryDetails(day.day)}
+    ${stay ? `<section class="confirmed-stay"><p class="booking-status">已收到住宿确认单</p><h3>${stay.name}</h3>${stayDetails(stay)}</section>`
+      : day.day < 19 ? `<section class="pending-stay"><p class="booking-status pending">未收到住宿单据</p><h3>${day.stay}</h3><p>${day.day === 17 ? 'Wrest Point 于今天退房，现有订单不含今晚。请补齐 10/9 当晚住宿并落实行李寄存。' : '暂保留计划住宿地；尚无法核实酒店、房型和入住细节。'}</p></section>`
+      : '<p class="mode-intro">今天返程，不安排澳洲住宿。</p>'}
+    ${[4, 6, 10, 13, 15, 16, 17].includes(day.day) ? '<p class="booking-footnote">当天公园通票、活动门票或车渡的确认单尚未收到，路线中的安排仍为计划。</p>' : ''}
+    <p class="booking-footnote">摘录自提供的确认单，非实时订单状态；未列出的早餐、床型及入住时刻需向住宿核实。</p>`;
+}
 
 function renderJourney(containerId, days) {
   const container = document.getElementById(containerId);
@@ -661,11 +697,13 @@ function renderJourney(containerId, days) {
           <h2>${day.title}</h2>
           <div class="day-mode-tabs" role="tablist" aria-label="DAY ${day.day} 查看内容">
             <button class="active" id="day-${day.day}-route-tab" type="button" role="tab" aria-selected="true" aria-controls="day-${day.day}-route" data-day-mode="route">路线 &amp; 时间</button>
+            <button id="day-${day.day}-booking-tab" type="button" role="tab" aria-selected="false" aria-controls="day-${day.day}-booking" tabindex="-1" data-day-mode="booking">住宿与预订</button>
             <button id="day-${day.day}-food-tab" type="button" role="tab" aria-selected="false" aria-controls="day-${day.day}-food" tabindex="-1" data-day-mode="food">沿路餐厅 <span>${guide.food.length}</span></button>
             <button id="day-${day.day}-drone-tab" type="button" role="tab" aria-selected="false" aria-controls="day-${day.day}-drone" tabindex="-1" data-day-mode="drone">无人机</button>
           </div>
           <section class="day-mode-panel active" id="day-${day.day}-route" role="tabpanel" aria-labelledby="day-${day.day}-route-tab" data-day-panel="route">
             <p class="journey-summary">${day.summary}</p>
+            ${stayForDay(day.day) ? `<p class="day-booking-brief"><span>已收到住宿单据</span> ${day.stay} · ${stayForDay(day.day).room}</p>` : day.day < 19 ? '<p class="day-booking-brief pending"><span>待补住宿单据</span> 当前仍保留计划住宿地</p>' : ''}
             <dl class="route-facts">
               <div><dt>里程</dt><dd>${plan.distance}</dd></div>
               <div><dt>纯驾驶</dt><dd>${plan.drive}</dd></div>
@@ -681,6 +719,9 @@ function renderJourney(containerId, days) {
               <ol class="stop-route">${day.stops.map(stop => `<li>${stop}</li>`).join('')}</ol>
             </details>
             <div class="journey-stay"><span><small>TONIGHT</small><strong>${day.stay}</strong></span><em>${day.pace}</em></div>
+          </section>
+          <section class="day-mode-panel" id="day-${day.day}-booking" role="tabpanel" aria-labelledby="day-${day.day}-booking-tab" data-day-panel="booking" hidden>
+            ${dailyBookingDetails(day)}
           </section>
           <section class="day-mode-panel" id="day-${day.day}-food" role="tabpanel" aria-labelledby="day-${day.day}-food-tab" data-day-panel="food" hidden>
             <p class="mode-intro">按当天行驶顺序排列；点名称可直接打开地图。出发前再次确认营业时间并预订热门餐厅。</p>
@@ -776,9 +817,17 @@ document.getElementById('printItinerary').innerHTML = `
       <section><h2>${day.title}</h2><p>${day.summary}</p><small>${day.stops.join(' → ')}</small><span class="print-guide"><small>路线：${routePlans[day.day].distance} · ${routePlans[day.day].drive} · 建议出发 ${routePlans[day.day].depart}</small><small>餐饮：${dailyGuides[day.day].food.map(item => item.name).join(' / ')}</small><small>无人机：${dailyGuides[day.day].drone.label} · ${dailyGuides[day.day].drone.place}</small></span></section>
       <aside><span>住宿</span><strong>${day.stay}</strong></aside>
     </article>`).join('')}`;
-document.getElementById('stayRows').innerHTML = stays.map(row =>
-  `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td></tr>`
-).join('');
+document.getElementById('stayRows').innerHTML = allDays.filter(day => day.day < 19).filter(day => {
+  const stay = stayForDay(day.day);
+  return !stay || stay.days[0] === day.day;
+}).map(day => {
+  const stay = stayForDay(day.day);
+  const date = day.date.split(' · ')[0];
+  return `<tr><td>${date}${stay?.days.length > 1 ? `<small>共 ${stay.days.length} 晚</small>` : ''}</td>
+    <td>${day.stay}${stay ? `<small>${stay.room}</small>` : ''}</td>
+    <td>${stay ? `<span class="booking-status">已收到确认单</span><details class="stay-row-details"><summary>房型 / 地址 / 入住 / 退改</summary>${stayDetails(stay)}</details>`
+      : '<span class="booking-status pending">未收到单据</span><small>待补酒店和入住信息</small>'}</td></tr>`;
+}).join('');
 
 const tabs = [...document.querySelectorAll('.tab-bar [data-tab]')];
 const panels = [...document.querySelectorAll('.app-main > .tab-panel[data-panel]')];
@@ -787,7 +836,7 @@ let routeMaps = [];
 let routeMapObservers = [];
 
 function activateTab(name, updateHash = true) {
-  const target = validTabs.has(name) ? name : 'home';
+  const target = name === 'documents' ? 'stays' : validTabs.has(name) ? name : 'home';
   tabs.forEach(tab => {
     const active = tab.dataset.tab === target;
     tab.classList.toggle('active', active);
@@ -799,7 +848,8 @@ function activateTab(name, updateHash = true) {
     panel.hidden = !active;
     panel.classList.toggle('active', active);
   });
-  if (updateHash && location.hash !== `#${target}`) history.pushState(null, '', `#${target}`);
+  if (name === 'documents') history.replaceState(null, '', '#stays');
+  else if (updateHash && location.hash !== `#${target}`) history.pushState(null, '', `#${target}`);
   const activeTab = tabs.find(tab => tab.dataset.tab === target);
   activeTab?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -854,349 +904,6 @@ checklistBoxes.forEach((box, index) => {
 });
 updateChecklistProgress();
 
-const documentVault = {
-  dbName: 'aus-road-trip-document-vault',
-  storeName: 'documents',
-  db: null,
-  files: [],
-  objectUrls: [],
-  renderToken: 0
-};
-
-const documentCategories = {
-  flight: '机票 / 登机',
-  stay: '住宿',
-  ferry: '船票 / 交通',
-  ticket: '门票 / 活动',
-  car: '租车',
-  dining: '餐厅',
-  other: '其他'
-};
-
-function openDocumentVault() {
-  return new Promise((resolve, reject) => {
-    if (!('indexedDB' in window)) {
-      reject(new Error('当前浏览器不支持本地文件存储'));
-      return;
-    }
-    const request = indexedDB.open(documentVault.dbName, 1);
-    request.onupgradeneeded = () => {
-      const db = request.result;
-      if (!db.objectStoreNames.contains(documentVault.storeName)) {
-        db.createObjectStore(documentVault.storeName, { keyPath: 'id' });
-      }
-    };
-    request.onsuccess = () => {
-      documentVault.db = request.result;
-      resolve(request.result);
-    };
-    request.onerror = () => reject(request.error || new Error('无法打开本地票据夹'));
-  });
-}
-
-function vaultGetAll() {
-  return new Promise((resolve, reject) => {
-    const request = documentVault.db.transaction(documentVault.storeName, 'readonly').objectStore(documentVault.storeName).getAll();
-    request.onsuccess = () => resolve(request.result || []);
-    request.onerror = () => reject(request.error);
-  });
-}
-
-function vaultAdd(records) {
-  return new Promise((resolve, reject) => {
-    const transaction = documentVault.db.transaction(documentVault.storeName, 'readwrite');
-    const store = transaction.objectStore(documentVault.storeName);
-    records.forEach(record => store.add(record));
-    transaction.oncomplete = () => resolve();
-    transaction.onerror = () => reject(transaction.error || new Error('本地保存失败'));
-    transaction.onabort = () => reject(transaction.error || new Error('本地保存已中止'));
-  });
-}
-
-function vaultDelete(id) {
-  return new Promise((resolve, reject) => {
-    const transaction = documentVault.db.transaction(documentVault.storeName, 'readwrite');
-    transaction.objectStore(documentVault.storeName).delete(id);
-    transaction.oncomplete = () => resolve();
-    transaction.onerror = () => reject(transaction.error || new Error('删除失败'));
-  });
-}
-
-function formatFileSize(bytes) {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 ** 2) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / 1024 ** 2).toFixed(1)} MB`;
-}
-
-function formatDocumentDate(value) {
-  if (!value) return '未标日期';
-  const date = new Date(`${value}T00:00:00`);
-  if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat('zh-CN', { month: 'numeric', day: 'numeric', weekday: 'short' }).format(date);
-}
-
-function documentExtension(name) {
-  const pieces = name.split('.');
-  return pieces.length > 1 ? pieces.pop().slice(0, 5).toUpperCase() : 'FILE';
-}
-
-function isAllowedDocument(file) {
-  const allowedTypes = [
-    'application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/heic', 'image/heif',
-    'application/vnd.apple.pkpass', 'text/plain', 'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  ];
-  const allowedExtensions = /\.(pdf|jpe?g|png|webp|gif|heic|heif|pkpass|txt|docx?)$/i;
-  return allowedTypes.includes(file.type) || allowedExtensions.test(file.name);
-}
-
-function setDocumentMessage(text, success = false) {
-  const message = document.getElementById('documentFormMessage');
-  if (!message) return;
-  message.textContent = text;
-  message.classList.toggle('success', success);
-}
-
-function setSelectedDocuments(files) {
-  documentVault.files = [...files];
-  const label = document.getElementById('selectedFiles');
-  if (!label) return;
-  if (!documentVault.files.length) {
-    label.textContent = '尚未选择文件';
-    return;
-  }
-  const total = documentVault.files.reduce((sum, file) => sum + file.size, 0);
-  label.textContent = `${documentVault.files.length} 份 · ${formatFileSize(total)} · ${documentVault.files.map(file => file.name).join(' / ')}`;
-}
-
-async function updateDocumentStorageUsage() {
-  const usageLabel = document.getElementById('storageUsage');
-  const meter = document.getElementById('storageMeterBar');
-  if (!usageLabel || !meter || !navigator.storage?.estimate) {
-    if (usageLabel) usageLabel.textContent = '本机空间信息不可用';
-    return;
-  }
-  const { usage = 0, quota = 0 } = await navigator.storage.estimate();
-  const percent = quota ? Math.min(100, (usage / quota) * 100) : 0;
-  meter.style.width = `${percent}%`;
-  usageLabel.textContent = `本站已用 ${formatFileSize(usage)} · 浏览器可用约 ${formatFileSize(quota)}`;
-}
-
-function clearDocumentObjectUrls() {
-  documentVault.objectUrls.forEach(url => URL.revokeObjectURL(url));
-  documentVault.objectUrls = [];
-}
-
-async function renderDocumentLibrary() {
-  const list = document.getElementById('documentList');
-  const empty = document.getElementById('documentEmpty');
-  const count = document.getElementById('documentCount');
-  if (!list || !empty || !documentVault.db) return;
-
-  const renderToken = ++documentVault.renderToken;
-  const allDocuments = await vaultGetAll();
-  if (renderToken !== documentVault.renderToken) return;
-  clearDocumentObjectUrls();
-  allDocuments.sort((a, b) => (a.date || '9999-99-99').localeCompare(b.date || '9999-99-99') || a.createdAt - b.createdAt);
-  if (count) count.textContent = String(allDocuments.length);
-
-  const search = document.getElementById('documentSearch')?.value.trim().toLocaleLowerCase('zh-CN') || '';
-  const category = document.getElementById('documentFilter')?.value || 'all';
-  const visibleDocuments = allDocuments.filter(record => {
-    const matchesCategory = category === 'all' || record.category === category;
-    const haystack = `${record.title} ${record.fileName} ${record.reference || ''}`.toLocaleLowerCase('zh-CN');
-    return matchesCategory && (!search || haystack.includes(search));
-  });
-
-  list.replaceChildren();
-  empty.hidden = visibleDocuments.length > 0;
-  const emptyTitle = empty.querySelector('strong');
-  const emptyCopy = empty.querySelector('p');
-  if (allDocuments.length && !visibleDocuments.length) {
-    emptyTitle.textContent = '没有符合条件的凭证';
-    emptyCopy.textContent = '试试更换搜索词或选择“全部类别”。';
-  } else {
-    emptyTitle.textContent = '还没有保存凭证';
-    emptyCopy.textContent = '上传后会按旅行日期排列，需要时可直接打开或下载。';
-  }
-
-  visibleDocuments.forEach(record => {
-    const objectUrl = URL.createObjectURL(record.blob);
-    documentVault.objectUrls.push(objectUrl);
-
-    const item = document.createElement('article');
-    item.className = 'document-item';
-
-    const preview = document.createElement('div');
-    preview.className = `document-preview ${record.category || 'other'}${record.fileType === 'application/pdf' ? ' pdf' : ''}`;
-    if (record.fileType?.startsWith('image/') && record.fileType !== 'image/svg+xml') {
-      const image = document.createElement('img');
-      image.src = objectUrl;
-      image.alt = '';
-      image.loading = 'lazy';
-      preview.appendChild(image);
-    } else {
-      preview.textContent = documentExtension(record.fileName);
-    }
-
-    const copy = document.createElement('div');
-    copy.className = 'document-item-copy';
-
-    const meta = document.createElement('div');
-    meta.className = 'document-item-meta';
-    const categoryTag = document.createElement('span');
-    categoryTag.className = 'document-category';
-    categoryTag.textContent = documentCategories[record.category] || documentCategories.other;
-    const date = document.createElement('time');
-    date.dateTime = record.date || '';
-    date.textContent = formatDocumentDate(record.date);
-    meta.append(categoryTag, date);
-
-    const title = document.createElement('h3');
-    title.textContent = record.title;
-    title.title = record.title;
-    copy.append(meta, title);
-
-    if (record.reference) {
-      const reference = document.createElement('p');
-      reference.className = 'document-reference';
-      reference.textContent = record.reference;
-      reference.title = record.reference;
-      copy.appendChild(reference);
-    }
-
-    const fileMeta = document.createElement('p');
-    fileMeta.className = 'document-file-meta';
-    fileMeta.textContent = `${record.fileName} · ${formatFileSize(record.fileSize)}`;
-    fileMeta.title = record.fileName;
-    copy.appendChild(fileMeta);
-
-    const actions = document.createElement('div');
-    actions.className = 'document-actions';
-    const open = document.createElement('a');
-    open.href = objectUrl;
-    open.target = '_blank';
-    open.rel = 'noopener';
-    open.textContent = '打开';
-    const download = document.createElement('a');
-    download.href = objectUrl;
-    download.download = record.fileName;
-    download.textContent = '下载';
-    const remove = document.createElement('button');
-    remove.type = 'button';
-    remove.textContent = '删除';
-    remove.addEventListener('click', async () => {
-      if (!window.confirm(`从当前浏览器删除“${record.title}”？此操作无法撤销。`)) return;
-      try {
-        await vaultDelete(record.id);
-        await renderDocumentLibrary();
-        await updateDocumentStorageUsage();
-      } catch (error) {
-        setDocumentMessage(error.message || '删除失败');
-      }
-    });
-    actions.append(open, download, remove);
-    copy.appendChild(actions);
-    item.append(preview, copy);
-    list.appendChild(item);
-  });
-}
-
-async function initDocumentVault() {
-  const form = document.getElementById('documentForm');
-  const fileInput = document.getElementById('documentFiles');
-  const dropzone = document.getElementById('documentDropzone');
-  if (!form || !fileInput || !dropzone) return;
-
-  try {
-    await openDocumentVault();
-    await renderDocumentLibrary();
-    await updateDocumentStorageUsage();
-  } catch (error) {
-    setDocumentMessage(`${error.message}。请使用 Safari、Chrome 或 Edge 的普通浏览模式。`);
-    form.querySelectorAll('input, select, button').forEach(control => { control.disabled = true; });
-    return;
-  }
-
-  fileInput.addEventListener('change', () => setSelectedDocuments(fileInput.files));
-  ['dragenter', 'dragover'].forEach(type => dropzone.addEventListener(type, event => {
-    event.preventDefault();
-    dropzone.classList.add('dragging');
-  }));
-  ['dragleave', 'drop'].forEach(type => dropzone.addEventListener(type, event => {
-    event.preventDefault();
-    dropzone.classList.remove('dragging');
-  }));
-  dropzone.addEventListener('drop', event => setSelectedDocuments(event.dataTransfer.files));
-
-  document.getElementById('documentSearch')?.addEventListener('input', renderDocumentLibrary);
-  document.getElementById('documentFilter')?.addEventListener('change', renderDocumentLibrary);
-
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-    setDocumentMessage('');
-    if (!documentVault.files.length) {
-      setDocumentMessage('请先选择至少一个文件。');
-      return;
-    }
-
-    const invalid = documentVault.files.find(file => !isAllowedDocument(file));
-    if (invalid) {
-      setDocumentMessage(`不支持“${invalid.name}”的文件格式。`);
-      return;
-    }
-    const tooLarge = documentVault.files.find(file => file.size > 25 * 1024 ** 2);
-    if (tooLarge) {
-      setDocumentMessage(`“${tooLarge.name}”超过 25 MB，请先压缩或拆分。`);
-      return;
-    }
-    const batchSize = documentVault.files.reduce((sum, file) => sum + file.size, 0);
-    if (batchSize > 100 * 1024 ** 2) {
-      setDocumentMessage('本次文件总计超过 100 MB，请分批保存。');
-      return;
-    }
-
-    const submit = document.getElementById('documentSubmit');
-    submit.disabled = true;
-    submit.textContent = '正在保存…';
-    const formData = new FormData(form);
-    const customTitle = String(formData.get('title') || '').trim();
-    const date = String(formData.get('date') || '');
-    const category = String(formData.get('category') || 'other');
-    const reference = String(formData.get('reference') || '').trim();
-    const now = Date.now();
-    const records = documentVault.files.map((file, index) => ({
-      id: crypto.randomUUID ? crypto.randomUUID() : `${now}-${index}-${Math.random().toString(36).slice(2)}`,
-      title: customTitle ? (documentVault.files.length > 1 ? `${customTitle} · ${index + 1}` : customTitle) : file.name.replace(/\.[^.]+$/, ''),
-      date,
-      category,
-      reference,
-      fileName: file.name,
-      fileType: file.type || 'application/octet-stream',
-      fileSize: file.size,
-      blob: file.slice(0, file.size, file.type || 'application/octet-stream'),
-      createdAt: now + index
-    }));
-
-    try {
-      await vaultAdd(records);
-      if (navigator.storage?.persist) navigator.storage.persist().catch(() => {});
-      form.reset();
-      setSelectedDocuments([]);
-      setDocumentMessage(`已安全保存 ${records.length} 份凭证到当前浏览器。`, true);
-      await renderDocumentLibrary();
-      await updateDocumentStorageUsage();
-    } catch (error) {
-      setDocumentMessage(`${error.message || '保存失败'}。可能是本机空间不足。`);
-    } finally {
-      submit.disabled = false;
-      submit.textContent = '保存到本机票据夹';
-    }
-  });
-}
-
-initDocumentVault();
-window.addEventListener('beforeunload', clearDocumentObjectUrls);
 
 function initRouteMaps() {
   if (!window.L || !document.getElementById('waRouteMap') || !document.getElementById('tasRouteMap')) return;
@@ -1250,11 +957,12 @@ function initRouteMaps() {
     [-28.7774, 114.614], [-28.158, 114.242], [-28.7774, 114.614], [-30.305, 115.038],
     perthAirport
   ];
-  const waIslandRoute = [fremantle, rottnest, perth];
+  const waIslandRoute = [fremantle, rottnest, fremantle];
   const waMap = createMap('waRouteMap');
   L.polyline(waSouthRoute, { color: '#d47745', weight: 4, opacity: .92 }).addTo(waMap);
   L.polyline(waNorthRoute, { color: '#b58a32', weight: 4, opacity: .9 }).addTo(waMap);
   L.polyline(waIslandRoute, { color: '#496c93', weight: 3, opacity: .9, dashArray: '6 7' }).addTo(waMap);
+  L.polyline([fremantle, perth], { color: '#697370', weight: 2, dashArray: '2 5' }).addTo(waMap).bindTooltip('10/1 B Shed → Perth · 地面接驳待安排');
   addPlaces(waMap, [
     ['珀斯机场', perthAirport, 'right'], ['Perth', perth, 'left'], ['Fremantle', fremantle, 'left'],
     ['Geraldton', [-28.7774, 114.614], 'right'], ['粉红湖', [-28.158, 114.242], 'right'],
@@ -1298,5 +1006,5 @@ function initRouteMaps() {
 }
 
 const initialTab = location.hash.slice(1);
-activateTab(validTabs.has(initialTab) ? initialTab : 'home', false);
-if (initialTab && !validTabs.has(initialTab)) history.replaceState(null, '', '#home');
+activateTab(initialTab, false);
+if (initialTab && !validTabs.has(initialTab)) history.replaceState(null, '', initialTab === 'documents' ? '#stays' : '#home');
